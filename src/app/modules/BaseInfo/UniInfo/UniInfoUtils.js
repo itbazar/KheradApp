@@ -6,7 +6,10 @@ import { Input } from "../../../../_themeBase/_partials/controls";
 import { SelectStatus } from '../../customComponents/SelectStatus';
 export {filterFields} from "../../customComponents/filterFields";
  
-  
+
+
+
+
   export const initObject = {
     id: undefined,
     title: "",

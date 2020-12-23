@@ -1,4 +1,4 @@
-export const ObjectStatusCssClasses = ["success", "info", ""];
+export const ObjectStatusCssClasses = ["success", "danger"];
 export const ObjectStatusTitles = ["MODULES.GENERAL.STATUSENABLE", "MODULES.GENERAL.STATUSDELETED"];
 export const ObjectConditionCssClasses = ["success", "danger", ""];
 export const ObjectConditionTitles = ["New", "Used"];

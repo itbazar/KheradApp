@@ -35,3 +35,5 @@ yarn-debug.log*
 yarn-error.log*
 yarn.lock
 src/_themeBase/layout/components/basePage/pages/objects-table/column-formatters/StatusColumnFormatter.js
+.env
+package-lock.json

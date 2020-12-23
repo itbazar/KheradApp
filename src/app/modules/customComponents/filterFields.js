@@ -2,7 +2,7 @@ import { SelectStatus } from './SelectStatus';
 
 export const filterFields = [
   {
-    name: "IsDeleted",
+    name: "isDeleted",
     lable: "MODULES.GENERAL.STATUS",
     type: "select",
     list:[
