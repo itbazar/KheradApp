@@ -1,0 +1,2010 @@
+
+
+@font-face {
+    font-family: 'SANS';
+    src: url('../fonts/IRANSans-Light-web-fa.woff') format('woff'), /* Pretty Modern Browsers */
+    url('../fonts/IRANSans-Light-web-fa.ttf') format('truetype'); /* Safari, Android, iOS */
+    font-weight: normal;
+  }
+  
+  @font-face {
+    font-family: 'SANS';
+    src: url('../fonts/IRANSansWeb_Bold.woff') format('woff'), /* Pretty Modern Browsers */
+    url('../fonts/IRANSansWeb_Bold.ttf') format('truetype'); /* Safari, Android, iOS */
+    font-weight: bold;
+  }
+
+.bg-color-red {
+    background-color: #ff9999 !important;
+}
+
+.appSlider{
+    width: 85%;
+    margin: auto;
+    font-size: 8px !important;
+}
+
+.t3 {
+    transition: all 0.3s;
+    -moz-transition: all 0.3s;
+    -webkit-transition: all 0.3s;
+    -o-transition: all 0.3s;
+    -ms-transition: all 0.3s;
+}
+/*NewGridviewStyle*/
+/** {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}*/
+
+html, body {
+    min-height: 100%;
+    -webkit-text-size-adjust: 100%;
+}
+
+body {
+    font-size: 11px;
+    font-family: 'SANS', BYekan, Tahoma, Arial ;
+    margin: 0px;
+    padding: 0px;
+    background: url(../images/Style/mainBG.jpg) !important;
+}
+
+a {
+    text-decoration: none;
+    transition: all 0.3s;
+    -moz-transition: all 0.3s;
+    -webkit-transition: all 0.3s;
+    -o-transition: all 0.3s;
+    -ms-transition: all 0.3s;
+    color: #1f1f1f;
+}
+
+    a:hover {
+        color: #6a6a6a;
+    }
+
+input[type="text"], input[type="password"], select, textarea {
+    font-family: 'SANS', BYekan, Tahoma, Arial;
+    font-size: 11px;
+    border-radius: 3px;
+    /*new css*/
+    /*-moz-border-radius: 3px;
+    -webkit-border-radius: 3px;
+    -o-border-radius: 3px;
+    -ms-border-radius: 3px;*/
+    border: 1px solid #c1c1c1;
+    padding: 0 10px;
+    height: 30px;
+    background: #fdfdfd;
+    background: -webkit-gradient(linear, 0 0, 0 100%, from(#fafafa), to(#ffffff));
+    background: -webkit-linear-gradient(#fafafa, #ffffff);
+    background: -moz-linear-gradient(#fafafa, #ffffff);
+    background: -o-linear-gradient(#fafafa, #ffffff);
+    background: linear-gradient(#fafafa, #ffffff);
+    color: #454545;
+    margin: 1px;
+}
+
+input[type="button"], input[type="submit"], input[type="reset"] {
+    font-family: 'SANS', BYekan, Tahoma, Arial;
+    font-size: 11px;
+    background: url(../images/Style/bgLogin.png) repeat-x;
+    /*background-color: #006400;*/
+    /*background-color: #008000;*/
+    border: 0 none;
+    border-radius: 3px;
+    color: #fff;
+    cursor: pointer;
+    height: 32px;
+    text-shadow: 1px 1px #0f771b;
+
+   
+}
+
+input:hover {
+    box-shadow: 0 0 5px rgba(197, 197, 197, 1);
+}
+
+input[type="button"]#dis {
+    background: #b4b4b4;
+    color: #fff;
+    text-shadow: 1px 1px #717171;
+    cursor: default;
+}
+
+    input[type="button"]#dis:hover {
+        box-shadow: none;
+    }
+
+/*Abdollahi*/
+input[type="submit"]:disabled {
+    background: #b4b4b4;
+    color: #fff;
+    text-shadow: 1px 1px #717171;
+    cursor: default;
+}
+
+    input[type="submit"]:disabled:hover {
+        box-shadow: none;
+    }
+/*-------------------------*/
+
+:focus {
+    outline: none;
+}
+
+div {
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    margin: 0px;
+    padding: 0px;
+}
+
+img {
+    border: 0;
+}
+
+.hdrDiv {
+    height: 80px;
+    background: linear-gradient(#e3e3e3,#f2f2f2);
+    background: -webkit-linear-gradient(#e3e3e3,#f2f2f2);
+    background: -o-linear-gradient(#e3e3e3,#f2f2f2);
+    background: -moz-linear-gradient(#e3e3e3,#f2f2f2);
+    /*Abdollahi*/
+    padding: 5px 0px;
+    width: 100%;
+}
+
+.topDiv {
+    direction: rtl;
+    text-align: right;
+    width: 1200px;
+    margin: 0 auto;
+}
+
+.clear {
+    clear: both;
+}
+
+/* s Login */
+.logo {
+    width: 210px;
+    float: right;
+    padding-top: 5px;
+}
+
+    .logo img {
+        padding-left: 10px;
+        border-left: 5px solid #cccccc;
+    }
+
+/*Abdollahi*/
+.logoUni {
+    /*width: 210px;*/
+    float: Left;
+    padding-top: 0px;
+    margin-left: 10px;
+}
+
+.otherLogo {
+    height: 60px;
+    float: right;
+    margin-right: 15px;
+}
+
+.ribbon {
+    margin-top: 7%;
+    position: relative;
+}
+
+.ribbonRight {
+    height: 195px;
+    position: absolute;
+    top: 150px;
+    right: 0;
+    z-index: -1;
+    background-color: #f1af15;
+    width: 55%;
+}
+
+.ribbonLeft {
+    height: 265px;
+    position: absolute;
+    top: 115px;
+    left: 0;
+    z-index: -1;
+    background: url(../images/Style/Ribbon-new.png) #f1af15 no-repeat right;
+    padding-right: 80px;
+    width: 45%;
+    border: 0px solid;
+}
+
+.middleBox {
+    border: 0px solid;
+    width: 1200px;
+    margin: 0 auto;
+    overflow: hidden;
+}
+
+.rightBox {
+    background-image: url(../images/Style/Plate.png);
+    background-repeat: no-repeat;
+    background-size: 100%;
+    border: 0px solid;
+    width: 52%;
+    float: right;
+    min-height: 500px;
+}
+
+.leftBox {
+    border: 0px solid;
+    width: 48%;
+    float: left;
+    min-height: 400px;
+}
+
+.srcDiv {
+    float: left;
+    padding: 10px 0;
+    /*new css*/
+    /*width: 50%;*/
+    margin-top: 10px;
+}
+
+    .srcDiv input[type="text"], .hideSrc input[type="text"], .srcDiv input[type="password"], .hideSrc input[type="password"] {
+        margin-left: 10px;
+        width: 35%;
+        float: left;
+        height: 35px;
+    }
+
+    .srcDiv input[type="submit"], .srcDiv input[type="button"], .hideSrc input[type="submit"], .srcDiv input[type="reset"], .hideSrc input[type="reset"] {
+        background: #d3d3d3;
+        color: #626262;
+        width: 90px;
+        padding: 0 auto;
+        margin: 0px;
+        float: left;
+        height: 36px;
+        text-shadow: none;
+        border: 1px solid #c1c1c1;
+        margin-right: 5px; /*new*/
+    }
+
+.plateLogo {
+    border: 0px solid;
+    /*margin-top: 4%;*/
+    margin-top: 25%;
+    z-index: 100;
+}
+
+.loginDiv {
+    position: relative;
+    border: 0px solid;
+    margin-top: 0px;
+    direction: rtl;
+}
+    /*Abdollahi*/
+    .loginDiv input[type="text"], .loginDiv input[type="password"] {
+        margin: 3px 0 0 0;
+        /*width: 200px;*/
+        width: 35%;
+        height: 30px;
+        border-radius: 0px 3px 3px 0px;
+        /*border-left:0;*/
+        text-align: center;
+    }
+
+    .loginDiv input[type="submit"], .loginDiv input[type="button"], .loginDiv input[type="reset"] {
+        /*width: 200px;*/
+        width: 39%;
+        margin: 3px 0 0 0;
+        height: 30px;
+        text-align: center;
+    }
+
+
+
+    .loginDiv div[id="divCaptcha"] {
+        background-color: #f1f1f1;
+        border-radius: 3px 0px 0px 3px;
+        border: 1px solid #c1c1c1;
+        border-right: 0;
+        cursor: pointer;
+        float: left;
+        height: 30px;
+        margin: 3px 0 0 0;
+        text-align: center;
+        width: 42%;
+    }
+
+    .loginDiv img[id="captcha"] {
+        width: 100%;
+        height: 30px;
+        border-radius: 3px 0px 0px 3px;
+    }
+
+/*.loginDiv div[name="icon"] {
+            background-color: #f1f1f1;
+            border-top: thin solid #e5e5e5;
+            box-shadow: 1px 1px 1px 1px #e5e5e5;
+            cursor: pointer;
+            float: left;
+            height: 30px;
+            margin: 7px 0 0 0;
+            text-align: center;
+            width: 20%;
+        }
+    .loginDiv img[name="icon"]{
+            margin:4px;
+            width:20px; 
+        }*/
+
+.newsBox {
+    border: 0px solid;
+    width: 73%;
+    direction: rtl;
+    margin-top: 22%;
+    float: left;
+    overflow: hidden;
+    position: relative;
+    height: 240px;
+}
+
+    .newsBox input[type="button"] {
+        background: #ffc026;
+        color: #1a1a1a;
+        border: 0;
+        height: 50px;
+        width: 100%;
+        margin: 10px 0 10px 0;
+        font-size: 11pt;
+        text-align: right;
+        padding: 0 20px 0 0;
+        text-shadow: none;
+    }
+
+        .newsBox input[type="button"]:hover {
+            box-shadow: none;
+        }
+
+    .newsBox ul li {
+        padding: 6px 0px 0 0;
+        font-size: 11px;
+        cursor: pointer;
+        margin-right: 0px;
+        margin-top: 0px;
+    }
+
+.footerBox {
+    position: fixed;
+    width: 100%;
+    height: 5px;
+    background: #323232;
+    bottom: 0;
+    margin: 0;
+}
+/* e Login */
+
+/* SC    */
+/* Abdollahi     */
+/*.titleBox {
+    background: #eee;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    padding: 8px;
+    text-align: right;
+    color: #2d2d2d;
+}*/
+
+.alertBox {
+    background: #fff6e1;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    padding: 8px;
+    text-align: right;
+    color: #2d2d2d;
+}
+
+/*Abdollahi*/
+.waitBox {
+    background: #e6e6e6;
+    border: 0px;
+    border-radius: 5px;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -o-border-radius: 5px;
+    -ms-border-radius: 5px;
+    margin-bottom: 10px;
+    padding: 8px;
+    text-align: right;
+    color: #2d2d2d;
+}
+
+.waitIcon {
+    float: left;
+    padding: 5px;
+    vertical-align: top;
+}
+
+.messageBox {
+    background: #e6e6e6;
+    border: 0px;
+    border-radius: 5px;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -o-border-radius: 5px;
+    -ms-border-radius: 5px;
+    margin-bottom: 10px;
+    padding: 8px;
+    text-align: right;
+    color: #2d2d2d;
+}
+
+.titleBox {
+    background: #fcbb21;
+    border: 0px;
+    border-radius: 5px;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -o-border-radius: 5px;
+    -ms-border-radius: 5px;
+    margin-bottom: 10px;
+    padding: 8px;
+    text-align: right;
+    color: #2d2d2d;
+}
+.backIcon {
+    float: left;
+    /*padding: 5px;*/
+    vertical-align: top;
+    cursor: pointer;
+}
+
+/*-------------------------*/
+
+.error {
+    background: #ffcfcf;
+}
+
+.msg {
+    background: #d9f5be;
+}
+
+.topClose {
+    float: left;
+    padding: 3px;
+    cursor: pointer;
+}
+
+.mainDiv {
+    width: 1200px;
+    margin: 0px auto;
+    direction: rtl;
+    text-align: right;
+}
+
+/*Abdollahi*/
+.content {
+    margin-top: 20px;
+    margin-bottom: 100px;
+}
+
+.rightDiv {
+    /*Abdollahi*/
+    width: 200px;
+    float: right;
+    color: #fefefe;
+    /*Abdollahi*/
+    padding: 0px 0px;
+}
+
+fieldset {
+    border-radius: 7px;
+    margin-bottom: 15px;
+    border: #eaeaea solid 1px;
+    padding: 10px 10px 10px 10px;
+}
+
+legend {
+    color: #c6c6c6;
+    margin: 0px 10px;
+    padding: 0px 10px;
+}
+
+.leftDiv {
+    /*Abdollahi*/
+    margin-right: 0px;
+    background-color: #fff;
+    border-bottom-left-radius: 8px;
+    border-top-left-radius: 8px;
+    padding: 25px;
+    overflow: hidden;
+}
+
+.box label {
+    width: 110px;
+    padding: 7px 10px 0px;
+    color: #343333;
+    font-size: 10.5px;
+    float: right;
+    text-align: left;
+    margin-right: 10px;
+    margin-bottom: 10px;
+}
+
+.box input[type=text], fieldset input[type=submit], input[type=button], .box select {
+    float: right;
+    width: 185px;
+    padding: 0px 5px;
+    margin-bottom: 10px;
+    height: 33px;
+}
+
+fieldset .box, .box2 {
+    float: right;
+    /* Abdollahi */
+    background-color: #FFF;
+}
+
+    .box2 label {
+        width: 100px;
+        padding: 7px 10px 0px;
+        color: #343333;
+        font-size: 10.5px;
+        float: right;
+        text-align: left;
+        margin-right: 10px;
+        margin-bottom: 10px;
+    }
+
+    .box2 input, .box2 select {
+        float: right;
+        width: 160px;
+        padding: 0px 5px;
+        margin-bottom: 10px;
+        height: 33px;
+    }
+
+fieldset input[type=submit], input[type=button], input[type=reset] {
+    float: left;
+    margin-left: 40px;
+}
+
+
+.label2 {
+    float: right;
+    width: 200px;
+    padding: 2px 5px;
+    color: #343333;
+    font-size: 10px;
+    text-align: right;
+    margin-right: 0px;
+    margin-bottom: 15px;
+}
+
+fieldset input[type=radio], fieldset input[type=checkbox] {
+    margin: 6px;
+}
+
+.profile {
+    /*Abdollahi*/
+    width: 200px;
+    float: right;
+    /*Abdollahi*/
+    height: 105px;
+    background: #444;
+    padding: 5px;
+    border-radius: 0px 8px 8px 0px;
+}
+
+.profilePic {
+    float: right;
+    margin-left: 10px;
+}
+
+    .profilePic img {
+        /*Abdollahi*/
+        width: 70px;
+        height: 80px;
+        border: 1px solid #d7d7d7;
+        border-radius: 8px;
+    }
+
+/*.srcDiv-sc input[type="submit"] {
+    background: #0066A2;
+    color: white;
+    border-style: outset;
+    border-color: #0066A2;
+    height: 50px;
+    width: 100px;
+    font: bold 15px arial, sans-serif;
+    text-shadow: none;
+}*/
+
+
+.srcDiv-sc {
+    float: left;
+    padding: 10px 0;
+    margin-top: 10px;
+    direction: ltr;
+}
+
+    .srcDiv-sc input[type="submit"], .srcDiv-sc input[type="button"], .srcDiv-sc input[type="reset"] {
+        background: #d3d3d3;
+        color: #626262;
+        width: 100px;
+        padding: 0 auto;
+        margin: 0px;
+        float: left;
+        height: 36px;
+        text-shadow: none;
+        border: 1px solid #c1c1c1;
+    }
+
+.srcDiv-sc2 input[type="submit"], .srcDiv-sc2 input[type="button"], .srcDiv-sc2 input[type="reset"] {
+    background: #d3d3d3;
+    color: #626262;
+    width: 100px;
+    margin-right: 20px;
+    height: 33px;
+    text-shadow: none;
+    border: 1px solid #c1c1c1;
+   
+}
+
+.srcTitle {
+    float: left;
+    height: 60px;
+    border: 0px solid;
+    padding: 5px;
+    color: #393939;
+}
+
+/*s  آکاردئون*/
+.menuEdit {
+    color: #fff;
+    overflow: hidden;
+    margin-bottom: 10px;
+}
+
+.subMenuTab {
+    position: absolute;
+    width: 200px;
+    padding: 5px 10px;
+    text-align: right;
+    background: #404040;
+    top: 75px;
+    z-index: 100;
+    display: none;
+    right: 0;
+    margin: auto;
+}
+
+.subMenu {
+    padding: 3px 10px;
+    border-bottom: 1px solid #545454;
+}
+
+.lastSubMenu {
+    border: 0;
+}
+/*e  آکاردئون*/
+
+/*Abdollahi -----------------------------------------------------------------*/
+
+
+.GridviewStyle {
+    text-align: center;
+    border: 1px solid #eaeaea;
+    border-radius: 7px;
+}
+
+    .GridviewStyle, .GridviewStyle table, .GridviewStyle td, .GridviewStyle tr, .GridviewStyle th {
+        text-align: center;
+        vertical-align: central;
+        border: 1px solid #eaeaea;
+    }
+
+        /*NewGridviewStyle*/
+        .GridviewStyle table th a {
+            color: #fff
+        }
+
+.HeaderStyle, .HeaderStyle table, .HeaderStyle td, .HeaderStyle tr {
+    background-color: #fff7e4;
+    color: #737373;
+}
+
+.GridviewStyle_Detail {
+    text-align: center;
+    border: 1px solid #eaeaea;
+    border-radius: 7px;
+}
+
+    .GridviewStyle_Detail, .GridviewStyle_Detail table, .GridviewStyle_Detail td, .GridviewStyle_Detail tr, .GridviewStyle_Detail th {
+        text-align: center;
+        border: 1px solid #eaeaea;
+        background-color: #f2f2f2;
+    }
+
+.HeaderStyle_Detail, .HeaderStyle_Detail table, .HeaderStyle_Detail td, .HeaderStyle_Detail tr {
+    background-color: #f2f2f2;
+    color: #737373;
+}
+
+.FooterStyle, .FooterStyle table, .FooterStyle td, .FooterStyle tr {
+    background-color: #f2f2f2;
+    color: #737373;
+}
+
+.GridviewStyle_Survey, .GridviewStyle_Survey table, .GridviewStyle_Survey td, .GridviewStyle_Survey tr, .GridviewStyle_Survey th {
+    text-align: center;
+    border: 1px solid #eaeaea;
+    border-radius: 7px;
+    background-color: #f2f2f2;
+}
+
+    .GridviewStyle_Survey span, .GridviewStyle_Survey label {
+        text-align: right;
+        float: right;
+        padding: 0px 10px;
+    }
+
+    .GridviewStyle_Survey input[type=radio], .GridviewStyle_Survey input[type=checkbox] {
+        text-align: right;
+        float: right;
+        margin: 7px 10px 7px 0px;
+    }
+
+.GridviewStyle_Detail_Survey, .GridviewStyle_Detail_Survey table, .GridviewStyle_Detail_Survey td, .GridviewStyle_Detail_Survey tr, .GridviewStyle_Detail_Survey th {
+    text-align: center;
+    border: 1px solid #eaeaea;
+    border-radius: 7px;
+    background-color: #fff;
+}
+
+.PagerStyle, .PagerStyle table, .PagerStyle tr, .PagerStyle td, .PagerStyle th {
+    background-color: #fff7e4;
+    color: #737373;
+    border: 0px solid #eaeaea;
+    text-align: center;
+    margin: auto;
+    padding: 1px;
+}
+
+    .PagerStyle a {
+        color: #737373;
+        text-decoration: none;
+        padding: 2px 10px 2px 10px;
+        border-top: solid 1px #eaeaea;
+        border-right: solid 1px #eaeaea;
+        border-bottom: solid 1px #eaeaea;
+        border-left: solid 1px #eaeaea;
+    }
+
+    .PagerStyle span {
+        font-weight: bold;
+        background-color: #fff;
+        color: #000;
+        text-decoration: none;
+        padding: 2px 10px 2px 10px;
+        border: 1px solid #000;
+    }
+
+.TelerikMainDiv {
+    direction: rtl;
+    text-align: right;
+    margin: 10px;
+    padding: 10px;
+}
+
+.td-content-ab {
+    margin: 0 auto;
+    border: 0px solid;
+    padding: 0;
+    font-size: 9pt;
+}
+
+.GridviewStyleFoodDessert, .GridviewStyleFoodDessert table, .GridviewStyleFoodDessert td, .GridviewStyleFoodDessert tr, .GridviewStyleFoodDessert th {
+    text-align: right;
+    border: 0px solid #eaeaea;
+    border-radius: 7px;
+    height: 2px;
+}
+
+.news {
+    text-align: justify;
+    direction: rtl;
+}
+
+.news_Title {
+    font-size: 1.1em;
+    color: Green;
+}
+
+.news_Body {
+}
+
+/*------------------------*/
+
+.box_rpt label {
+    width: 110px;
+    padding: 4px 10px 0px;
+    color: #343333;
+    /*font-size: 10.5pt;*/
+    float: right;
+    text-align: left;
+    margin-right: 10px;
+    margin-bottom: 10px;
+}
+
+.box_rpt input[type=text], .box_rpt input[type=submit], .box_rpt input[type=button], .box_rpt select {
+    float: right;
+    width: 185px;
+    padding: 0px 5px;
+    margin-bottom: 10px;
+    height: 33px;
+}
+
+.box_rpt input[type=checkbox], .box_rpt input[type=radio] {
+    float: right;
+    padding: 0px 1px;
+    margin-bottom: 10px;
+}
+
+/*------------------------*/
+.box_importexcel label {
+    width: 150px;
+    padding: 4px 10px 0px;
+    color: #343333;
+    font-size: 10.5pt;
+    float: right;
+    text-align: left;
+    margin-right: 3px;
+    margin-bottom: 10px;
+}
+
+.box_importexcel input[type=text], .box_importexcel input[type=submit], .box_importexcel input[type=button], .box_importexcel select, .box_importexcel input[type=file] {
+    float: right;
+    width: 70px;
+    padding: 0px 5px;
+    margin-bottom: 10px;
+    height: 33px;
+}
+
+.box_importexcel input[type=checkbox], .box_importexcel input[type=radio] {
+    float: right;
+    padding: 0px 1px;
+    margin-bottom: 10px;
+}
+
+/*------------------------*/
+
+.box_CheckBoxList {
+    width: 185px;
+    height: 150px;
+    overflow: auto;
+    border: 1px solid #c1c1c1;
+    border-radius: 3px;
+    -moz-border-radius: 3px;
+    -webkit-border-radius: 3px;
+    -o-border-radius: 3px;
+    -ms-border-radius: 3px;
+    margin-bottom: 15px;
+}
+
+    .box_CheckBoxList label {
+        width: 125px;
+        color: #343333;
+        font-size: 10.5pt;
+        float: right;
+        text-align: right;
+        padding: 0px;
+        margin: 0px;
+    }
+
+    .box_CheckBoxList input[type="checkbox"] {
+        width: 20px;
+        height: 25px;
+        color: #343333;
+        font-size: 10.5pt;
+        float: right;
+        text-align: left;
+        padding-top: 0px;
+        margin-right: 2px;
+    }
+
+
+/*------------------------*/
+
+.blankMasterMainDiv {
+    margin: 0px;
+    background-color: #fff;
+    padding: 25px;
+    direction: rtl;
+}
+
+/*------------------------*/
+
+fieldset.box.error {
+}
+
+.box.error .checkbox, .box.error .radio, .box.error input, .box.error select, .box.error textarea {
+    color: #b94a48;
+}
+
+.box.error input, .box.error select, .box.error textarea {
+    border-color: #b94a48;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+    -moz-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+}
+
+    .box.error input:focus, .box.error select:focus, .box.error textarea:focus {
+        border-color: #953b39;
+        -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 6px #d59392;
+        -moz-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 6px #d59392;
+        box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 6px #d59392;
+    }
+
+.box.success .checkbox, .box.success .radio, .box.success input, .box.success select, .box.success textarea {
+    color: #468847;
+}
+
+.box.success input, .box.success select, .box.success textarea {
+    border-color: #468847;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+    -moz-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+}
+
+    .box.success input:focus, .box.success select:focus, .box.success textarea:focus {
+        border-color: #356635;
+        -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 6px #7aba7b;
+        -moz-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 6px #7aba7b;
+        box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 6px #7aba7b;
+    }
+
+/*--------------نظر سنجی---------------*/
+.progresslabel {
+    position: relative;
+    top: 0em;
+    margin-left: -4000px;
+    font-size: medium;
+    color: black;
+}
+
+progress {
+    width: 95%;
+    height: 20px;
+    margin-top: .2em;
+}
+/*-------------------------------------------------------------------------*/
+/*-------------------------------------------------------------------------*/
+/*-------------------------------------------------------------------------*/
+
+
+
+.dataGrid Table {
+    background-color: #eaeaea;
+    border: 0px solid #eaeaea;
+    border-radius: 7px;
+}
+
+.dataGrid td {
+    padding: 0px 6px;
+}
+
+.topTr {
+    background-color: #fff7e4;
+    color: #737373;
+    line-height: 2.5em;
+}
+
+.topTr-2 {
+    background-color: #fff7e4;
+    color: #737373;
+    line-height: 6em;
+    text-align: center;
+}
+
+tr {
+    background-color: #fff;
+    line-height: 2.5em;
+}
+
+.topTr-2 img {
+    width: 40px;
+    height: auto;
+    vertical-align: middle;
+}
+
+.tr-2 {
+    line-height: 50px;
+}
+
+
+/*Abdollahi*/
+/*Taleghani - 99/06/12*/
+
+/*<a class="gridIcon1" id="k1" runat="server" title="حذف" onserverclick="btnDeleteActive_Click" / >
+<div class="gridIcon2" id="k2" runat="server" title="ویرایش" / >
+<div class="gridIcon3" id="k3" runat="server" title="جزئیات" / >
+<div class="gridIcon4" id="k4" runat="server" title="پرداخت های اینترنتی" / >
+<div class="gridIcon5" id="k5" runat="server" title="تراکنش ها" / >
+<div class="gridIcon6" id="k6" runat="server" title="فیش فراموشی" / >
+<div class="gridIcon7" id="k7" runat="server" title="خرید اعتبار" / >
+<div class="gridIcon8" id="k8" runat="server" title="رزرو" / >
+<div class="gridIcon9" id="k9" runat="server" title="روز فروش" / >
+<div class="gridIcon10" id="k10" runat="server" title="سلف رستوران" / >*/
+
+.gridIcon1 {
+    width: 25px;
+    height: 25px;
+    float: right;
+    background: url(../images/iconButton/delete.png);
+    cursor: pointer;
+    margin: 2px;
+    /*background-position: 15px 0px;*/
+}
+
+    .gridIcon1:hover {
+        background: url(../images/iconButton/delete1.png);
+    }
+
+.gridIcon1_2 {
+    width: 25px;
+    height: 25px;
+    float: right;
+    background: url(../images/iconButton/delete.png);
+    cursor: pointer;
+    margin: 2px;
+    /*background-position: 15px 0px;*/
+    -ms-transform: rotate(45deg); /* IE 9 */
+    -webkit-transform: rotate(45deg); /* Chrome, Safari, Opera */
+    transform: rotate(45deg);
+}
+
+    .gridIcon1_2:hover {
+        background: url(../images/iconButton/delete1.png);
+    }
+
+.gridIcon2 {
+    width: 25px;
+    height: 25px;
+    float: right;
+    background: url(../images/iconButton/edit.png);
+    cursor: pointer;
+    margin: 2px;
+    /*background-position: 30px 0px;*/
+}
+
+    .gridIcon2:hover {
+        background: url(../images/iconButton/edit1.png);
+    }
+
+.gridIcon3 {
+    width: 25px;
+    height: 25px;
+    float: right;
+    background: url(../images/iconButton/details.png);
+    cursor: pointer;
+    margin: 2px;
+    /*background-position: 45px 0px;*/
+}
+
+    .gridIcon3:hover {
+        background: url(../images/iconButton/details1.png);
+    }
+
+.gridIcon4 {
+    width: 25px;
+    height: 25px;
+    float: right;
+    background: url(../images/iconButton/internetPay.png);
+    cursor: pointer;
+    margin: 2px;
+    /*background-position: 60px 0px;*/
+}
+
+    .gridIcon4:hover {
+        background: url(../images/iconButton/internetPay1.png);
+    }
+
+.gridIcon5 {
+    width: 25px;
+    height: 25px;
+    float: right;
+    background: url(../images/iconButton/transaction.png);
+    cursor: pointer;
+    margin: 2px;
+    /*background-position: 75px 0px;*/
+}
+
+    .gridIcon5:hover {
+        background: url(../images/iconButton/transaction1.png);
+    }
+
+.gridIcon6 {
+    width: 25px;
+    height: 25px;
+    float: right;
+    background: url(../images/iconButton/fish.png);
+    cursor: pointer;
+    margin: 2px;
+    /*background-position: 90px 0px;*/
+}
+
+    .gridIcon6:hover {
+        background: url(../images/iconButton/fish1.png);
+    }
+
+.gridIcon7 {
+    width: 25px;
+    height: 25px;
+    float: right;
+    background: url(../images/iconButton/creditShoping.png);
+    cursor: pointer;
+    margin: 2px;
+    /*background-position: 105px 0px;*/
+}
+
+    .gridIcon7:hover {
+        background: url(../images/iconButton/creditShoping1.png);
+    }
+
+.gridIcon8 {
+    width: 25px;
+    height: 25px;
+    float: right;
+    background: url(../images/iconButton/resWeekly.png);
+    cursor: pointer;
+    margin: 2px;
+    /*background-position: 120px 0px;*/
+}
+
+    .gridIcon8:hover {
+        background: url(../images/iconButton/resWeekly1.png);
+    }
+
+.gridIcon9 {
+    width: 25px;
+    height: 25px;
+    float: right;
+    background: url(../images/iconButton/dailySale.png);
+    cursor: pointer;
+    margin: 2px;
+    /*background-position: 135px 0px;*/
+}
+
+    .gridIcon9:hover {
+        background: url(../images/iconButton/dailySale1.png);
+    }
+
+.gridIcon10 {
+    width: 25px;
+    height: 25px;
+    float: right;
+    background: url(../images/iconButton/restaurant.png);
+    cursor: pointer;
+    margin: 2px;
+    /*background-position: 0px 0px;*/
+}
+
+    .gridIcon10:hover {
+        background: url(../images/iconButton/restaurant1.png);
+    }
+
+.gridIcon11 {
+    width: 25px;
+    height: 25px;
+    float: right;
+    background: url(../images/iconButton/enable.png);
+    cursor: pointer;
+    margin: 2px;
+    /*background-position: 0px 0px;*/
+}
+
+    .gridIcon11:hover {
+        background: url(../images/iconButton/enable1.png);
+    }
+/*Abdollahi*/
+
+.gridIcon {
+    width: 15px;
+    height: 15px;
+    float: right;
+    background: url(../images/Style/gridIcons.png);
+    cursor: pointer;
+    margin: 2px;
+}
+
+#k1:hover {
+    background-position: 0px 15px;
+}
+
+#k1 {
+    background-position: 0px 0px;
+}
+
+#k2:hover {
+    background-position: 15px 15px;
+}
+
+#k2 {
+    background-position: 15px 0px;
+}
+
+#k3:hover {
+    background-position: 30px 15px;
+}
+
+#k3 {
+    background-position: 30px 0px;
+}
+
+#k4:hover {
+    background-position: 45px 15px;
+}
+
+#k4 {
+    background-position: 45px 0px;
+}
+
+#k5:hover {
+    background-position: 60px 15px;
+}
+
+#k5 {
+    background-position: 60px 0px;
+}
+
+#k6:hover {
+    background-position: 75px 15px;
+}
+
+#k6 {
+    background-position: 75px 0px;
+}
+
+k7:hover {
+    background-position: 90px 15px;
+}
+
+#k7 {
+    background-position: 90px 0px;
+}
+
+.tableIcon {
+    width: 15px;
+    height: 15px;
+    float: left;
+    background: url(../images/Style/tableIcon-2.png);
+    cursor: pointer;
+    margin-top: 15px;
+}
+
+#t1:hover {
+    background-position: 0px 15px;
+}
+
+#t1 {
+    background-position: 0px 0px;
+}
+
+#t2:hover {
+    background-position: 15px 15px;
+}
+
+#t2 {
+    background-position: 15px 0px;
+}
+
+#t3:hover {
+    background-position: 30px 15px;
+}
+
+#t3 {
+    background-position: 30px 0px;
+}
+
+.td-content {
+    width: 90%;
+    margin: 0 auto;
+    border: 0px solid;
+    padding: 0;
+    font-size: 9pt;
+    height: 40px;
+}
+
+.ui-widget-overlay {
+    background: #000;
+    opacity: 0.6;
+}
+
+.ui-widget-overlay {
+    height: 100%;
+    left: 0;
+    position: fixed;
+    top: 0;
+    display: none;
+    width: 100%;
+}
+
+.ui-front {
+    z-index: 100;
+}
+
+.usersDiv {
+    height: auto;
+    position: absolute;
+    background: #ffffff;
+    border-radius: 5px;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -o-border-radius: 5px;
+    -ms-border-radius: 5px;
+    overflow: hidden;
+    width: 700px;
+    display: none;
+    left: 25%;
+    top: 170px;
+    color: #555555;
+    z-index: 200;
+}
+
+.boxMain {
+    float: right;
+    width: 80%;
+    height: 100%;
+    padding: 10px;
+    border-right: 1px solid #d9d9d9;
+}
+
+    .boxMain:first-child {
+        border: 0;
+        width: 20%;
+        margin: 0 auto;
+    }
+
+.overBox input[type="text"], .overBox input[type="password"], .overBox select, .overBox textarea {
+    /*Abdollahi*/
+    width: 100%;
+    direction: rtl;
+    height: 25px;
+}
+
+.overBox textarea {
+    /*Abdollahi*/
+    /*height: 90px;*/
+}
+
+.overBox input[type="submit"], .overBox input[type="reset"] {
+    width: 30%;
+    height: 25px;
+}
+
+.copyRight {
+    width: 1200px;
+    bottom: 10px;
+    margin: 0 auto;
+}
+
+.crRight {
+    float: right;
+    color: #ad8635;
+    font-size: 10px;
+    direction: rtl;
+    width: 50%;
+}
+
+.crLeft {
+    float: left;
+    color: #ad8635;
+    font-size: 10pt;
+    direction: ltr;
+    width: 50%;
+    font-family: arial;
+}
+
+.ftrDiv {
+    position: fixed;
+    width: 100%;
+    bottom: 0px;
+    height: 10px;
+    background: #444444;
+}
+
+.ftrSCText {
+    font-family: arial;
+    float: left;
+    color: #ad8635;
+    margin-top: 15px;
+    font-size: 9pt;
+    text-align: left;
+}
+
+/*hover narvan*/
+.ftrNarvan {
+    width: 50px;
+    margin-right: 5px;
+    position: relative;
+    font-family: arial;
+    color: #ad8635;
+    font-size: 10pt;
+}
+
+    .ftrNarvan:hover .oneNarvan {
+        opacity: 1;
+        -webkit-transform: translate(0px,-2px);
+        -moz-transform: translate(0px,-10px);
+        -o-transform: translate(0px,-5px);
+        -ms-transform: translate(0px,-5px);
+        transform: translate(0px,-2px);
+    }
+
+    .ftrNarvan:hover .twoNarvan {
+        opacity: 1;
+        -webkit-transform: translate(0px,-2px);
+        -moz-transform: translate(0px,-10px);
+        -o-transform: translate(0px,-5px);
+        -ms-transform: translate(0px,-5px);
+        transform: translate(0px,-2px);
+    }
+
+    .ftrNarvan:hover .threeNarvan {
+        opacity: 1;
+        -webkit-transform: translate(0px,-2px);
+        -moz-transform: translate(0px,-10px);
+        -o-transform: translate(0px,-5px);
+        -ms-transform: translate(0px,-5px);
+        transform: translate(0px,-2px);
+    }
+
+.oneNarvan {
+    background: url(../images/Style/one.png) no-repeat;
+    width: 5px;
+    height: 6px;
+    position: absolute;
+    opacity: 0;
+    right: -3px;
+    top: -1px;
+    -webkit-transition-delay: 0.1s;
+    -moz-transition-delay: 0.1s;
+    -o-transition-delay: 0.1s;
+    -ms-transition-delay: 0.1s;
+    transition-delay: 0.1s;
+    -webkit-transition: all .3s ease-in-out;
+    -moz-transition: all .3s ease-in-out;
+    -o-transition: all .3s ease-in-out;
+    transition: all .3s ease-in-out;
+    -webkit-transform: translate3d(0,0,0);
+    -moz-transform: translate3d(0,0,0);
+    -o-transform: translate3d(0,0,0);
+    -ms-transform: translate3d(0,0,0);
+    transform: translate3d(0,0,0);
+}
+
+.twoNarvan {
+    background: url(../images/Style/two.png) no-repeat;
+    width: 7px;
+    height: 8px;
+    position: absolute;
+    right: -10px;
+    opacity: 0;
+    top: -3px;
+    -webkit-transition-delay: 0.3s;
+    -moz-transition-delay: 0.3s;
+    -o-transition-delay: 0.3s;
+    -ms-transition-delay: 0.3s;
+    transition-delay: 0.3s;
+    -webkit-transition: all .5s ease-in-out;
+    -moz-transition: all .5s ease-in-out;
+    -o-transition: all .5s ease-in-out;
+    transition: all .5s ease-in-out;
+    -webkit-transform: translate3d(0,0,0);
+    -moz-transform: translate3d(0,0,0);
+    -o-transform: translate3d(0,0,0);
+    -ms-transform: translate3d(0,0,0);
+    transform: translate3d(0,0,0);
+}
+
+.threeNarvan {
+    background: url(../images/Style/three.png) no-repeat;
+    width: 8px;
+    height: 6px;
+    position: absolute;
+    right: -10px;
+    opacity: 0;
+    top: 4px;
+    -webkit-transition-delay: 0.3s;
+    -moz-transition-delay: 0.3s;
+    -o-transition-delay: 0.3s;
+    -ms-transition-delay: 0.3s;
+    transition-delay: 0.3s;
+    -webkit-transition: all .4s ease-in-out;
+    -moz-transition: all .4s ease-in-out;
+    -o-transition: all .4s ease-in-out;
+    transition: all .4s ease-in-out;
+    -webkit-transform: translate3d(0,0,0);
+    -moz-transform: translate3d(0,0,0);
+    -o-transform: translate3d(0,0,0);
+    -ms-transform: translate3d(0,0,0);
+    transform: translate3d(0,0,0);
+}
+
+
+@media screen and (max-width: 1600px) {
+    .ribbon {
+        margin-top: 8%;
+    }
+}
+
+
+@media screen and (max-width: 1370px) {
+    .mainDiv, .topDiv {
+        width: 98%;
+    }
+
+    .copyRight {
+        width: 1000px;
+    }
+
+    .middleBox {
+        width: 1000px;
+    }
+
+    .srcDiv input[type="text"], .srcDiv input[type="password"] {
+        width: 40%;
+    }
+
+    /*.loginDiv input[type="text"],.loginDiv input[type="password"]{
+        width: 33%;
+    }
+
+    .loginDiv input[type="submit"], .loginDiv input[type="button"].loginDiv input[type="reset"] {
+        width: 37%;
+    }*/
+
+    .newsBox input[type="button"] {
+        width: 100%;
+    }
+
+    .newsBox ul li {
+        padding: 3px 0px 0 0;
+    }
+
+    .ribbon {
+        margin-top: 6%;
+    }
+
+    .ribbonRight {
+        top: 100px;
+    }
+
+    .ribbonLeft {
+        top: 65px;
+    }
+
+    .newsBox {
+        margin-top: 16%;
+    }
+
+    .rightBox {
+        min-height: 420px;
+    }
+
+    .content {
+        margin-top: 20px;
+        margin-bottom: 40px;
+    }
+}
+
+@media screen and (max-width: 1024px) {
+    .mainDiv {
+        width: 95%;
+    }
+
+    .copyRight {
+        width: 95%;
+    }
+
+    .topDiv {
+        width: 95%;
+    }
+
+    .middleBox {
+        width: 95%;
+    }
+
+    .srcDiv input[type="text"], .srcDiv input[type="password"] {
+        width: 35%;
+    }
+
+    /*.loginDiv input[type="text"],.loginDiv input[type="password"] {
+        width: 33%;
+    }
+
+    .loginDiv input[type="submit"], .loginDiv input[type="button"], .loginDiv input[type="reset"] {
+        width: 37%;
+    }*/
+
+    .newsBox input[type="button"] {
+        width: 100%;
+    }
+
+    .srcDiv input[type="text"], .srcDiv input[type="password"] {
+        display: none;
+    }
+
+    .srcDiv {
+        border: 0px solid;
+    }
+}
+
+@media screen and (max-width: 980px) {
+    .middleBox {
+        width: 100%;
+    }
+
+    .crRight, .crLeft {
+        width: 95%;
+        margin-bottom: 15px;
+    }
+
+    .ribbon {
+        width: 100%;
+        background: url(../images/Style/RibbonLeft3.png) repeat-x;
+    }
+
+    .ribbonRight, .ribbonLeft {
+        display: none;
+    }
+
+    .rightBox {
+        width: 70%;
+        float: none;
+        margin: 5% auto;
+        min-height: 500px;
+        overflow: hidden;
+    }
+
+    .leftBox {
+        width: 100%;
+        float: none;
+        margin: 0 auto;
+        background: #fff;
+        min-height: 200px;
+        padding: 0;
+    }
+
+    .newsBox {
+        width: 90%;
+        padding-top: 20px;
+        margin: 0 auto;
+        float: none;
+        margin-bottom: 50px;
+    }
+
+    /*.plateLogo {
+        margin: 0 auto;
+        margin-top: 9%;
+    }
+
+    .loginDiv {
+        margin: 0 auto;
+        float: none;
+    }*/
+
+    .newsBox {
+        margin-bottom: 20px;
+    }
+}
+
+@media screen and (max-width: 800px) {
+    .rightBox {
+        min-height: 420px;
+        margin-top: 3%;
+    }
+
+    /*.loginDiv input[type="text"],.loginDiv input[type="password"] {
+        width: 30%;
+        height: 30px;
+    }
+
+    .loginDiv input[type="submit"], .loginDiv input[type="button"], .loginDiv input[type="reset"] {
+        width: 34%;
+        height: 30px;
+    }*/
+
+    .ribbon {
+        background: url(../images/Style/RibbonLeft5.png) repeat-x;
+    }
+}
+
+@media screen and (max-width: 700px) {
+    .ribbon {
+        background: url(../images/Style/RibbonLeft4.png) repeat-x;
+    }
+
+    .rightBox {
+        min-height: 370px;
+    }
+}
+
+@media screen and (max-width: 650px) {
+    .rightBox {
+        min-height: 350px;
+    }
+
+    /*.loginDiv input[type="text"],.loginDiv input[type="password"] {
+        width: 28%;
+        height: 26px;
+    }
+
+    .loginDiv input[type="submit"], .loginDiv input[type="button"], .loginDiv input[type="reset"] {
+        width: 32%;
+        height: 26px;
+    }
+
+    .hdrDiv {
+        height: 140px;
+    }*/
+    /* NewGridviewStyle */
+
+    .hdrDiv {
+        height: auto;
+        overflow: hidden;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .rightBox {
+        background-image: url(../images/Style/Plate2.png);
+        background-repeat: no-repeat;
+        background-size: 100%;
+        margin-top: 5%;
+        float: none;
+        min-height: 400px;
+        width: 80%;
+    }
+
+    /*.loginDiv input[type="text"],.loginDiv input[type="password"] {
+        width: 38%;
+        height: 30px;
+    }
+
+    .loginDiv input[type="submit"], .loginDiv input[type="button"], .loginDiv input[type="reset"] {
+        width: 42%;
+        height: 30px;
+    }*/
+}
+
+@media screen and (max-width: 530px) {
+    .rightBox {
+        margin-top: 0%;
+        width: 90%;
+    }
+}
+
+@media screen and (max-width: 450px) {
+    .rightBox {
+        margin-top: 0%;
+        width: 90%;
+        min-height: 350px;
+    }
+
+    /*.plateLogo {
+        margin: 0 auto;
+        margin-top: 8%;
+    }*/
+}
+
+@media screen and (max-width: 370px) {
+    .rightBox {
+        width: 100%;
+        min-height: 300px;
+    }
+
+    /*.plateLogo {
+        margin: 0 auto;
+        margin-top: 8%;
+    }*/
+
+    .leftBox {
+        min-height: 300px;
+    }
+
+    .newsBox {
+        padding-top: 5px;
+        margin-bottom: 20px;
+    }
+
+    .newsBox {
+        height: 300px;
+    }
+}
+
+/*Abdollahi*/
+.loading-modal {
+    position: fixed;
+    z-index: 997;
+    height: 100%;
+    width: 100%;
+    top: 0;
+    left: 0;
+    background-color: white;
+    filter: alpha(opacity=60);
+    opacity: .6;
+    -moz-opacity: 0.8;
+}
+
+.loading-center {
+    z-index: 998;
+    margin: 300px auto;
+    padding: 10px;
+    width: 32px;
+}
+
+    .loading-center img {
+        z-index: 999;
+        opacity: 1;
+        height: 64px;
+        width: 64px;
+    }
+
+
+.dessertItem {
+    border-radius: 8px;
+    line-height: 2em;
+    background-color: rgba(0, 0, 0, 0.075);
+}
+
+    .dessertItem input[type="image"] {
+        margin-right: 10px
+    }
+
+.BankItem {
+    border-radius: 8px;
+    text-align: center;
+    width: 100px;
+    line-height: 2em;
+    padding-bottom: 20px;
+}
+
+    .BankItem input[type="image"] {
+        Height: 80px;
+        Width: 80px;
+        object-fit: contain;
+        padding: 8px;
+        border-radius: 10px;
+        background-color: lightgray;
+    }
+
+    .BankItem label {
+        width: auto;
+        padding: 0px;
+        color: #343333;
+        font-size: 10.5px;
+        float: none;
+        text-align: center;
+        margin-right: 0px;
+        margin-bottom: 0px;
+    }
+
+/*---------------------------------------------------------------------------------*/
+
+.GridviewStyle table {
+    width: 100% !important;
+    border-collapse: collapse !important;
+}
+
+.GridviewStyle tr:nth-of-type(odd):not(.aspNetDisabled) {
+    background: #fffbe4;
+}
+
+.GridviewStyle th {
+    background: #444 !important;
+    color: white !important;
+}
+
+.aspNetDisabled {
+    background-color: #D2D2D2 !important;
+    color: #676767 !important;
+}
+
+@media only screen and (max-width: 1000px) {
+    /* .HeaderStyle{
+        display: none!important;
+    }*/
+    /* .GridviewStyle table, .GridviewStyle thead, .GridviewStyle tbody, .GridviewStyle td, .GridviewStyle tr:not(.HeaderStyle) {  */
+    .GridviewStyle table, .GridviewStyle thead, .GridviewStyle tbody, .GridviewStyle td, .GridviewStyle tr, .GridviewStyle th {
+        display: block !important;
+    }
+
+    .HeaderStyle {
+        position: absolut !important;
+        top: -9999px !important;
+        right: -9999px !important;
+    }
+
+    .GridviewStyle tr {
+        border: 1px solid #ccc !important;
+    }
+
+    .HeaderStyle th {
+        width: 100% !important;
+        text-align: center !important;
+    }
+
+    .GridviewStyle td {
+        border: none !important;
+        border-bottom: 1px solid #ccc !important;
+        position: relative !important;
+        /* padding-right: 30%!important;  */
+        width: 100% !important;
+        height: 33px;
+    }
+    /* .GridviewStyle td:before { 
+		position: absolute!important;
+		top: 0px!important;
+		right: 6px!important;
+		width: 30%!important; 
+		padding-left: 10px!important; 
+		white-space: nowrap!important;
+	}
+	td:nth-of-type(1):before { content: "انتخاب"; }
+	td:nth-of-type(2):before { content: "روزهفته"; }
+	td:nth-of-type(3):before { content: "تاریخ"; }
+	td:nth-of-type(4):before { content: "سلف"; }
+	td:nth-of-type(5):before { content: "غذا"; }
+	td:nth-of-type(6):before { content: "تعداد"; }
+	td:nth-of-type(7):before { content: "باقیمانده"; }
+	td:nth-of-type(8):before { content: "مبلغ خرید"; }
+	td:nth-of-type(9):before { content: "وضعیت"; } */
+    fieldset {
+        border-radius: 5px;
+        margin-bottom: 10px;
+        padding: 5px;
+        height: auto !important;
+        width: 100% !important;
+        float: none !important
+    }
+
+    .aspNetDisabled {
+        background-color: #D2D2D2 !important;
+        color: #676767 !important;
+    }
+}
+
+/*div#div-datagrid {
+    width: 900px;
+    height: 100px;
+    overflow: auto;
+    scrollbar-base-color: #ffeaff;
+}*/
+
+    /* Keeps the header as the top most item. Important for top left item*/
+    /*th.locked {
+        z-index: 99;
+    }*/
+
+/* DataGrid Item and AlternatingItem Style*/
+/*.GridRow {
+    font-size: 10pt;
+    color: black;
+    font-family: Arial;
+    background-color: #ffffff;
+    height: 35px;
+}*/
+
+/*.GridAltRow {
+    font-size: 10pt;
+    color: black;
+    font-family: Arial;
+    background-color: #eeeeee;
+    height: 35px;
+}*/
