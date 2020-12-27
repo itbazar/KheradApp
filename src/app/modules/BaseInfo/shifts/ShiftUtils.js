@@ -1,4 +1,3 @@
-import React from 'react';
 import * as Yup from "yup";
 import { sortCaret } from "../../../../_themeBase/_helpers";
 import * as columnFormatters from "../../../../_themeBase/layout/components/basePage/pages/objects-table/column-formatters";
@@ -15,7 +14,8 @@ export {filterFields} from "../../customComponents/filterFields";
   export const columns = [
     {
       dataField: "title",
-      text: "سال تحصیلی",
+      text: columnFormatters.translateByMessageId("MODULES.BASEINFO.SHIFT.TITLE"),
+      // text: "سال تحصیلی",
       sort: true,
       sortCaret: sortCaret,
     },
@@ -52,8 +52,10 @@ export {filterFields} from "../../customComponents/filterFields";
           name: "title",
           type: "text",
           component: Input,
-          placeholder: "سال تحصیلی",
-          label: "سال تحصیلی",
+          placeholder: "MODULES.BASEINFO.SHIFT.TITLE_PH",
+          label: "MODULES.BASEINFO.SHIFT.TITLE",
+          // placeholder: "سال تحصیلی",
+          // label: "سال تحصیلی",
           rowOrder: 1,
           rowIdx: 1,
           class: "col-lg-4"
@@ -62,8 +64,9 @@ export {filterFields} from "../../customComponents/filterFields";
           name: "isDeleted",
           type: "option",
           component: SelectStatus,
-          placeholder: "وضعیت",
-          label: "وضعیت",
+          placeholder: "MODULES.GENERAL.STATUS",
+          label: "MODULES.GENERAL.STATUS",
+          rowIdx: 2,
           rowOrder: 2,
           class: "col-lg-4"
         },
@@ -107,36 +110,7 @@ export {filterFields} from "../../customComponents/filterFields";
     isDeleted: "", // values => All=""/Selling=0/Sold=1
     searchText: "",
   }
-  export const filterFields111 = [
-    {
-      name: "isDeleted",
-      lable: "وضعیت",
-      type: "select",
-      list:[
-        {
-          value: "",
-          lable: "همه",
-        },
-        {
-          value: "0",
-          lable: "فعال",
-        },
-        {
-          value: "1",
-          lable: "حذف شده",
-        },
-      
-      ],
-      component:SelectStatus
-    },
-    {
-      name: "searchText",
-      lable: "جستجو",
-      type: "text",
-      list:[],
-    },
-  
-  ];
+
   
   
   export const prepareFilter = (queryParams, values) => {
@@ -157,9 +131,9 @@ export {filterFields} from "../../customComponents/filterFields";
     const whereClauseParameters = [];
     whereClauseParameters.push(searchText)
   
-  if(filter.isDeleted != undefined){
+  if(filter.isDeleted !== undefined){
     whereClause = whereClause + " and isDeleted=@1"
-    whereClauseParameters.push(filter.isDeleted == 0 ? false : true)
+    whereClauseParameters.push(filter.isDeleted === 0 ? false : true)
   }
   
    newQueryParams.whereClause = whereClause;

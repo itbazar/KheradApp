@@ -1,9 +1,7 @@
-import React from 'react';
 import * as Yup from "yup";
 import { sortCaret } from "../../../../_themeBase/_helpers";
 import * as columnFormatters from "../../../../_themeBase/layout/components/basePage/pages/objects-table/column-formatters";
 import { Input } from "../../../../_themeBase/_partials/controls";
-import { SelectStatus } from '../../customComponents/SelectStatus';
 export {filterFields} from "../../customComponents/filterFields";
 
   export const initObject = {
@@ -25,38 +23,44 @@ export {filterFields} from "../../customComponents/filterFields";
   export const columns = [
     {
       dataField: "title",
-      text: "نام حساب",
+      text: columnFormatters.translateByMessageId("MODULES.BASEINFO.ACCOUNT.TITLE"),
+      // text: "نام حساب",
       sort: true,
       sortCaret: sortCaret,
     },
     {
-      dataField: "bankId",
-      text: "بانک عامل",
+      dataField: "bankTitle",
+      text: columnFormatters.translateByMessageId("MODULES.BASEINFO.ACCOUNT.TITLE"),
+      // text: "بانک عامل",
       sort: true,
       sortCaret: sortCaret,
     },
     {
       dataField: "accountNo",
-      text: "شماره حساب",
+      text: columnFormatters.translateByMessageId("MODULES.BASEINFO.ACCOUNT.TITLE"),
+      // text: "شماره حساب",
       sort: true,
       sortCaret: sortCaret,
     },
     {
       dataField: "shaba",
-      text: "شماره شبا",
+      text: columnFormatters.translateByMessageId("MODULES.BASEINFO.ACCOUNT.TITLE"),
+      // text: "شماره شبا",
       sort: true,
       sortCaret: sortCaret,
     },
     {
-      dataField: "isDeleted",
-      text: "وضعیت",
+      dataField: "IsDeleted",
+      text: columnFormatters.translateByMessageId("MODULES.GENERAL.STATUS"),
+      // text: "وضعیت",
       sort: true,
       sortCaret: sortCaret,
       formatter: columnFormatters.StatusColumnFormatter,
     },
     {
       dataField: "action",
-      text: "Actions",
+      text: columnFormatters.translateByMessageId("MODULES.GENERAL.ACTION"),
+      // text: "Actions",
       formatter: columnFormatters.ActionsColumnFormatter,
       formatExtraData: {
         // openEditObjectPage: objectsUIProps.openEditObjectPage,
@@ -78,18 +82,22 @@ export {filterFields} from "../../customComponents/filterFields";
           name: "title",
           type: "text",
           component: Input,
-          placeholder: "نام حساب",
-          label: "نام حساب",
+          placeholder: "MODULES.BASEINFO.ACCOUNT.TITLE_PH",
+          label: "MODULES.BASEINFO.ACCOUNT.TITLE",
+          // placeholder: "نام حساب",
+          // label: "نام حساب",
           rowOrder: 1,
           rowIdx: 1,
           class: "col-lg-4"
         },
         {
-          name: "bankId",
+          name: "bankTitle",
           type: "text",
           component: Input,
-          placeholder: "بانک عامل",
-          label: "بانک عامل",
+          placeholder: "MODULES.BASEINFO.ACCOUNT.BANK_PH",
+          label: "MODULES.BASEINFO.ACCOUNT.BANK",
+          // placeholder: "بانک عامل",
+          // label: "بانک عامل",
           rowOrder: 2,
           rowIdx: 1,
           class: "col-lg-4"
@@ -98,8 +106,10 @@ export {filterFields} from "../../customComponents/filterFields";
           name: "shaba",
           type: "text",
           component: Input,
-          placeholder: "شماره شبا",
-          label: "شماره شبا",
+          placeholder: "MODULES.BASEINFO.ACCOUNT.SHABA_PH",
+          label: "MODULES.BASEINFO.ACCOUNT.SHABA",
+          // placeholder: "شماره شبا",
+          // label: "شماره شبا",
           rowOrder: 1,
           rowIdx: 2,
           class: "col-lg-4"
@@ -113,8 +123,10 @@ export {filterFields} from "../../customComponents/filterFields";
           name: "accountNo",
           type: "text",
           component: Input,
-          placeholder: "شماره حساب",
-          label: "شماره حساب",
+          placeholder: "MODULES.BASEINFO.ACCOUNT.NUMBER_PH",
+          label: "MODULES.BASEINFO.ACCOUNT.NUMBER",
+          // placeholder: "شماره حساب",
+          // label: "شماره حساب",
           rowOrder: 1,
           rowIdx: 1,
           class: "col-lg-4"
@@ -123,8 +135,10 @@ export {filterFields} from "../../customComponents/filterFields";
           name: "psp",
           type: "number",
           component: Input,
-          placeholder: "شماره شبا  ",
-          label: "شماره شبا  ",
+          placeholder: "MODULES.BASEINFO.ACCOUNT.PSP_PH",
+          label: "MODULES.BASEINFO.ACCOUNT.PSP",
+          // placeholder: "شماره شبا  ",
+          // label: "شماره شبا  ",
           rowOrder: 2,
           rowIdx: 1,
           class: "col-lg-4"
@@ -133,8 +147,10 @@ export {filterFields} from "../../customComponents/filterFields";
           name: "merchantId",
           type: "text",
           component: Input,
-          placeholder: "شماره پذیرنده",
-          label: "شماره پذیرنده",
+          placeholder: "MODULES.BASEINFO.ACCOUNT.MERCHANT_PH",
+          label: "MODULES.BASEINFO.ACCOUNT.MERCHANT",
+          // placeholder: "شماره پذیرنده",
+          // label: "شماره پذیرنده",
           rowOrder: 1,
           rowIdx: 2,
           class: "col-lg-4"
@@ -150,8 +166,10 @@ export {filterFields} from "../../customComponents/filterFields";
           name: "terminalId",
           type: "text",
           component: Input,
-          placeholder: "شماره ترمینال",
-          label: "شماره ترمینال",
+          placeholder: "MODULES.BASEINFO.ACCOUNT.TERMINAL_CODE_PH",
+          label: "MODULES.BASEINFO.ACCOUNT.TERMINAL_CODE",
+          // placeholder: "شماره ترمینال",
+          // label: "شماره ترمینال",
           rowOrder: 2,
           rowIdx: 1,
           class: "col-lg-4"
@@ -160,8 +178,10 @@ export {filterFields} from "../../customComponents/filterFields";
           name: "userName",
           type: "text",
           component: Input,
-          placeholder: "نام کاربری",
-          label: "نام کاربری",
+          placeholder: "MODULES.BASEINFO.ACCOUNT.USERNAME_PH",
+          label: "MODULES.BASEINFO.ACCOUNT.USERNAME",
+          // placeholder: "نام کاربری",
+          // label: "نام کاربری",
           rowOrder: 3,
           class: "col-lg-4"
         },
@@ -169,8 +189,10 @@ export {filterFields} from "../../customComponents/filterFields";
           name: "password",
           type: "text",
           component: Input,
-          placeholder: "کلمه عبور",
-          label: "کلمه عبور",
+          placeholder: "MODULES.BASEINFO.ACCOUNT.PASSWORD_PH",
+          label: "MODULES.BASEINFO.ACCOUNT.PASSWORD",
+          // placeholder: "کلمه عبور",
+          // label: "کلمه عبور",
           rowOrder: 2,
           rowIdx: 1,
           class: "col-lg-4"
@@ -187,8 +209,10 @@ export {filterFields} from "../../customComponents/filterFields";
           name: "depositId",
           type: "text",
           component: Input,
-          placeholder: "شناسه واریز",
-          label: "شناسه واریز",
+          placeholder: "MODULES.BASEINFO.ACCOUNT.DEPOSIT_ID_PH",
+          label: "MODULES.BASEINFO.ACCOUNT.DEPOSIT_ID",
+          // placeholder: "شناسه واریز",
+          // label: "شناسه واریز",
           rowOrder: 3,
           class: "col-lg-4"
         },
@@ -234,37 +258,7 @@ export {filterFields} from "../../customComponents/filterFields";
     isDeleted: "", // values => All=""/Selling=0/Sold=1
     searchText: "",
   }
-  export const filterFields11 = [
-    {
-      name: "isDeleted",
-      lable: "وضعیت",
-      type: "select",
-      list:[
-        {
-          value: "",
-          lable: "همه",
-        },
-        {
-          value: "0",
-          lable: "فعال",
-        },
-        {
-          value: "1",
-          lable: "حذف شده",
-        },
-      
-      ],
-      component:SelectStatus
-    },
-    {
-      name: "searchText",
-      lable: "جستجو",
-      type: "text",
-      list:[],
-    },
-  
-  ];
-  
+ 
   
   export const prepareFilter = (queryParams, values) => {
     const { isDeleted, searchText } = values;
@@ -284,9 +278,9 @@ export {filterFields} from "../../customComponents/filterFields";
   const whereClauseParameters = [];
   whereClauseParameters.push(searchText)
 
-if(filter.isDeleted != undefined){
+if(filter.isDeleted !== undefined){
   whereClause = whereClause + " and isDeleted=@1"
-  whereClauseParameters.push(filter.isDeleted == 0 ? false : true)
+  whereClauseParameters.push(filter.isDeleted === 0 ? false : true)
 }
 
  newQueryParams.whereClause = whereClause;
@@ -303,7 +297,7 @@ export const ObjectEditSchema = Yup.object().shape({
   bankId: Yup.number()
       .required("bankId is required"),
   psp: Yup.number()
-      .min(18, "18 is minimum")
+      .min(6, "6 is minimum")
       .max(18, "18 is maximum"),
    
   });

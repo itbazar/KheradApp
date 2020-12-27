@@ -15,20 +15,23 @@ export const initObject = {
 export const columns = [
   {
     dataField: "title",
-    text: "نام سرا",
+    text: columnFormatters.translateByMessageId("MODULES.GENERAL.STATUS"),
+    // text: "نام سرا",
     sort: true,
     sortCaret: sortCaret,
   },
   {
-    dataField: "isDeleted",
-    text: "وضعیت",
+    dataField: "IsDeleted",
+    text: columnFormatters.translateByMessageId("MODULES.GENERAL.STATUS"),
+    // text: "وضعیت",
     sort: true,
     sortCaret: sortCaret,
     formatter: columnFormatters.StatusColumnFormatter,
   },
   {
     dataField: "action",
-    text: "عملیات",
+    text: columnFormatters.translateByMessageId("MODULES.GENERAL.ACTION"),
+    // text: "Actions",
     formatter: columnFormatters.ActionsColumnFormatter,
     formatExtraData: {
       // openEditObjectPage: objectsUIProps.openEditObjectPage,

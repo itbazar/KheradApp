@@ -62,8 +62,9 @@ export {filterFields} from "../../customComponents/filterFields";
           name: "isDeleted",
           type: "option",
           component: SelectStatus,
-          placeholder: "وضعیت",
-          label: "وضعیت",
+          placeholder: "MODULES.GENERAL.STATUS",
+          label: "MODULES.GENERAL.STATUS",
+          rowIdx: 2,
           rowOrder: 2,
           class: "col-lg-4"
         },

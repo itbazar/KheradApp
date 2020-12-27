@@ -15,7 +15,8 @@ export {filterFields} from "../../customComponents/filterFields";
   export const columns = [
     {
       dataField: "title",
-      text: "نام دانشکده",
+      text: columnFormatters.translateByMessageId("MODULES.BASEINFO.COLLAGE.TITLE"),
+      // text: "نام دانشکده",
       sort: true,
       sortCaret: sortCaret,
     },
@@ -52,8 +53,10 @@ export {filterFields} from "../../customComponents/filterFields";
           name: "title",
           type: "text",
           component: Input,
-          placeholder: "نام دانشکده",
-          label: "نام دانشکده",
+          placeholder: "MODULES.BASEINFO.COLLAGE.TITLE",
+          label: "MODULES.BASEINFO.COLLAGE.TITLE_PH",
+          // placeholder: "نام دانشکده",
+          // label: "نام دانشکده",
           rowOrder: 1,
           rowIdx: 1,
           class: "col-lg-4"
@@ -62,9 +65,12 @@ export {filterFields} from "../../customComponents/filterFields";
           name: "isDeleted",
           type: "option",
           component: SelectStatus,
-          placeholder: "وضعیت",
-          label: "وضعیت",
+          placeholder: "MODULES.GENERAL.STATUS",
+          label: "MODULES.GENERAL.STATUS",
+          // placeholder: "وضعیت",
+          // label: "وضعیت",
           rowOrder: 2,
+          rowIdx: 2,
           class: "col-lg-4"
         },
       ]
@@ -107,36 +113,7 @@ export {filterFields} from "../../customComponents/filterFields";
     isDeleted: "", // values => All=""/Selling=0/Sold=1
     searchText: "",
   }
-  export const filterFields111 = [
-    {
-      name: "isDeleted",
-      lable: "وضعیت",
-      type: "select",
-      list:[
-        {
-          value: "",
-          lable: "همه",
-        },
-        {
-          value: "0",
-          lable: "فعال",
-        },
-        {
-          value: "1",
-          lable: "حذف شده",
-        },
-      
-      ],
-      component:SelectStatus
-    },
-    {
-      name: "searchText",
-      lable: "جستجو",
-      type: "text",
-      list:[],
-    },
-  
-  ];
+
   
   
   export const prepareFilter = (queryParams, values) => {
@@ -157,9 +134,9 @@ export {filterFields} from "../../customComponents/filterFields";
   const whereClauseParameters = [];
   whereClauseParameters.push(searchText)
 
-if(filter.isDeleted != undefined){
+if(filter.isDeleted !== undefined){
   whereClause = whereClause + " and isDeleted=@1"
-  whereClauseParameters.push(filter.isDeleted == 0 ? false : true)
+  whereClauseParameters.push(filter.isDeleted === 0 ? false : true)
 }
 
  newQueryParams.whereClause = whereClause;

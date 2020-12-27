@@ -66,6 +66,7 @@ export {filterFields} from "../../customComponents/filterFields";
           placeholder: "MODULES.GENERAL.STATUS",
           label: "MODULES.GENERAL.STATUS",
           rowOrder: 2,
+          rowIdx: 2,
           class: "col-lg-4"
         },
       ]

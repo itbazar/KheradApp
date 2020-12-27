@@ -18,7 +18,9 @@ export {filterFields} from "../../customComponents/filterFields";
   export const columns = [
     {
       dataField: "title",
-      text: "نام رشته",
+     
+      text: columnFormatters.translateByMessageId("MODULES.BASEINFO.FIELD.TITLE"),
+      // text: "نام رشته",
       sort: true,
       sortCaret: sortCaret,
     },
@@ -30,7 +32,8 @@ export {filterFields} from "../../customComponents/filterFields";
     // },
     {
       dataField: "collage",
-      text: "نام دانشکده",
+      text: columnFormatters.translateByMessageId("MODULES.BASEINFO.FIELD.FORM_TITLE"),
+      // text: "نام دانشکده",
       sort: true,
       sortCaret: sortCaret,
     },
@@ -67,8 +70,10 @@ export {filterFields} from "../../customComponents/filterFields";
           name: "title",
           type: "text",
           component: Input,
-          placeholder: "نام رشته",
-          label: "نام رشته",
+          placeholder: "MODULES.BASEINFO.FIELD.TITLE_PH",
+          label: "MODULES.BASEINFO.FIELD.TITLE",
+          // placeholder: "نام رشته",
+          // label: "نام رشته",
           rowOrder: 1,
           rowIdx: 1,
           class: "col-lg-4"
@@ -77,18 +82,21 @@ export {filterFields} from "../../customComponents/filterFields";
           name: "collageId",
           type: "text",
           component: Input,
-          placeholder: "کد دانشکده",
-          label: "کد دانشکده",
+          placeholder: "MODULES.BASEINFO.COLLAGE.CODE_PH",
+          label: "MODULES.BASEINFO.COLLAGE.CODE",
+          // placeholder: "کد دانشکده",
+          // label: "کد دانشکده",
           rowOrder: 2,
-          rowIdx: 1,
+          rowIdx: 2,
           class: "col-lg-4"
         },
         {
           name: "isDeleted",
           type: "option",
           component: SelectStatus,
-          placeholder: "وضعیت",
-          label: "وضعیت",
+          placeholder: "MODULES.GENERAL.STATUS",
+          label: "MODULES.GENERAL.STATUS",
+          rowIdx: 2,
           rowOrder: 2,
           class: "col-lg-4"
         },
@@ -132,37 +140,6 @@ export {filterFields} from "../../customComponents/filterFields";
     isDeleted: "", // values => All=""/Selling=0/Sold=1
     searchText: "",
   }
-  export const filterFields11 = [
-    {
-      name: "isDeleted",
-      lable: "وضعیت",
-      type: "select",
-      list:[
-        {
-          value: "",
-          lable: "همه",
-        },
-        {
-          value: "0",
-          lable: "فعال",
-        },
-        {
-          value: "1",
-          lable: "حذف شده",
-        },
-      
-      ],
-      component:SelectStatus
-    },
-    {
-      name: "searchText",
-      lable: "جستجو",
-      type: "text",
-      list:[],
-    },
-  
-  ];
-  
   
   export const prepareFilter = (queryParams, values) => {
     const { isDeleted, searchText } = values;

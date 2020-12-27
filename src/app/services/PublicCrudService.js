@@ -1,8 +1,8 @@
 import axios from "axios";
 // import baseApiUrl from "./BaseService";
 
-// const baseApiUrl = process.env.REACT_APP_API_URL_REMOTE;
-const baseApiUrl = process.env.REACT_APP_API_URL;
+const baseApiUrl = process.env.REACT_APP_API_URL_REMOTE;
+// const baseApiUrl = process.env.REACT_APP_API_URL;
 
 
 export function createObject(API_URL,object) {
