@@ -1,9 +1,10 @@
 import React, { useEffect, useState, useMemo } from "react";
 import { Modal } from "react-bootstrap";
 import { shallowEqual, useDispatch, useSelector } from "react-redux";
-import { ObjectStatusCssClasses } from "../ObjectsUIHelpers";
+import { ObjectStatusCssClasses, ObjectStatusTitles } from "../ObjectsUIHelpers";
 import * as actions from "../../../../../../app/actions/generalActions";
 import { useObjectsUIContext } from "../ObjectsUIContext";
+import { FormattedMessage, useIntl } from "react-intl";
 
 const selectedObjects = (entities, ids) => {
   const _objects = [];
@@ -16,7 +17,7 @@ const selectedObjects = (entities, ids) => {
   return _objects;
 };
 
-export function ObjectsUpdateStatusDialog({ show, onHide,currentState }) {
+export const ObjectsUpdateStatusDialog = ({ show, onHide, currentState, api }) => {
   // Objects UI Context
   const objectsUIContext = useObjectsUIContext();
   const objectsUIProps = useMemo(() => {
@@ -28,13 +29,15 @@ export function ObjectsUpdateStatusDialog({ show, onHide,currentState }) {
   }, [objectsUIContext]);
 
   // Objects Redux state
-  const { objects, isLoading } = useSelector(
+  const { objects, isLoading, name } = useSelector(
     (state) => ({
       objects: selectedObjects(currentState.entities, objectsUIProps.ids),
       isLoading: currentState.actionsLoading,
+      name: currentState.name
     }),
     shallowEqual
   );
+
 
   // if there weren't selected objects we should close modal
   useEffect(() => {
@@ -44,15 +47,16 @@ export function ObjectsUpdateStatusDialog({ show, onHide,currentState }) {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [objectsUIProps.ids]);
 
-  const [status, setStatus] = useState(0);
+  const [isDeleted, setStatus] = useState(false);
 
   const dispatch = useDispatch();
   const updateStatus = () => {
     // server request for updateing object by ids
-    dispatch(actions.updateObjectsStatus(objectsUIProps.ids, status)).then(
+    dispatch(actions.updateObjectsStatus(api, name, objectsUIProps.ids, isDeleted)).then(
       () => {
+       
         // refresh list after deletion
-        dispatch(actions.fetchObjects(objectsUIProps.queryParams)).then(
+        dispatch(actions.fetchObjects(api, name, objectsUIProps.queryParams)).then(
           () => {
             // clear selections list
             objectsUIProps.setIds([]);
@@ -64,6 +68,7 @@ export function ObjectsUpdateStatusDialog({ show, onHide,currentState }) {
     );
   };
 
+  const intl = useIntl();
   return (
     <Modal
       show={show}
@@ -72,7 +77,7 @@ export function ObjectsUpdateStatusDialog({ show, onHide,currentState }) {
     >
       <Modal.Header closeButton>
         <Modal.Title id="example-modal-sizes-title-lg">
-          Status has been updated for selected objects
+          <FormattedMessage id="sdsds" />
         </Modal.Title>
       </Modal.Header>
       <Modal.Body className="overlay overlay-block cursor-default">
@@ -87,15 +92,14 @@ export function ObjectsUpdateStatusDialog({ show, onHide,currentState }) {
               <div className="list-timeline-item mb-3" key={object.id}>
                 <span className="list-timeline-text">
                   <span
-                    className={`label label-lg label-light-${
-                      ObjectStatusCssClasses[object.status]
-                    } label-inline`}
+                    className={`label label-lg label-light-${ObjectStatusCssClasses[+object.isDeleted]
+                      } label-inline`}
                     style={{ width: "60px" }}
                   >
-                    ID: {object.id}
+                    {object.id}
                   </span>{" "}
                   <span className="ml-5">
-                    {object.manufacture}, {object.model}
+                    {object.title}
                   </span>
                 </span>
               </div>
@@ -106,12 +110,17 @@ export function ObjectsUpdateStatusDialog({ show, onHide,currentState }) {
       <Modal.Footer className="form">
         <div className="form-group">
           <select
-            className={`form-control ${ObjectStatusCssClasses[status]}`}
-            value={status}
+            className={`form-control ${ObjectStatusCssClasses[isDeleted]}`}
+            value={isDeleted}
             onChange={(e) => setStatus(+e.target.value)}
           >
-            <option value="0">Selling</option>
-            <option value="1">Sold</option>
+            {ObjectStatusTitles.map((isDeleted, index) => (
+              <option key={isDeleted} value={index}>
+                {intl.formatMessage({ id: isDeleted })}
+              </option>
+            ))}
+            {/* <option value="0"><FormattedMessage id="MODULES.GENERAL.STATUSENABLE" /></option>
+            <option value="1"><FormattedMessage id= "MODULES.GENERAL.STATUSDELETED"/></option> */}
           </select>
         </div>
         <div className="form-group">
@@ -120,7 +129,7 @@ export function ObjectsUpdateStatusDialog({ show, onHide,currentState }) {
             onClick={onHide}
             className="btn btn-light btn-elevate"
           >
-            Cancel
+            <FormattedMessage id="BUTTON.CANCEL" />
           </button>
           <> </>
           <button
@@ -128,7 +137,7 @@ export function ObjectsUpdateStatusDialog({ show, onHide,currentState }) {
             onClick={updateStatus}
             className="btn btn-primary btn-elevate"
           >
-            Update Status
+            <FormattedMessage id="BUTTON.OK" />
           </button>
         </div>
       </Modal.Footer>

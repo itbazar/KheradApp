@@ -1,8 +1,7 @@
 import axios from "axios";
 // import baseApiUrl from "./BaseService";
 
-const baseApiUrl = process.env.REACT_APP_API_URL_REMOTE;
-// const baseApiUrl = process.env.REACT_APP_API_URL;
+const baseApiUrl = process.env.REACT_APP_API_URL;
 
 
 export function createObject(API_URL,object) {
@@ -10,11 +9,11 @@ export function createObject(API_URL,object) {
 }
 
 export function getAllObjects(API_URL) {
-  return axios.get(`${baseApiUrl}/${API_URL}`);
+  return axios.get(`${baseApiUrl}/${API_URL}/getAll`);
 }
 
 export function getObjectById(API_URL,objectId) {
-  return axios.get(`${baseApiUrl}/${API_URL}/Get/${objectId}`);
+  return axios.get(`${baseApiUrl}/${API_URL}/get/${objectId}`);
 }
 
 // Method from server should return QueryResultsModel(items: any[], totalsCount: number)
@@ -30,11 +29,19 @@ export function updateObject(API_URL,object) {
 }
 
 // UPDATE Status
-export function updateStatusForObjects(API_URL,ids, status) {
-  return axios.post(`${baseApiUrl}/${API_URL}/updateStatusForObjects`, {
-    ids,
-    status
-  });
+export function updateStatusForObjects(API_URL,ids, isDeleted) {
+  if(isDeleted)//status=isdeleted=true => deleteRange
+  {
+    return axios.put(`${baseApiUrl}/${API_URL}/SoftDeleteRange`, { idList:ids });
+  }
+  else{//status=isdeleted=false => RecoverDeleteRange
+    return axios.put(`${baseApiUrl}/${API_URL}/RecoverDeleteRange`, { idList:ids });
+  }
+  
+  // return axios.post(`${baseApiUrl}/${API_URL}/updateStatusForObjects`, {
+  //   ids,
+  //   status
+  // });
 }
 
 // DELETE => delete the object from the server

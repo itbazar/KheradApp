@@ -1,8 +1,7 @@
 import axios from "axios";
 
 // export const LOGIN_URL = "api/auth/login";
-export const baseApiUrl = process.env.REACT_APP_API_URL_REMOTE;
-// export const baseApiUrl = process.env.REACT_APP_API_URL;
+export const baseApiUrl = process.env.REACT_APP_API_URL;
 export const LOGIN_URL = baseApiUrl+"/api/User/Token";
 export const ME_URL = baseApiUrl+"/api/User/Get/22";
 export const REGISTER_URL = baseApiUrl+"/api/auth/register";

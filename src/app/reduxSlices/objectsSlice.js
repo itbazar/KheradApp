@@ -51,6 +51,12 @@ export const objectsSlice = ({ name = "" }) => {
           state.entities = entities;
           state.totalCount = totalCount;
         },
+         // fetchAllObjects
+         allObjectsFetched: (state, action) => {
+          const { entities } = action.payload;
+          state.error = null;
+          state.entities = entities;
+        },
         // createObject
         objectCreated: (state, action) => {
           state.actionsLoading = false;
@@ -86,10 +92,11 @@ export const objectsSlice = ({ name = "" }) => {
         objectsStatusUpdated: (state, action) => {
           state.actionsLoading = false;
           state.error = null;
-          const { ids, status } = action.payload;
+          debugger;
+          const { ids, isDeleted } = action.payload;
           state.entities = state.entities.map(entity => {
             if (ids.findIndex(id => id === entity.id) > -1) {
-              entity.status = status;
+              entity.isDeleted = isDeleted;
             }
             return entity;
           });

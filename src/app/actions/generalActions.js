@@ -22,6 +22,26 @@ export const fetchObjects = (API_URL,sliceName,queryParams) => dispatch => {
     });
 };
 
+export const fetchAllObjects = (API_URL,sliceName) => dispatch => {
+  console.log(API_URL)
+  const {actions} = objectsSlice({name:sliceName});
+  dispatch(actions.startCall({ callType: callTypes.list }));
+  return requestFromServer
+    .getAllObjects(API_URL)
+    .then(response => {
+      console.log("response.data :")
+      console.log(response.data.data)
+      const entities = response.data.data;
+     
+      dispatch(actions.allObjectsFetched({ entities }));
+    })
+    .catch(error => {
+      error.clientMessage = "Can't find objects";
+      dispatch(actions.catchError({ error, callType: callTypes.list }));
+    });
+};
+
+
 export const fetchObject = (API_URL,sliceName,id) => dispatch => {
   const {actions} = objectsSlice({name:sliceName});
 
@@ -88,14 +108,14 @@ export const updateObject = (API_URL,sliceName,object) => dispatch => {
     });
 };
 
-export const updateObjectsStatus = (API_URL,sliceName,ids,status) => dispatch => {
+export const updateObjectsStatus = (API_URL,sliceName,ids,isDeleted) => dispatch => {
   const {actions} = objectsSlice({name:sliceName});
-
+  debugger;
   dispatch(actions.startCall({ callType: callTypes.action }));
   return requestFromServer
-    .updateStatusForObjects(API_URL,ids, status)
+    .updateStatusForObjects(API_URL,ids, isDeleted)
     .then(() => {
-      dispatch(actions.objectsStatusUpdated({ ids, status }));
+      dispatch(actions.objectsStatusUpdated({ ids, isDeleted }));
     })
     .catch(error => {
       error.clientMessage = "Can't update objects status";

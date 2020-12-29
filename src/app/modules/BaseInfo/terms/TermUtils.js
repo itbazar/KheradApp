@@ -1,10 +1,11 @@
-
+import React from 'react';
 import * as Yup from "yup";
 import { sortCaret } from "../../../../_themeBase/_helpers";
 import * as columnFormatters from "../../../../_themeBase/layout/components/basePage/pages/objects-table/column-formatters";
-import { DatePickerField, Input } from "../../../../_themeBase/_partials/controls";
+import { Checkbox, DatePickerField, Input } from "../../../../_themeBase/_partials/controls";
 import { SelectStatus } from '../../customComponents/SelectStatus';
-export {filterFields} from "../../customComponents/filterFields";
+import { SelectObjects } from '../../../../_themeBase/layout/components/basePage/pages/SelectObjects';
+// export {filterFields} from "../../customComponents/filterFields";
 
 
 export const initObject = {
@@ -19,6 +20,89 @@ export const initObject = {
   isDeleted: false
 };
 
+
+
+// export const SelectSemesters = (props) => {
+//   const { currentState } = useSelector(
+//     (state) => ({ currentState: state.semesters }),
+//     shallowEqual
+//   );
+//   // console.log("semesters")
+//   // console.log(props)
+//   return (
+//     <SelectObjects api="api/semester" currentState={currentState} sname="semesterId" label="نیمسال" {...props} />
+//   )
+// }
+
+// export const SelectYears = (props) => {
+//   const { currentState } = useSelector(
+//     (state) => ({ currentState: state.years }),
+//     shallowEqual
+//   );
+//   return (
+//     <SelectObjects
+//       api="api/year"
+//       reduxState={currentState}
+//       sname="yearId"
+//       label={columnFormatters.translateByMessageId("MODULES.BASEINFO.YEAR.TITLE")}
+//       {...props} />
+//   )
+// }
+
+
+export const filterFields = [
+  {
+    name: "isDeleted",
+    lable: "MODULES.GENERAL.STATUS",
+    type: "select",
+    list: [
+      {
+        value: "",
+        lable: "MODULES.GENERAL.STATUSALL",
+      },
+      {
+        value: "0",
+        lable: "MODULES.GENERAL.STATUSENABLE",
+      },
+      {
+        value: "1",
+        lable: "MODULES.GENERAL.STATUSDELETED",
+      },
+
+    ],
+    component: SelectStatus
+  },
+  {
+    name: "yearId",
+    lable: "MODULES.BASEINFO.YEAR.TITLE",
+    type: "component",
+    list: [],
+    component: (props) =>
+      <SelectObjects api="api/year"
+        reduxState="years"
+        sname="yearId"
+        {...props} />
+  },
+  {
+    name: "semesterId",
+    lable: "MODULES.BASEINFO.SEMESTER.TITLE",
+    type: "component",
+    list: [],
+    component: (props) =>
+      <SelectObjects api="api/semester"
+        reduxState="semesters"
+        sname="semesterId"
+        {...props} />
+  },
+
+  {
+    name: "searchText",
+    lable: "MODULES.GENERAL.SEARCH",
+    type: "text",
+    list: [],
+  },
+
+];
 
 export const columns = [
   {
@@ -37,7 +121,6 @@ export const columns = [
   {
     dataField: "year",
     text: columnFormatters.translateByMessageId("MODULES.BASEINFO.YEAR.TITLE"),
-
     // text: "نام سال تحصیلی",
     sort: true,
     sortCaret: sortCaret,
@@ -111,38 +194,46 @@ export const formFields = [
       },
       {
         name: "yearId",
-        type: "text",
-        component: Input,
+        type: "select",
+        component: (props) =>
+          <SelectObjects api="api/year"
+            reduxState="years"
+            sname="yearId"
+            label={columnFormatters.translateByMessageId("MODULES.BASEINFO.YEAR.TITLE")} {...props} />,
         placeholder: "MODULES.BASEINFO.YEAR.CODE_PH",
         label: "MODULES.BASEINFO.YEAR.CODE",
         rowOrder: 2,
-        rowIdx: 1,
+        rowIdx: 2,
         class: "col-lg-4"
       },
       {
         name: "semesterId",
-        type: "text",
-        component: Input,
+        type: "select",
+        component: (props) =>
+          <SelectObjects api="api/semester"
+            reduxState="semesters"
+            sname="semesterId"
+            label={columnFormatters.translateByMessageId("MODULES.BASEINFO.SEMESTER.TITLE")} {...props} />,
         placeholder: "MODULES.BASEINFO.SEMESTER.CODE_PH",
         label: "MODULES.BASEINFO.SEMESTER.CODE",
         rowOrder: 2,
-        rowIdx: 1,
+        rowIdx: 3,
         class: "col-lg-4"
       },
     ]
   },
   {
-    row: 1,
+    row: 2,
     list: [
 
       {
         name: "startDate",
-        type: "text",
+        type: "date",
         component: DatePickerField,
         placeholder: "MODULES.BASEINFO.TERM.START_PH",
         label: "MODULES.BASEINFO.TERM.START",
         rowOrder: 1,
-        rowIdx: 1,
+        rowIdx: 4,
         class: "col-lg-4"
       },
       {
@@ -152,16 +243,17 @@ export const formFields = [
         placeholder: "MODULES.BASEINFO.TERM.END_PH",
         label: "MODULES.BASEINFO.TERM.END",
         rowOrder: 2,
-        rowIdx: 1,
+        rowIdx: 5,
         class: "col-lg-4"
       },
       {
         name: "isDeleted",
         type: "option",
-        component: SelectStatus,
+        component: Checkbox,
         placeholder: "MODULES.GENERAL.STATUS",
         label: "MODULES.GENERAL.STATUS",
         rowOrder: 2,
+        rowIdx: 6,
         class: "col-lg-4"
       },
 
@@ -194,7 +286,7 @@ export const initialFilter = {
 
   whereClause: "",
   whereClauseParameters: [
-    
+
   ],
   orderCluase: "id asc ",
   skipCount: 0,
@@ -208,11 +300,17 @@ export const filterInitialValues = {
 
 
 export const prepareFilter = (queryParams, values) => {
-  const { isDeleted, searchText } = values;
+  const { isDeleted, searchText, semesterId, yearId } = values;
   const newQueryParams = { ...queryParams };
   const filter = {};
   // Filter by isDeleted
   filter.isDeleted = isDeleted !== "" ? +isDeleted : undefined;
+
+  // Filter by yearId
+  filter.yearId = yearId !== "" ? +yearId : 0;
+
+  // Filter by semesterId
+  filter.semesterId = semesterId !== "" ? +semesterId : 0;
 
   // Filter by all fields
   filter.title = searchText;
@@ -220,18 +318,36 @@ export const prepareFilter = (queryParams, values) => {
     filter.title = searchText;
   }
   newQueryParams.filter = filter;
- 
+
   let whereClause = "title.contains(@0)"
   const whereClauseParameters = [];
   whereClauseParameters.push(searchText)
 
-if(filter.isDeleted != undefined){
-  whereClause = whereClause + " and isDeleted=@1"
-  whereClauseParameters.push(filter.isDeleted == 0 ? false : true)
-}
+  if (filter.semesterId > 0) {
+    whereClause = whereClause + " and semesterId=@1"
+    whereClauseParameters.push(filter.semesterId)
+  }
+  else {
+    whereClause = whereClause + " and semesterId!=@1"
+    whereClauseParameters.push(filter.semesterId)
+  }
 
- newQueryParams.whereClause = whereClause;
- newQueryParams.whereClauseParameters = whereClauseParameters;
+  if (filter.yearId > 0) {
+    whereClause = whereClause + " and yearId=@2"
+    whereClauseParameters.push(filter.yearId)
+  }
+  else {
+    whereClause = whereClause + " and yearId!=@2"
+    whereClauseParameters.push(filter.yearId)
+  }
+
+  if (filter.isDeleted !== undefined) {
+    whereClause = whereClause + " and isDeleted=@3"
+    whereClauseParameters.push(filter.isDeleted === 0 ? false : true)
+  }
+
+  newQueryParams.whereClause = whereClause;
+  newQueryParams.whereClauseParameters = whereClauseParameters;
 
   return newQueryParams;
 };
