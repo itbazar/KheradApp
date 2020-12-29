@@ -1,8 +1,8 @@
-import React from 'react';
+
 import * as Yup from "yup";
 import { sortCaret } from "../../../../_themeBase/_helpers";
 import * as columnFormatters from "../../../../_themeBase/layout/components/basePage/pages/objects-table/column-formatters";
-import { Input } from "../../../../_themeBase/_partials/controls";
+import { DatePickerField, Input } from "../../../../_themeBase/_partials/controls";
 import { SelectStatus } from '../../customComponents/SelectStatus';
 export {filterFields} from "../../customComponents/filterFields";
 
@@ -14,8 +14,8 @@ export const initObject = {
   // year: "",
   semesterId: 0,
   // semester: "",
-  startDate : "0000-00-00",
-  endDate : "0000-00-00",
+  startDate : "2021-02-17T00:00:00",
+  endDate : "2021-02-17T00:00:00",
   isDeleted: false
 };
 
@@ -138,7 +138,7 @@ export const formFields = [
       {
         name: "startDate",
         type: "text",
-        component: Input,
+        component: DatePickerField,
         placeholder: "MODULES.BASEINFO.TERM.START_PH",
         label: "MODULES.BASEINFO.TERM.START",
         rowOrder: 1,
