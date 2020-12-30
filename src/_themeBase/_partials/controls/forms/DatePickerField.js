@@ -7,6 +7,7 @@ import moment from 'moment-jalaali'
 // import DatePicker from "react-datepicker";
 import { useLang } from "../../../i18n/Basei18n";
 import { useFormikContext } from "formik";
+import { formatDateString } from "../../../_helpers/DateFormaterHelpers";
 
 
 
@@ -36,17 +37,17 @@ export function DatePickerField({ ...props }) {
   // var year  = check.format('YYYY');
 
   const tempDate = new Date(field.value).toLocaleDateString(locale).replace(/([۰-۹])/g, token => String.fromCharCode(token.charCodeAt(0) - 1728));;
-  const curDate = formatDate(tempDate);
+  const curDate = formatDateString(tempDate,'/');
   const day = moment(curDate, 'YYYY/MM/DD').date();
   const month = moment(curDate, 'YYYY/MM/DD').month();
   const year = moment(curDate, 'YYYY/MM/DD').year();
   
   console.log("curDate: " + JSON.stringify(curDate));
 
-  console.log(curDate);
-  console.log(day);
-  console.log(month);
-  console.log(year);
+  // console.log(curDate);
+  // console.log(day);
+  // console.log(month);
+  // console.log(year);
 
   const defaultValue = {
     year: year,
@@ -62,58 +63,52 @@ export function DatePickerField({ ...props }) {
   //   day: 5,
   // };
   // debugger;
-  const [selectedDay, setSelectedDay] = useState(defaultValue);
+  const [selectedDay, setSelectedDay] = useState();
+  if (year !== 0)
+    return(<></>);
+  // setSelectedDay(setSelectedDay);
 
+    
   
   return (
     <>
+      {  }
       {props.label && <label>{props.label}</label>}
-
-      <DatePicker
-        className={getFieldCSSClasses(touched[field.name], errors[field.name])}
-        style={{ width: "100%" }}
-        {...field}
-        {...props}
-        value={selectedDay}
-        onChange={val => {
-          // debugger;
-          console.log("val :")
-          let date = new Date(val.year,val.month,val.day).toISOString();
-          let newd = moment.utc(date, "jYYYY-jMM-jDDTHH:mm:ss.SSZ").toISOString().slice(0,19);
-          console.log(date)
-          console.log(newd)
-          setFieldValue(field.name,newd);
-          setSelectedDay(val)
-        }}
-        shouldHighlightWeekends
-        locale={locale}
-      />
+      {selectedDay &&
+        <DatePicker
+          className={getFieldCSSClasses(touched[field.name], errors[field.name])}
+          style={{ width: "100%" }}
+          {...field}
+          {...props}
+          value={selectedDay}
+          onChange={val => {
+            // debugger;
+            console.log("val :")
+            let date = new Date(val.year, val.month, val.day).toISOString();
+            let newd = moment.utc(date, "jYYYY-jMM-jDDTHH:mm:ss.SSZ").toISOString().slice(0, 19);
+            console.log(date)
+            console.log(newd)
+            setFieldValue(field.name, newd);
+            setSelectedDay(val)
+          }}
+          shouldHighlightWeekends
+          locale={locale}
+        />
+      }
       {errors[field.name] && touched[field.name] ? (
         <div className="invalid-datepicker-feedback">
           {errors[field.name].toString()}
         </div>
       ) : (
         <div className="feedback">
-          Please enter <b>{props.label}</b> in 'mm/dd/yyyy' format
+          {/* Please enter <b>{props.label}</b> in 'mm/dd/yyyy' format */}
         </div>
       )}
     </>
   );
 }
 
-function formatDate(date) {
-  var d = new Date(date),
-      month = '' + (d.getMonth() + 1),
-      day = '' + d.getDate(),
-      year = d.getFullYear();
 
-  if (month.length < 2) 
-      month = '0' + month;
-  if (day.length < 2) 
-      day = '0' + day;
-
-  return [year, month, day].join('/');
-}
 
 // import React from "react";
 // import {useField, useFormikContext} from "formik";

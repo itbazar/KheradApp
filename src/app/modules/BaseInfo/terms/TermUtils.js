@@ -15,8 +15,10 @@ export const initObject = {
   // year: "",
   semesterId: 0,
   // semester: "",
-  startDate : "2021-02-17T00:00:00",
-  endDate : "2021-02-17T00:00:00",
+  startDate : "",
+  endDate : "",
+  // startDate : "2021-02-17T00:00:00",
+  // endDate : "2021-02-17T00:00:00",
   isDeleted: false
 };
 
