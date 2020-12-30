@@ -30,7 +30,7 @@ export function LanguageSelectorDropdown() {
   const lang = useLang();
   const currentLanguage = languages.find((x) => x.lang === lang);
   return (
-    <Dropdown drop="down" alignRigh>
+    <Dropdown drop="down" alignRight>
       <Dropdown.Toggle
         as={DropdownItemToggler}
         id="dropdown-toggle-my-cart"

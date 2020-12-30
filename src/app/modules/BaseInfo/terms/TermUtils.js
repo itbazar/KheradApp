@@ -158,15 +158,17 @@ export const columns = [
     sortCaret: sortCaret,
   },
   {
-    dataField: "isDeleted",
-    text: "وضعیت",
+    dataField: "IsDeleted",
+    text: columnFormatters.translateByMessageId("MODULES.GENERAL.STATUS"),
+    // text: "وضعیت",
     sort: true,
     sortCaret: sortCaret,
     formatter: columnFormatters.StatusColumnFormatter,
   },
   {
     dataField: "action",
-    text: "عملیات",
+    text: columnFormatters.translateByMessageId("MODULES.GENERAL.ACTION"),
+    // text: "Actions",
     formatter: columnFormatters.ActionsColumnFormatter,
     formatExtraData: {
       // openEditObjectPage: objectsUIProps.openEditObjectPage,
@@ -241,7 +243,7 @@ export const formFields = [
       {
         name: "endDate",
         type: "text",
-        component: Input,
+        component: DatePickerField,
         placeholder: "MODULES.BASEINFO.TERM.END_PH",
         label: "MODULES.BASEINFO.TERM.END",
         rowOrder: 2,
