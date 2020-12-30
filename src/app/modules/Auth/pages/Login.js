@@ -110,9 +110,24 @@ function Login(props) {
       enableLoading();
       setTimeout(() => {
         login(values.userName, values.password)
-          .then(({ data: { data : accessToken } }) => {
-            disableLoading();
-            props.login(accessToken);
+        // .then(({ data: { data.accessToken,  user, menu } }) => {
+          // .then(response.data =>{
+          //   console.log("access token" + JSON.stringify(response.data.accessToken))
+          //   console.log("access user" + JSON.stringify(response.data.user))
+          //   console.log("access menu" + JSON.stringify(response.data.menu))
+          //   disableLoading();
+          //   props.login(accessToken);
+          // })
+          .then(response => {
+            console.log("login response :")
+            console.log(response)
+            console.log("access token " + JSON.stringify(response.data.data.accessToken));
+            console.log("access user " + JSON.stringify(response.data.data.user));
+            console.log("access menu " + JSON.stringify(response.data.data.menu));
+            sessionStorage.setItem('authUser', JSON.stringify(response.data.data.user));
+            sessionStorage.setItem('authUserMenu', JSON.stringify(response.data.data.menu));
+
+            props.login(response.data.data.accessToken);
           })
           .catch((error) => {
             disableLoading();

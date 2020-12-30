@@ -16,11 +16,11 @@ import { FormattedMessage } from "react-intl";
 
 
 const initialMenus = [
-  { id: 1, isTab: true, tabID: 0, title: "ASID.TABS.BASEINFO", url: '\baseInfo', hasSubMenu: false, parentID: 0, iconUrl: '/media/svg/icons/Code/Settings4.svg' },
-  { id: 2, isTab: true, tabID: 0, title: "ASID.TABS.CULLINAN", url: '\cullinan', hasSubMenu: false, parentID: 0, iconUrl: '/media/svg/icons/Cooking/Chef.svg' },
-  { id: 3, isTab: true, tabID: 0, title: "ASID.TABS.DORMITORY", url: '\dormitory', hasSubMenu: false, parentID: 0, iconUrl: '/media/svg/icons/Home/Bed.svg' },
-  { id: 4, isTab: true, tabID: 0, title: "ASID.TABS.ATTENDANCE", url: '\attendance', hasSubMenu: false, parentID: 0, iconUrl: '/media/svg/icons/Communication/Group.svg' },
-  { id: 5, isTab: true, tabID: 0, title: "ASID.TABS.SPORT", url: '\sport', hasSubMenu: false, parentID: 0, iconUrl: '/media/svg/icons/Clothes/T-Shirt.svg' },
+  { id: 1, isTab: true, tabID: 0, title: "ASID.TABS.BASEINFO", url: '/baseInfo', hasSubMenu: false, parentID: 0, iconUrl: '/media/svg/icons/Code/Settings4.svg' },
+  { id: 2, isTab: true, tabID: 0, title: "ASID.TABS.CULLINAN", url: '/cullinan', hasSubMenu: false, parentID: 0, iconUrl: '/media/svg/icons/Cooking/Chef.svg' },
+  { id: 3, isTab: true, tabID: 0, title: "ASID.TABS.DORMITORY", url: '/dormitory', hasSubMenu: false, parentID: 0, iconUrl: '/media/svg/icons/Home/Bed.svg' },
+  { id: 4, isTab: true, tabID: 0, title: "ASID.TABS.ATTENDANCE", url: '/attendance', hasSubMenu: false, parentID: 0, iconUrl: '/media/svg/icons/Communication/Group.svg' },
+  { id: 5, isTab: true, tabID: 0, title: "ASID.TABS.SPORT", url: '/sport', hasSubMenu: false, parentID: 0, iconUrl: '/media/svg/icons/Clothes/T-Shirt.svg' },
 
   { id: 6, isTab: false, tabID: 1, title: "ASID.TABS.BASEINFO.DASHBOARD", url: '/dashboard', hasSubMenu: false, parentID: 0, iconUrl: '/media/svg/icons/Design/Layers.svg' },
   { id: 7, isTab: false, tabID: 1, title: "ASID.TABS.BASEINFO.SETTING", url: '', hasSubMenu: false, parentID: 0, iconUrl: '' },
@@ -111,10 +111,10 @@ export function Aside() {
     tabId5: "kt_aside_tab_5",
   };
 
-  console.log(tabs.tabId1)
-  console.log(tabs.tabId2)
-  console.log(tabs.tabId3)
-  console.log(tabs.tabId1)
+  // console.log(tabs.tabId1)
+  // console.log(tabs.tabId2)
+  // console.log(tabs.tabId3)
+  // console.log(tabs.tabId1)
 
   const [menuList, setMenuList] = React.useState(initialMenus);
 

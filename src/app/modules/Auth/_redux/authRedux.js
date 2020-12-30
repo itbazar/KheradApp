@@ -8,7 +8,8 @@ export const actionTypes = {
   Logout: "[Logout] Action",
   Register: "[Register] Action",
   UserRequested: "[Request User] Action",
-  UserLoaded: "[Load User] Auth API"
+  UserLoaded: "[Load User] Auth API",
+  MenuLoaded: "[Load Menu] Auth API"
 };
 
 const initialAuthState = {
@@ -17,7 +18,7 @@ const initialAuthState = {
 };
 
 export const reducer = persistReducer(
-  { storage, key: "v706-Kherad-auth", whitelist: ["user", "authToken"] },
+  { storage, key: "v706-Kherad-auth", whitelist: ["user", "authToken","menu"] },
   (state = initialAuthState, action) => {
     switch (action.type) {
       case actionTypes.Login: {
@@ -38,8 +39,13 @@ export const reducer = persistReducer(
       }
 
       case actionTypes.UserLoaded: {
-        const { user } = action.payload;
-        return { ...state, user };
+        const { user,menu } = action.payload;
+        return { ...state, user, menu };
+      }
+
+      case actionTypes.MenuLoaded: {
+        const { menu } = action.payload;
+        return { ...state, menu };
       }
 
       default:
@@ -56,7 +62,8 @@ export const actions = {
   }),
   logout: () => ({ type: actionTypes.Logout }),
   requestUser: user => ({ type: actionTypes.UserRequested, payload: { user } }),
-  fulfillUser: user => ({ type: actionTypes.UserLoaded, payload: { user } })
+  fulfillUser: (user,menu) => ({ type: actionTypes.UserLoaded, payload: { user,menu } }),
+  // fulfillMenu: menu => ({ type: actionTypes.MenuLoaded, payload: { menu } })
 };
 
 export function* saga() {
@@ -69,8 +76,12 @@ export function* saga() {
   });
 
   yield takeLatest(actionTypes.UserRequested, function* userRequested() {
-    const { data: user } = yield getUserByToken();
+    // const { data: user } = yield getUserByToken();
 
-    yield put(actions.fulfillUser(user));
+    const user = JSON.parse(sessionStorage.authUser);
+    const menu = JSON.parse(sessionStorage.authUserMenu);
+    
+    yield put(actions.fulfillUser(user,menu));
+  //  yield put(actions.fulfillMenu(menu));
   });
 }
