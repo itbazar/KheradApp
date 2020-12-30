@@ -19,12 +19,16 @@ export default function setupAxios(axios, store) {
     return response;
   }, error => {
       console.log("error.response");
-      // debugger;
-      console.log(error.response.status);
-    console.log(error.response);
-      if (error.response.status === 401) {
-        window.localStorage.clear();
-        window.location.replace("/auth/login");
+      if (error.message === "Network Error") {
+        console.log(JSON.stringify(error));
+        return "Network Error";
       }
+      // debugger;
+      console.log(JSON.stringify(error.response));
+  //  console.log(error.response);
+      // if (error.response.status === 401) {
+      //   window.localStorage.clear();
+      //   window.location.replace("/auth/login");
+      // }
  });
 }
