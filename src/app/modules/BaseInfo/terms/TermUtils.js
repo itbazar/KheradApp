@@ -246,16 +246,16 @@ export const formFields = [
         rowIdx: 5,
         class: "col-lg-4"
       },
-      {
-        name: "isDeleted",
-        type: "option",
-        component: Checkbox,
-        placeholder: "MODULES.GENERAL.STATUS",
-        label: "MODULES.GENERAL.STATUS",
-        rowOrder: 2,
-        rowIdx: 6,
-        class: "col-lg-4"
-      },
+      // {
+      //   name: "isDeleted",
+      //   type: "option",
+      //   component: Checkbox,
+      //   placeholder: "MODULES.GENERAL.STATUS",
+      //   label: "MODULES.GENERAL.STATUS",
+      //   rowOrder: 2,
+      //   rowIdx: 6,
+      //   class: "col-lg-4"
+      // },
 
     ]
   },
