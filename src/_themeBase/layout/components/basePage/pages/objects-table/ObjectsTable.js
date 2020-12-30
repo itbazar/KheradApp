@@ -20,15 +20,16 @@ import * as columnFormatters from "./column-formatters";
 import { Pagination } from "../../../../../../_themeBase/_partials/controls";
 import { useObjectsUIContext } from "../ObjectsUIContext";
 
-export const ObjectsTable = ({api,columns,currentState }) => {
+
+export const ObjectsTable = ({ api,basePath, columns, currentState }) => {
   // console.log("currentState : " + currentState)
   // console.log("api : " + api)
   // console.log("actions : " + actions)
   // console.log("sliceActions : " + sliceActions)
   // console.log("callTypes : " + callTypes)
   // Objects UI Context
- 
- 
+
+
   const objectsUIContext = useObjectsUIContext();
   const objectsUIProps = useMemo(() => {
     return {
@@ -41,29 +42,58 @@ export const ObjectsTable = ({api,columns,currentState }) => {
     };
   }, [objectsUIContext]);
 
-  console.log(columns)
-  columns[columns.length-1].formatExtraData = {
-    openEditObjectPage: objectsUIProps.openEditObjectPage,
-    openDeleteObjectDialog: objectsUIProps.openDeleteObjectDialog,
-  };
+
+  const { menuList } = useSelector(
+    (state) => ({ menuList: state.auth.menu }),
+    shallowEqual
+  );
+
+  useEffect(() => {
+    // console.log(columns)
+    // columns[columns.length-1].formatExtraData = {
+    //   openEditObjectPage: objectsUIProps.openEditObjectPage,
+    //   openDeleteObjectDialog: objectsUIProps.openDeleteObjectDialog,
+    // };
+   
+    // if (menuList.find(q => q.url == basePath).isFullAccess) {
+    //   columns.push({
+    //     dataField: "action",
+    //     text: columnFormatters.translateByMessageId("MODULES.GENERAL.ACTION"),
+    //     // text: "Actions",
+    //     formatter: columnFormatters.ActionsColumnFormatter,
+    //     formatExtraData: {
+    //       openEditObjectPage: objectsUIProps.openEditObjectPage,
+    //       openDeleteObjectDialog: objectsUIProps.openDeleteObjectDialog,
+    //     },
+    //     classes: "text-right pr-0",
+    //     headerClasses: "text-right pr-3",
+    //     style: {
+    //       minWidth: "100px",
+    //     },
+    //   })
+    // }
+
+
+  }, []);
+
   // // Getting curret state of objects list from store (Redux)
   // const { currentState } = useSelector(
   //   (state) => ({ currentState: state.objects }),
   //   shallowEqual
   // );
-   const { totalCount, entities, listLoading ,name } = currentState;
-  
+  const { totalCount, entities, listLoading, name } = currentState;
+
   // Objects Redux state
   const dispatch = useDispatch();
   useEffect(() => {
     // clear selections list
     objectsUIProps.setIds([]);
     // server call by queryParams
-    dispatch(actions.fetchObjects(api,name,objectsUIProps.queryParams));
+    dispatch(actions.fetchObjects(api, name, objectsUIProps.queryParams));
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [objectsUIProps.queryParams, dispatch]);
   // Table columns
- 
+
   // Table pagination properties
   const paginationOptions = {
     custom: true,

@@ -9,8 +9,8 @@ import { ObjectsCard } from "./ObjectsCard";
 import { ObjectsUIProvider } from "./ObjectsUIContext";
 
 
-const ObjectsPage = ({ basePath,api,currentState, columns,initialFilter,prepareFilter,filterFields,filterInitialValues }) => {
-  console.log("basePath : " + basePath)
+const ObjectsPage = ({ basePath,api,currentState, columns,initialFilter,prepareFilter,filterFields,filterInitialValues,selectFilter }) => {
+  //console.log("basePath : " + basePath)
  
   const history = useHistory()
   //console.log("history : " + history)
@@ -36,7 +36,7 @@ const ObjectsPage = ({ basePath,api,currentState, columns,initialFilter,prepareF
   };
 
   return (
-    <ObjectsUIProvider ObjectsUIEvents={ObjectsUIEvents} initialFilter={initialFilter}>
+    <ObjectsUIProvider ObjectsUIEvents={ObjectsUIEvents} initialFilter={initialFilter} selectFilter={selectFilter}>
       <ObjectsLoadingDialog listLoading={currentState.listLoading}/>
       <Route path={`${basePath}/deleteAll`}>
         {({ history, match }) => (
@@ -89,7 +89,7 @@ const ObjectsPage = ({ basePath,api,currentState, columns,initialFilter,prepareF
           />
         )}
       </Route>
-      <ObjectsCard api={api} currentState={currentState} columns={columns} prepareFilter={prepareFilter} filterFields={filterFields} filterInitialValues={filterInitialValues}/>
+      <ObjectsCard api={api} basePath={basePath} currentState={currentState} columns={columns} prepareFilter={prepareFilter} filterFields={filterFields} filterInitialValues={filterInitialValues}/>
     </ObjectsUIProvider>
   );
 }

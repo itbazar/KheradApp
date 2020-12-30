@@ -1,5 +1,7 @@
 {
 
+  "SELECT.ALL": "All",
+
   "ASID.TABS.BASEINFO" : "Base Info",
   "ASID.TABS.BASEINFO.DASHBOARD" : "Dashboard",
   "ASID.TABS.BASEINFO.SETTING" : "Setting",

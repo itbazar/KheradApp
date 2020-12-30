@@ -11,7 +11,7 @@ import { ObjectsGrouping } from "./objects-grouping/ObjectsGrouping";
 import { useObjectsUIContext } from "./ObjectsUIContext";
 import { useIntl } from 'react-intl';
 
-export function ObjectsCard({api,columns,currentState,prepareFilter,filterFields,filterInitialValues}) {
+export function ObjectsCard({api,basePath,columns,currentState,prepareFilter,filterFields,filterInitialValues}) {
   const ObjectsUIContext = useObjectsUIContext();
 
   const intl = useIntl();
@@ -50,7 +50,7 @@ export function ObjectsCard({api,columns,currentState,prepareFilter,filterFields
             <ObjectsGrouping />
           </>
         )}
-        <ObjectsTable api={api} currentState={currentState} columns={columns}/>
+        <ObjectsTable api={api} basePath={basePath} currentState={currentState} columns={columns}/>
       </CardBody>
     </Card>
   );

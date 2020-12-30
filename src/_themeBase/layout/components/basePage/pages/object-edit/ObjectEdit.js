@@ -8,15 +8,18 @@ import {
   CardHeader,
   CardHeaderToolbar,
 } from "../../../../../../_themeBase/_partials/controls";
+import { ObjectsUIProvider } from "../ObjectsUIContext";
 import { ObjectEditForm } from "./ObjectEditForm";
 import { useSubheader } from "../../../../../../_themeBase/layout";
 import { ModalProgressBar } from "../../../../../../_themeBase/_partials/controls";
 import { useIntl } from 'react-intl';
 
 
-export function ObjectEdit ({
+export function ObjectEdit({
   basePath,
   api,
+  initialFilter,
+  selectFilter,
   currentState,
   initObject,
   formFields,
@@ -26,6 +29,7 @@ export function ObjectEdit ({
   match: {
     params: { id },
   },
+
 }) {
   // Subheader
   const suhbeader = useSubheader();
@@ -44,10 +48,10 @@ export function ObjectEdit ({
     shallowEqual
   );
 
-  const {name } = currentState;
+  const { name } = currentState;
 
   useEffect(() => {
-    dispatch(actions.fetchObject(api,name,id));
+    dispatch(actions.fetchObject(api, name, id));
   }, [id, dispatch]);
 
   useEffect(() => {
@@ -63,13 +67,13 @@ export function ObjectEdit ({
 
   const saveObject = (values) => {
     if (!id) {
-      dispatch(actions.createObject(api,name,values)).then(() => backToObjectsList());
+      dispatch(actions.createObject(api, name, values)).then(() => backToObjectsList());
     } else {
-      dispatch(actions.updateObject(api,name,values)).then(() => backToObjectsList());
+      dispatch(actions.updateObject(api, name, values)).then(() => backToObjectsList());
     }
   };
 
-  const btnRef = useRef();  
+  const btnRef = useRef();
   const saveObjectClick = () => {
     if (btnRef && btnRef.current) {
       btnRef.current.click();
@@ -81,48 +85,49 @@ export function ObjectEdit ({
   };
 
   return (
-    <Card>
-      {actionsLoading && <ModalProgressBar />}
-      <CardHeader title={title}>
-        <CardHeaderToolbar>
-          <button
-            type="button"
-            onClick={backToObjectsList}
-            className="btn btn-light"
-          >
-            <i className="fa fa-arrow-left"></i>
-            {intl.formatMessage({ id: "MODULES.GENERAL.BUTTONBACK" })}
-          </button>
-          {`  `}
-          <button className="btn btn-light ml-2">
-            <i className="fa fa-redo"></i>
-            {intl.formatMessage({ id: "MODULES.GENERAL.BUTTONRESET" })}
-          </button>
-          {`  `}
-          <button
-            type="submit"
-            className="btn btn-primary ml-2"
-            onClick={saveObjectClick}
-          >
-            {intl.formatMessage({ id: "MODULES.GENERAL.BUTTONSAVE" })}
-
-          </button>
-        </CardHeaderToolbar>
-      </CardHeader>
-      <CardBody>
-        <ul className="nav nav-tabs nav-tabs-line " role="tablist">
-          <li className="nav-item" onClick={() => setTab("basic")}>
-            <a 
-              className={`nav-link ${tab === "basic" && "active"}`}
-              data-toggle="tab"
-              role="tab"
-              aria-selected={(tab === "basic").toString()}
+    <ObjectsUIProvider ObjectsUIEvents={{}} initialFilter={initialFilter} selectFilter={selectFilter}>
+      <Card>
+        {actionsLoading && <ModalProgressBar />}
+        <CardHeader title={title}>
+          <CardHeaderToolbar>
+            <button
+              type="button"
+              onClick={backToObjectsList}
+              className="btn btn-light"
             >
-            {intl.formatMessage({ id: "MODULES.BASEINFO.UNIINFO.FORM_TITLE" })}
-            
-            </a>
-          </li>
-          {/* {id && (
+              <i className="fa fa-arrow-left"></i>
+              {intl.formatMessage({ id: "MODULES.GENERAL.BUTTONBACK" })}
+            </button>
+            {`  `}
+            <button className="btn btn-light ml-2">
+              <i className="fa fa-redo"></i>
+              {intl.formatMessage({ id: "MODULES.GENERAL.BUTTONRESET" })}
+            </button>
+            {`  `}
+            <button
+              type="submit"
+              className="btn btn-primary ml-2"
+              onClick={saveObjectClick}
+            >
+              {intl.formatMessage({ id: "MODULES.GENERAL.BUTTONSAVE" })}
+
+            </button>
+          </CardHeaderToolbar>
+        </CardHeader>
+        <CardBody>
+          <ul className="nav nav-tabs nav-tabs-line " role="tablist">
+            <li className="nav-item" onClick={() => setTab("basic")}>
+              <a
+                className={`nav-link ${tab === "basic" && "active"}`}
+                data-toggle="tab"
+                role="tab"
+                aria-selected={(tab === "basic").toString()}
+              >
+                {intl.formatMessage({ id: "MODULES.BASEINFO.UNIINFO.FORM_TITLE" })}
+
+              </a>
+            </li>
+            {/* {id && (
             <>
               {" "}
               <li className="nav-item" onClick={() => setTab("remarks")}>
@@ -147,21 +152,21 @@ export function ObjectEdit ({
               </li>
             </>
           )} */}
-        </ul>
-        <div className="mt-5">
-          {tab === "basic" && (
-            <ObjectEditForm
-              actionsLoading={actionsLoading}
-              object={objectForEdit || initObject}
-              btnRef={btnRef}
-              saveObject={saveObject}
-              formFields={formFields} 
-              otherFields={otherFields} 
-              ObjectEditSchema={ObjectEditSchema}
-            />
-            
-          )}
-          {/* {tab === "remarks" && id && (
+          </ul>
+          <div className="mt-5">
+            {tab === "basic" && (
+              <ObjectEditForm
+                actionsLoading={actionsLoading}
+                object={objectForEdit || initObject}
+                btnRef={btnRef}
+                saveObject={saveObject}
+                formFields={formFields}
+                otherFields={otherFields}
+                ObjectEditSchema={ObjectEditSchema}
+              />
+
+            )}
+            {/* {tab === "remarks" && id && (
             <RemarksUIProvider currentObjectId={id}>
               <Remarks />
             </RemarksUIProvider>
@@ -171,8 +176,9 @@ export function ObjectEdit ({
               <Specifications />
             </SpecificationsUIProvider>
           )} */}
-        </div>
-      </CardBody>
-    </Card>
+          </div>
+        </CardBody>
+      </Card>
+    </ObjectsUIProvider>
   );
 }

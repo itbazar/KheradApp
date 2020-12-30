@@ -5,8 +5,8 @@ import  SubGroupPage  from "./SubGroupPage";
 
 
 const components = [
-  { id: 1, title: "MODULES.BASEINFO.Group.FORM_TITLE", tab: 'groups', component: <GroupPage />},
-  { id: 2, title: "MODULES.BASEINFO.SubGroup.FORM_TITLE", tab: 'subgroups', component: <SubGroupPage /> },
+  { id: 1, title: "MODULES.BASEINFO.Group.FORM_TITLE", tab: 'groups', component: <GroupPage key={1}/>},
+  { id: 2, title: "MODULES.BASEINFO.SubGroup.FORM_TITLE", tab: 'subgroups', component: <SubGroupPage key={2}/> },
 ];
 
 export const GroupBasePage = () => {

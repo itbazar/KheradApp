@@ -26,6 +26,8 @@ export function ObjectsUIProvider({ ObjectsUIEvents, children,initialFilter }) {
       return nextQueryParams;
     });
   }, []);
+ 
+
 
   const value = {
     queryParams,

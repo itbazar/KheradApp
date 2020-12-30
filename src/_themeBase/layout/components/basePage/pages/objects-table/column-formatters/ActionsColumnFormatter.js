@@ -4,13 +4,16 @@ import { OverlayTrigger, Tooltip } from "react-bootstrap";
 import SVG from "react-inlinesvg";
 import { toAbsoluteUrl } from "../../../../../../../_themeBase/_helpers";
 
+
+
 export const ActionsColumnFormatter = (
   cellContent,
   row,
   rowIndex,
-  { openEditObjectPage, openDeleteObjectDialog }
+   { openEditObjectPage, openDeleteObjectDialog }
 ) => (
-  <>
+    <>
+      
     <OverlayTrigger
       overlay={<Tooltip id="objects-edit-tooltip">ویرایش</Tooltip>}
     >
@@ -39,5 +42,5 @@ export const ActionsColumnFormatter = (
         </span>
       </a>
     </OverlayTrigger>
-  </>
-);
+    </>
+  );

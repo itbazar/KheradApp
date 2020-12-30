@@ -14,6 +14,7 @@ import {
   prepareFilter,
   filterFields,
   filterInitialValues,
+  selectFilter,
 } from './RoomUtils';
 
 
@@ -45,21 +46,21 @@ export const RoomPage = () => {
         }
         <ContentRoute path="/dorms/rooms/new"
           render={props =>
-            <ObjectEdit {...props} basePath="/dorms/rooms" api="api/room" currentState={currentState} initObject={initObject}
+            <ObjectEdit {...props} basePath="/dorms/rooms" api="api/room" initialFilter={initialFilter} selectFilter={selectFilter} currentState={currentState} initObject={initObject}
               formFields={formFields} otherFields={otherFields} ObjectEditSchema={ObjectEditSchema} />}
         />
 
         <ContentRoute
           path="/dorms/rooms/:id/edit"
           render={props =>
-            <ObjectEdit {...props} basePath="/dorms/rooms" api="api/room" currentState={currentState} initObject={initObject}
+            <ObjectEdit {...props} basePath="/dorms/rooms" api="api/room" initialFilter={initialFilter} selectFilter={selectFilter} currentState={currentState} initObject={initObject}
               formFields={formFields} otherFields={otherFields} ObjectEditSchema={ObjectEditSchema} />}
         />
 
         <ContentRoute
           path="/dorms/rooms"
-          render={props => <ObjectsPage basePath="/dorms/rooms" api="api/room" initialFilter={initialFilter} currentState={currentState} 
-          columns={columns} prepareFilter={prepareFilter} filterFields={filterFields} filterInitialValues={filterInitialValues}/>}
+          render={props => <ObjectsPage basePath="/dorms/rooms" api="api/room" initialFilter={initialFilter} selectFilter={selectFilter} currentState={currentState} 
+          columns={columns} prepareFilter={prepareFilter}  filterFields={filterFields} filterInitialValues={filterInitialValues}/>}
         />
 
       </Switch>

@@ -4,33 +4,27 @@ import { sortCaret } from "../../../../_themeBase/_helpers";
 import * as columnFormatters from "../../../../_themeBase/layout/components/basePage/pages/objects-table/column-formatters";
 import { Input } from "../../../../_themeBase/_partials/controls";
 import { SelectStatus } from '../../customComponents/SelectStatus';
-export {filterFields} from "../../customComponents/filterFields";
+import { SelectObjects } from '../../../../_themeBase/layout/components/basePage/pages/SelectObjects';
  
   
   export const initObject = {
     id: undefined,
     title: "",
     dormId:0,
-    // dorm: "",
+    dormTitle: "",
     isDeleted: false
   };
   
   export const columns = [
     {
       dataField: "title",
-      text: "نام بلاک یا طبقه",
+      text: columnFormatters.translateByMessageId("MODULES.BASEINFO.BLOCK.FORM_TITLE"),
       sort: true,
       sortCaret: sortCaret,
     },
     {
-      dataField: "dormId",
-      text: "کد سرا",
-      sort: true,
-      sortCaret: sortCaret,
-    },
-    {
-      dataField: "dorm",
-      text: "نام سرا",
+      dataField: "dormTitle",
+      text: columnFormatters.translateByMessageId("MODULES.BASEINFO.DORM.FORM_TITLE"),
       sort: true,
       sortCaret: sortCaret,
     },
@@ -67,32 +61,25 @@ export {filterFields} from "../../customComponents/filterFields";
           name: "title",
           type: "text",
           component: Input,
-          placeholder: "نام بلاک یا طبقه",
-          label: "نام بلاک یا طبقه",
-          rowOrder: 1,
+          placeholder: "MODULES.BASEINFO.BLOCK.FORM_TITLE",
+          label: "MODULES.BASEINFO.BLOCK.FORM_TITLE",
           rowIdx: 1,
           class: "col-lg-4"
         },
         {
           name: "dormId",
           type: "text",
-          component: Input,
-          placeholder: "کد سرا",
-          label: "کد سرا",
-          rowOrder: 2,
-          rowIdx: 1,
-          class: "col-lg-4"
-        },
-        {
-          name: "isDeleted",
-          type: "option",
-          component: SelectStatus,
-          placeholder: "MODULES.GENERAL.STATUS",
-          label: "MODULES.GENERAL.STATUS",
+          component: (props) =>
+          <SelectObjects api="api/dorm"
+            reduxState="dorms"
+            sname="dormId"
+            label={columnFormatters.translateByMessageId("MODULES.BASEINFO.DORM.FORM_TITLE")} {...props} />,
+          placeholder: "MODULES.BASEINFO.DORM.FORM_TITLE",
+          label: "MODULES.BASEINFO.DORM.FORM_TITLE",
           rowIdx: 2,
-          rowOrder: 2,
           class: "col-lg-4"
         },
+       
       ]
     },
   
@@ -133,7 +120,7 @@ export {filterFields} from "../../customComponents/filterFields";
     isDeleted: "", // values => All=""/Selling=0/Sold=1
     searchText: "",
   }
-  export const filterFields111 = [
+  export const filterFields = [
     {
       name: "isDeleted",
       lable: "وضعیت",
@@ -156,6 +143,17 @@ export {filterFields} from "../../customComponents/filterFields";
       component:SelectStatus
     },
     {
+      name: "dormId",
+      lable: "MODULES.BASEINFO.DORM.TITLE",
+      type: "component",
+      list: [],
+      component: (props) =>
+        <SelectObjects api="api/dorm"
+          reduxState="dorms"
+          sname="dormId"
+          {...props} />
+    },
+    {
       name: "searchText",
       lable: "جستجو",
       type: "text",
@@ -166,16 +164,20 @@ export {filterFields} from "../../customComponents/filterFields";
   
   
   export const prepareFilter = (queryParams, values) => {
-    const { isDeleted, searchText } = values;
+    const { isDeleted, searchText,dormId,dormTitle } = values;
   const newQueryParams = { ...queryParams };
   const filter = {};
   // Filter by isDeleted
   filter.isDeleted = isDeleted !== "" ? +isDeleted : undefined;
 
+   // Filter by dormId
+   filter.dormId = dormId !== "" ? +dormId : 0;
+   
   // Filter by all fields
   filter.title = searchText;
   if (searchText) {
     filter.title = searchText;
+    filter.dormTitle = searchText;
   }
   newQueryParams.filter = filter;
  
@@ -183,8 +185,17 @@ export {filterFields} from "../../customComponents/filterFields";
   const whereClauseParameters = [];
   whereClauseParameters.push(searchText)
 
+  if (filter.dormId > 0) {
+    whereClause = whereClause + " and dormId=@1"
+    whereClauseParameters.push(filter.dormId)
+  }
+  else {
+    whereClause = whereClause + " and dormId!=@1"
+    whereClauseParameters.push(filter.dormId)
+  }
+
 if(filter.isDeleted != undefined){
-  whereClause = whereClause + " and isDeleted=@1"
+  whereClause = whereClause + " and isDeleted=@2"
   whereClauseParameters.push(filter.isDeleted == 0 ? false : true)
 }
 

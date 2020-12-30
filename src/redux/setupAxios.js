@@ -26,9 +26,9 @@ export default function setupAxios(axios, store) {
       // debugger;
       console.log(JSON.stringify(error.response));
   //  console.log(error.response);
-      // if (error.response.status === 401) {
-      //   window.localStorage.clear();
-      //   window.location.replace("/auth/login");
-      // }
+      if (error.response.status === 401) {
+        window.localStorage.clear();
+        window.location.replace("/auth/login");
+      }
  });
 }
