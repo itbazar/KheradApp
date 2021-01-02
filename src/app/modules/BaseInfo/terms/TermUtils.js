@@ -15,8 +15,10 @@ export const initObject = {
   // year: "",
   semesterId: 0,
   // semester: "",
-  startDate : "2021-02-17T00:00:00",
-  endDate : "2021-02-17T00:00:00",
+  startDate : "",
+  endDate : "",
+  // startDate : "2021-02-17T00:00:00",
+  // endDate : "2021-02-17T00:00:00",
   isDeleted: false
 };
 
@@ -156,15 +158,17 @@ export const columns = [
     sortCaret: sortCaret,
   },
   {
-    dataField: "isDeleted",
-    text: "وضعیت",
+    dataField: "IsDeleted",
+    text: columnFormatters.translateByMessageId("MODULES.GENERAL.STATUS"),
+    // text: "وضعیت",
     sort: true,
     sortCaret: sortCaret,
     formatter: columnFormatters.StatusColumnFormatter,
   },
   {
     dataField: "action",
-    text: "عملیات",
+    text: columnFormatters.translateByMessageId("MODULES.GENERAL.ACTION"),
+    // text: "Actions",
     formatter: columnFormatters.ActionsColumnFormatter,
     formatExtraData: {
       // openEditObjectPage: objectsUIProps.openEditObjectPage,
@@ -239,7 +243,7 @@ export const formFields = [
       {
         name: "endDate",
         type: "text",
-        component: Input,
+        component: DatePickerField,
         placeholder: "MODULES.BASEINFO.TERM.END_PH",
         label: "MODULES.BASEINFO.TERM.END",
         rowOrder: 2,
