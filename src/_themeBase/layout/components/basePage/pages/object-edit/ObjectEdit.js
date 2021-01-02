@@ -17,6 +17,7 @@ import { useIntl } from 'react-intl';
 
 export function ObjectEdit({
   basePath,
+  isFullAccess,
   api,
   initialFilter,
   selectFilter,
@@ -99,7 +100,7 @@ export function ObjectEdit({
               {intl.formatMessage({ id: "MODULES.GENERAL.BUTTONBACK" })}
             </button>
             {`  `}
-            <button className="btn btn-light ml-2">
+            <button className="btn btn-light ml-2" disabled={!isFullAccess}>
               <i className="fa fa-redo"></i>
               {intl.formatMessage({ id: "MODULES.GENERAL.BUTTONRESET" })}
             </button>
@@ -108,6 +109,7 @@ export function ObjectEdit({
               type="submit"
               className="btn btn-primary ml-2"
               onClick={saveObjectClick}
+              disabled={!isFullAccess}
             >
               {intl.formatMessage({ id: "MODULES.GENERAL.BUTTONSAVE" })}
 
@@ -163,6 +165,7 @@ export function ObjectEdit({
                 formFields={formFields}
                 otherFields={otherFields}
                 ObjectEditSchema={ObjectEditSchema}
+                isFullAccess={isFullAccess}
               />
 
             )}

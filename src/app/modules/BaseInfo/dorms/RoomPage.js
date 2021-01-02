@@ -27,6 +27,17 @@ export const RoomPage = () => {
     shallowEqual
   );
 
+  let isFullAccess = false;
+  const { menuList } = useSelector(
+    (state) => ({ menuList: state.auth.menu }),
+    shallowEqual
+  );
+
+  if (menuList.find(q => q.url == "/dorms")) {
+    const temp = menuList.find(q => q.url == "/dorms")
+    isFullAccess = temp.isFullAccess;
+  }
+
   return (
     <Suspense fallback={<LayoutSplashScreen />}>
       <Switch>
@@ -46,20 +57,20 @@ export const RoomPage = () => {
         }
         <ContentRoute path="/dorms/rooms/new"
           render={props =>
-            <ObjectEdit {...props} basePath="/dorms/rooms" api="api/room" initialFilter={initialFilter} selectFilter={selectFilter} currentState={currentState} initObject={initObject}
+            <ObjectEdit {...props} isFullAccess={isFullAccess} basePath="/dorms/rooms" api="api/room" initialFilter={initialFilter} selectFilter={selectFilter} currentState={currentState} initObject={initObject}
               formFields={formFields} otherFields={otherFields} ObjectEditSchema={ObjectEditSchema} />}
         />
 
         <ContentRoute
           path="/dorms/rooms/:id/edit"
           render={props =>
-            <ObjectEdit {...props} basePath="/dorms/rooms" api="api/room" initialFilter={initialFilter} selectFilter={selectFilter} currentState={currentState} initObject={initObject}
+            <ObjectEdit {...props} isFullAccess={isFullAccess} basePath="/dorms/rooms" api="api/room" initialFilter={initialFilter} selectFilter={selectFilter} currentState={currentState} initObject={initObject}
               formFields={formFields} otherFields={otherFields} ObjectEditSchema={ObjectEditSchema} />}
         />
 
         <ContentRoute
           path="/dorms/rooms"
-          render={props => <ObjectsPage basePath="/dorms/rooms" api="api/room" initialFilter={initialFilter} selectFilter={selectFilter} currentState={currentState} 
+          render={props => <ObjectsPage isFullAccess={isFullAccess} basePath="/dorms/rooms" api="api/room" initialFilter={initialFilter} selectFilter={selectFilter} currentState={currentState} 
           columns={columns} prepareFilter={prepareFilter}  filterFields={filterFields} filterInitialValues={filterInitialValues}/>}
         />
 

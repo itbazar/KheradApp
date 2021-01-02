@@ -26,6 +26,7 @@ export const rootReducer = combineReducers({
   shifts: objectsSlice({name :"shifts"}).reducer,
   shiftAssigns: objectsSlice({name :"shiftAssigns"}).reducer,
   workTimes: objectsSlice({name :"workTimes"}).reducer,
+  calendars: objectsSlice({name :"calendars"}).reducer,
 
 });
 

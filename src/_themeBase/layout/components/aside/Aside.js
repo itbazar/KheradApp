@@ -17,6 +17,7 @@ import { shallowEqual, useSelector } from "react-redux";
 // description: "اطلاعات پایه"
 // hasSubMenu: false
 // iconUrl: "/media/svg/icons/Code/Settings4.svg"
+// id: 1
 // isFullAccess: true
 // isTabMenu: true
 // parentMenuId: 1
@@ -24,29 +25,29 @@ import { shallowEqual, useSelector } from "react-redux";
 // title: "ASID.TABS.BASEINFO"
 // url: "/baseInfo"
 
-const initialMenus = [
-  { id: 1, isTabMenu: true, tabId: 0, title: "ASID.TABS.BASEINFO", url: '/baseInfo', hasSubMenu: false, parentMenuId: 0, iconUrl: '/media/svg/icons/Code/Settings4.svg' },
-  { id: 2, isTabMenu: true, tabId: 0, title: "ASID.TABS.CULLINAN", url: '/cullinan', hasSubMenu: false, parentMenuId: 0, iconUrl: '/media/svg/icons/Cooking/Chef.svg' },
-  { id: 3, isTabMenu: true, tabId: 0, title: "ASID.TABS.DORMITORY", url: '/dormitory', hasSubMenu: false, parentMenuId: 0, iconUrl: '/media/svg/icons/Home/Bed.svg' },
-  { id: 4, isTabMenu: true, tabId: 0, title: "ASID.TABS.ATTENDANCE", url: '/attendance', hasSubMenu: false, parentMenuId: 0, iconUrl: '/media/svg/icons/Communication/Group.svg' },
-  { id: 5, isTabMenu: true, tabId: 0, title: "ASID.TABS.SPORT", url: '/sport', hasSubMenu: false, parentMenuId: 0, iconUrl: '/media/svg/icons/Clothes/T-Shirt.svg' },
+// const initialMenus = [
+//   { id: 1, isTabMenu: true, tabId: 0, title: "ASID.TABS.BASEINFO", url: '/baseInfo', hasSubMenu: false, parentMenuId: 0, iconUrl: '/media/svg/icons/Code/Settings4.svg' },
+//   { id: 2, isTabMenu: true, tabId: 0, title: "ASID.TABS.CULLINAN", url: '/cullinan', hasSubMenu: false, parentMenuId: 0, iconUrl: '/media/svg/icons/Cooking/Chef.svg' },
+//   { id: 3, isTabMenu: true, tabId: 0, title: "ASID.TABS.DORMITORY", url: '/dormitory', hasSubMenu: false, parentMenuId: 0, iconUrl: '/media/svg/icons/Home/Bed.svg' },
+//   { id: 4, isTabMenu: true, tabId: 0, title: "ASID.TABS.ATTENDANCE", url: '/attendance', hasSubMenu: false, parentMenuId: 0, iconUrl: '/media/svg/icons/Communication/Group.svg' },
+//   { id: 5, isTabMenu: true, tabId: 0, title: "ASID.TABS.SPORT", url: '/sport', hasSubMenu: false, parentMenuId: 0, iconUrl: '/media/svg/icons/Clothes/T-Shirt.svg' },
 
-  { id: 6, isTabMenu: false,isFullAccess: true, tabId: 1, title: "ASID.TABS.BASEINFO.DASHBOARD", url: '/dashboard', hasSubMenu: false, parentMenuId: 0, iconUrl: '/media/svg/icons/Design/Layers.svg' },
-  { id: 7, isTabMenu: false,isFullAccess: true, tabId: 1, title: "ASID.TABS.BASEINFO.SETTING", url: '', hasSubMenu: false, parentMenuId: 0, iconUrl: '' },
-  // { id: 6, isTabMenu: false, tabId: 1, title: "راهبری عمومی", url: '\UniInfo', hasSubMenu: false, parentMenuId: 0, iconUrl: '/media/svg/icons/Code/Settings4.svg' },
-  { id: 8, isTabMenu: false,isFullAccess: true, tabId: 1, title: "ASID.TABS.BASEINFO.UNIINFO", url:'/uni', hasSubMenu: false, parentMenuId: 0, iconUrl: '/media/svg/icons/Home/Towel.svg' },
-  { id: 9, isTabMenu: false,isFullAccess: true, tabId: 1, title: "ASID.TABS.BASEINFO.TERMS", url: '/terms', hasSubMenu: false, parentMenuId: 0, iconUrl: '/media/svg/icons/Code/Time-schedule.svg' },
-  { id: 10, isTabMenu: false,isFullAccess: true, tabId: 1, title: "ASID.TABS.BASEINFO.GRADES", url: '/grades', hasSubMenu: false, parentMenuId: 0, iconUrl: '/media/svg/icons/Code/Puzzle.svg' },
-  { id: 11, isTabMenu: false,isFullAccess: true, tabId: 1, title: "ASID.TABS.BASEINFO.COLLAGES", url: '/collages', hasSubMenu: false, parentMenuId: 0, iconUrl: '/media/svg/icons/Home/Home.svg' },
-  { id: 12, isTabMenu: false,isFullAccess: true, tabId: 1, title: "ASID.TABS.BASEINFO.GROUPS", url: '/groups', hasSubMenu: false, parentMenuId: 0, iconUrl: '/media/svg/icons/Communication/Group.svg' },
-  { id: 13, isTabMenu: false,isFullAccess: true, tabId: 1, title: "ASID.TABS.BASEINFO.DORMS", url: '/dorms', hasSubMenu: false, parentMenuId: 0, iconUrl: '/media/svg/icons/Home/Home.svg' },
-  { id: 14, isTabMenu: false,isFullAccess: true, tabId: 1, title: "ASID.TABS.BASEINFO.ACCOUNTS", url: '/accounts', hasSubMenu: false, parentMenuId: 0, iconUrl: '/media/svg/icons/Communication/Group.svg' },
-  { id: 15, isTabMenu: false,isFullAccess: true, tabId: 1, title: "ASID.TABS.BASEINFO.SHIFTS", url: '/shifts', hasSubMenu: false, parentMenuId: 0, iconUrl: '/media/svg/icons/Communication/Group.svg' },
-  { id: 16, isTabMenu: false,isFullAccess: true, tabId: 1, title: "ASID.TABS.BASEINFO.YEARCALENDAR", url: '/calendar', hasSubMenu: false, parentMenuId: 0, iconUrl: '/media/svg/icons/Communication/Group.svg' },
-  { id: 17, isTabMenu: false,isFullAccess: true, tabId: 1, title: "ASID.TABS.BASEINFO.DEVICES", url: '/devices', hasSubMenu: false, parentMenuId: 0, iconUrl: '/media/svg/icons/Communication/Group.svg' },
-  { id: 18, isTabMenu: false,isFullAccess: true, tabId: 1, title: "ASID.TABS.BASEINFO.PERSONS", url: '/persons', hasSubMenu: false, parentMenuId: 0, iconUrl: '/media/svg/icons/Communication/Group.svg' },
+//   { id: 6, isTabMenu: false,isFullAccess: true, tabId: 1, title: "ASID.TABS.BASEINFO.DASHBOARD", url: '/dashboard', hasSubMenu: false, parentMenuId: 0, iconUrl: '/media/svg/icons/Design/Layers.svg' },
+//   { id: 7, isTabMenu: false,isFullAccess: true, tabId: 1, title: "ASID.TABS.BASEINFO.SETTING", url: '', hasSubMenu: false, parentMenuId: 0, iconUrl: '' },
+//   // { id: 6, isTabMenu: false, tabId: 1, title: "راهبری عمومی", url: '\UniInfo', hasSubMenu: false, parentMenuId: 0, iconUrl: '/media/svg/icons/Code/Settings4.svg' },
+//   { id: 8, isTabMenu: false,isFullAccess: true, tabId: 1, title: "ASID.TABS.BASEINFO.UNIINFO", url:'/uni', hasSubMenu: false, parentMenuId: 0, iconUrl: '/media/svg/icons/Home/Towel.svg' },
+//   { id: 9, isTabMenu: false,isFullAccess: true, tabId: 1, title: "ASID.TABS.BASEINFO.TERMS", url: '/terms', hasSubMenu: false, parentMenuId: 0, iconUrl: '/media/svg/icons/Code/Time-schedule.svg' },
+//   { id: 10, isTabMenu: false,isFullAccess: true, tabId: 1, title: "ASID.TABS.BASEINFO.GRADES", url: '/grades', hasSubMenu: false, parentMenuId: 0, iconUrl: '/media/svg/icons/Code/Puzzle.svg' },
+//   { id: 11, isTabMenu: false,isFullAccess: true, tabId: 1, title: "ASID.TABS.BASEINFO.COLLAGES", url: '/collages', hasSubMenu: false, parentMenuId: 0, iconUrl: '/media/svg/icons/Home/Home.svg' },
+//   { id: 12, isTabMenu: false,isFullAccess: true, tabId: 1, title: "ASID.TABS.BASEINFO.GROUPS", url: '/groups', hasSubMenu: false, parentMenuId: 0, iconUrl: '/media/svg/icons/Communication/Group.svg' },
+//   { id: 13, isTabMenu: false,isFullAccess: true, tabId: 1, title: "ASID.TABS.BASEINFO.DORMS", url: '/dorms', hasSubMenu: false, parentMenuId: 0, iconUrl: '/media/svg/icons/Home/Home.svg' },
+//   { id: 14, isTabMenu: false,isFullAccess: false, tabId: 1, title: "ASID.TABS.BASEINFO.ACCOUNTS", url: '/accounts', hasSubMenu: false, parentMenuId: 0, iconUrl: '/media/svg/icons/Communication/Group.svg' },
+//   { id: 15, isTabMenu: false,isFullAccess: true, tabId: 1, title: "ASID.TABS.BASEINFO.SHIFTS", url: '/shifts', hasSubMenu: false, parentMenuId: 0, iconUrl: '/media/svg/icons/Communication/Group.svg' },
+//   { id: 16, isTabMenu: false,isFullAccess: true, tabId: 1, title: "ASID.TABS.BASEINFO.YEARCALENDAR", url: '/calendar', hasSubMenu: false, parentMenuId: 0, iconUrl: '/media/svg/icons/Communication/Group.svg' },
+//   { id: 17, isTabMenu: false,isFullAccess: true, tabId: 1, title: "ASID.TABS.BASEINFO.DEVICES", url: '/devices', hasSubMenu: false, parentMenuId: 0, iconUrl: '/media/svg/icons/Communication/Group.svg' },
+//   { id: 18, isTabMenu: false,isFullAccess: true, tabId: 1, title: "ASID.TABS.BASEINFO.PERSONS", url: '/persons', hasSubMenu: false, parentMenuId: 0, iconUrl: '/media/svg/icons/Communication/Group.svg' },
  
-];
+// ];
 
 // const initialMenus2 = [
 //   { id: 1, title: "پیشخوان", url: '\dashboard', hasSubMenu: false, parentMenuId: 0, iconUrl: '/media/svg/icons/Design/Layers.svg' },
@@ -58,7 +59,6 @@ const initialMenus = [
 //   { id: 7, title: "شیفت های کاری", url: '/react-bootstrap', hasSubMenu: true, parentMenuId: 0, iconUrl: '/media/svg/icons/Shopping/Box2.svg' },
 //   { id: 8, title: "تعریف شیفت ها", url: '/react-bootstrap/badge', hasSubMenu: false, parentMenuId: 7, iconUrl: '/media/svg/icons/Shopping/Box2.svg' },
 //   { id: 9, title: "تنظیمات شیفت ها", url: '/react-bootstrap/alert', hasSubMenu: false, parentMenuId: 7, iconUrl: '/media/svg/icons/Shopping/Box2.svg' },
-
 // ];
 
 
@@ -105,12 +105,12 @@ export function Aside() {
   }, [uiService]);
 
  
- const { menuList2 } = useSelector(
-    (state) => ({ menuList2: state.auth.menu }),
+ const { menuList } = useSelector(
+    (state) => ({ menuList: state.auth.menu }),
     shallowEqual
   );
-  console.log("menuList2 :")
-  console.log(menuList2)
+  // console.log("menuList :")
+  // console.log(menuList)
  
   const tabsTrget = [
     "kt_aside_tab_1",
@@ -133,7 +133,7 @@ export function Aside() {
   // console.log(tabs.tabId3)
   // console.log(tabs.tabId1)
 
-  const [menuList, setMenuList] = React.useState(initialMenus);
+  // const [menuList, setMenuList] = React.useState(initialMenus);
 
   const [activeTab, setActiveTab] = useState(tabs.tabId1);
   const handleTabChange = (id) => {

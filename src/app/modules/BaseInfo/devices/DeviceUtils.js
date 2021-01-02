@@ -2,32 +2,16 @@ import React from 'react';
 import * as Yup from "yup";
 import { sortCaret } from "../../../../_themeBase/_helpers";
 import * as columnFormatters from "../../../../_themeBase/layout/components/basePage/pages/objects-table/column-formatters";
-import { Input, Select } from "../../../../_themeBase/_partials/controls";
-import {
-  ObjectStatusTitles,
-} from '../../../../_themeBase/layout/components/basePage/pages/ObjectsUIHelpers';
-
-
-
-
-export const SelectStatus = (props) => {
-  return (
-    <Select name="isDeleted" label="MODULES.GENERAL.STATUS" {...props}>
-      {ObjectStatusTitles.map((isDeleted, index) => (
-        <option key={isDeleted} value={index}>
-          {isDeleted}
-        </option>
-      ))}
-    </Select>
-  )
-}
+import { Input } from "../../../../_themeBase/_partials/controls";
+import { SelectStatus } from '../../customComponents/SelectStatus';
+import { SelectObjects } from '../../../../_themeBase/layout/components/basePage/pages/SelectObjects';
 
 
 export const initObject = {
   id: undefined,
   title: "",
   deviceGroupId: 0,
-  deviceGroup: "",
+  // deviceGroup: "",
   serialCode:"",
   relationCode:0,
   ipAddress:"",
@@ -38,22 +22,17 @@ export const initObject = {
 export const columns = [
   {
     dataField: "title",
-    text: "نام دستگاه",
+    text:columnFormatters.translateByMessageId("MODULES.BASEINFO.DEVICE.FORM_TITLE"),
     sort: true,
     sortCaret: sortCaret,
   },
-  {
-    dataField: "deviceGroupId",
-    text: "کد گروه ",
-    sort: true,
-    sortCaret: sortCaret,
-  },
-  {
-    dataField: "deviceGroup",
-    text: "نام گروه ",
-    sort: true,
-    sortCaret: sortCaret,
-  },
+  
+  // {
+  //   dataField: "deviceGroup",
+  //   text: "نام گروه ",
+  //   sort: true,
+  //   sortCaret: sortCaret,
+  // },
   {
     dataField: "serialCode",
     text: "شماره سریال ",
@@ -85,20 +64,20 @@ export const columns = [
     sortCaret: sortCaret,
     formatter: columnFormatters.StatusColumnFormatter,
   },
-  {
-    dataField: "action",
-    text: "عملیات",
-    formatter: columnFormatters.ActionsColumnFormatter,
-    formatExtraData: {
-      // openEditObjectPage: objectsUIProps.openEditObjectPage,
-      // openDeleteObjectDialog: objectsUIProps.openDeleteObjectDialog,
-    },
-    classes: "text-right pr-0",
-    headerClasses: "text-right pr-3",
-    style: {
-      minWidth: "100px",
-    },
-  },
+  // {
+  //   dataField: "action",
+  //   text: "عملیات",
+  //   formatter: columnFormatters.ActionsColumnFormatter,
+  //   formatExtraData: {
+  //     // openEditObjectPage: objectsUIProps.openEditObjectPage,
+  //     // openDeleteObjectDialog: objectsUIProps.openDeleteObjectDialog,
+  //   },
+  //   classes: "text-right pr-0",
+  //   headerClasses: "text-right pr-3",
+  //   style: {
+  //     minWidth: "100px",
+  //   },
+  // },
 ];
 
 export const formFields = [
@@ -109,31 +88,25 @@ export const formFields = [
         name: "title",
         type: "text",
         component: Input,
-        placeholder: "نام دستگاه",
-        label: "نام دستگاه",
-        rowOrder: 1,
+        placeholder: "MODULES.BASEINFO.DEVICE.FORM_TITLE",
+        label: "MODULES.BASEINFO.DEVICE.FORM_TITLE",
         rowIdx: 1,
         class: "col-lg-4"
       },
       {
         name: "deviceGroupId",
         type: "text",
-        component: Input,
-        placeholder: "کد گروه دستگاه",
-        label: "کد گروه دستگاه",
-        rowOrder: 2,
-        rowIdx: 1,
+        component: (props) =>
+        <SelectObjects api="api/DeviceGroup"
+          reduxState="deviceTypes"
+          sname="deviceGroupId"
+          label={columnFormatters.translateByMessageId("MODULES.BASEINFO.DORM.FORM_TITLE")} {...props} />,
+        placeholder: "MODULES.BASEINFO.DEVICETYPE.FORM_TITLE_PH",
+        label: "MODULES.BASEINFO.DEVICETYPE.FORM_TITLE_PH",
+        rowIdx: 2,
         class: "col-lg-4"
       },
-      {
-        name: "isDeleted",
-        type: "option",
-        component: SelectStatus,
-        placeholder: "وضعیت",
-        label: "وضعیت",
-        rowOrder: 2,
-        class: "col-lg-4"
-      },
+      
     ]
   },
   {
@@ -145,8 +118,7 @@ export const formFields = [
         component: Input,
         placeholder: "شماره سریال",
         label: "شماره سریال",
-        rowOrder: 1,
-        rowIdx: 1,
+        rowIdx: 3,
         class: "col-lg-4"
       },
       {
@@ -155,8 +127,7 @@ export const formFields = [
         component: Input,
         placeholder: "کد گروه دستگاه",
         label: "کد گروه دستگاه",
-        rowOrder: 2,
-        rowIdx: 1,
+        rowIdx: 4,
         class: "col-lg-4"
       },
       {
@@ -165,7 +136,7 @@ export const formFields = [
         component: Input,
         placeholder: "آدرس IP",
         label: "آدرس IP",
-        rowOrder: 2,
+        rowIdx: 5,
         class: "col-lg-3"
       },
       {
@@ -174,7 +145,7 @@ export const formFields = [
         component: Input,
         placeholder: "پورت",
         label: "پورت",
-        rowOrder: 2,
+        rowIdx: 6,
         class: "col-lg-1"
       },
     ]
@@ -240,6 +211,17 @@ export const filterFields = [
     component: SelectStatus
   },
   {
+    name: "deviceGroupId",
+    lable: "MODULES.BASEINFO.DORM.TITLE",
+    type: "component",
+    list: [],
+    component:  (props) =>
+    <SelectObjects api="api/DeviceGroup"
+      reduxState="deviceTypes"
+      sname="deviceGroupId"
+      {...props} />,
+  },
+  {
     name: "searchText",
     lable: "جستجو",
     type: "text",
@@ -250,11 +232,14 @@ export const filterFields = [
 
 
 export const prepareFilter = (queryParams, values) => {
-  const { isDeleted, searchText } = values;
+  const { isDeleted, searchText,deviceGroupId } = values;
   const newQueryParams = { ...queryParams };
   const filter = {};
   // Filter by isDeleted
   filter.isDeleted = isDeleted !== "" ? +isDeleted : undefined;
+
+ // Filter by deviceGroupId
+ filter.deviceGroupId = deviceGroupId !== "" ? +deviceGroupId : 0;
 
   // Filter by all fields
   filter.title = searchText;
@@ -267,8 +252,17 @@ export const prepareFilter = (queryParams, values) => {
   const whereClauseParameters = [];
   whereClauseParameters.push(searchText)
 
+  if (filter.deviceGroupId > 0) {
+    whereClause = whereClause + " and deviceGroupId=@1"
+    whereClauseParameters.push(filter.deviceGroupId)
+  }
+  else {
+    whereClause = whereClause + " and deviceGroupId!=@1"
+    whereClauseParameters.push(0)
+  }
+
 if(filter.isDeleted != undefined){
-  whereClause = whereClause + " and isDeleted=@1"
+  whereClause = whereClause + " and isDeleted=@2"
   whereClauseParameters.push(filter.isDeleted == 0 ? false : true)
 }
 

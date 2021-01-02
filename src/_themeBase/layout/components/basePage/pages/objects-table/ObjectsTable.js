@@ -21,13 +21,13 @@ import { Pagination } from "../../../../../../_themeBase/_partials/controls";
 import { useObjectsUIContext } from "../ObjectsUIContext";
 
 
-export const ObjectsTable = ({ api,basePath, columns, currentState }) => {
+export const ObjectsTable = ({ haveGeneralAction=true , isFullAccess, api, columns, currentState }) => {
   // console.log("currentState : " + currentState)
   // console.log("api : " + api)
   // console.log("actions : " + actions)
   // console.log("sliceActions : " + sliceActions)
   // console.log("callTypes : " + callTypes)
-  // Objects UI Context
+  // Objects UI Context //isFullAccess={isFullAccess}
 
 
   const objectsUIContext = useObjectsUIContext();
@@ -49,30 +49,48 @@ export const ObjectsTable = ({ api,basePath, columns, currentState }) => {
   );
 
   useEffect(() => {
-    // console.log(columns)
     // columns[columns.length-1].formatExtraData = {
     //   openEditObjectPage: objectsUIProps.openEditObjectPage,
     //   openDeleteObjectDialog: objectsUIProps.openDeleteObjectDialog,
     // };
-   
-    // if (menuList.find(q => q.url == basePath).isFullAccess) {
-    //   columns.push({
-    //     dataField: "action",
-    //     text: columnFormatters.translateByMessageId("MODULES.GENERAL.ACTION"),
-    //     // text: "Actions",
-    //     formatter: columnFormatters.ActionsColumnFormatter,
-    //     formatExtraData: {
-    //       openEditObjectPage: objectsUIProps.openEditObjectPage,
-    //       openDeleteObjectDialog: objectsUIProps.openDeleteObjectDialog,
-    //     },
-    //     classes: "text-right pr-0",
-    //     headerClasses: "text-right pr-3",
-    //     style: {
-    //       minWidth: "100px",
-    //     },
-    //   })
-    // }
-
+    
+    if (haveGeneralAction) {
+      if (columns.find(q => q.dataField === "action"))
+      columns.pop()
+      if (isFullAccess) {
+        columns.push({
+          dataField: "action",
+          text: columnFormatters.translateByMessageId("MODULES.GENERAL.ACTION"),
+          // text: "Actions",
+          formatter: columnFormatters.ActionsColumnFormatter,
+          formatExtraData: {
+            openEditObjectPage: objectsUIProps.openEditObjectPage,
+            openDeleteObjectDialog: objectsUIProps.openDeleteObjectDialog,
+          },
+          classes: "text-right pr-0",
+          headerClasses: "text-right pr-3",
+          style: {
+            minWidth: "100px",
+          },
+        })
+      }
+      else {
+        columns.push({
+          dataField: "action",
+          text: columnFormatters.translateByMessageId("MODULES.GENERAL.ACTION"),
+          // text: "Actions",
+          formatter: columnFormatters.ViewColumnFormatter,
+          formatExtraData: {
+            openEditObjectPage: objectsUIProps.openEditObjectPage,
+          },
+          classes: "text-right pr-0",
+          headerClasses: "text-right pr-3",
+          style: {
+            minWidth: "100px",
+          },
+        })
+      }
+    }
 
   }, []);
 

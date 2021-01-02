@@ -3,45 +3,29 @@ import * as Yup from "yup";
 import { sortCaret } from "../../../../_themeBase/_helpers";
 import * as columnFormatters from "../../../../_themeBase/layout/components/basePage/pages/objects-table/column-formatters";
 import { Input } from "../../../../_themeBase/_partials/controls";
-import { SelectStatus } from '../../customComponents/SelectStatus';
-export {filterFields} from "../../customComponents/filterFields";
   
   export const initObject = {
     id: undefined,
-    title: "",
-    isDeleted: false
+    title: ""
   };
   
   export const columns = [
     {
       dataField: "title",
-      text: "نام گروه بندی",
+      text: columnFormatters.translateByMessageId("MODULES.BASEINFO.DEVICETYPE.FORM_TITLE_PH"),
       sort: true,
       sortCaret: sortCaret,
     },
-    {
-      dataField: "IsDeleted",
-      text: columnFormatters.translateByMessageId("MODULES.GENERAL.STATUS"),
-      // text: "وضعیت",
-      sort: true,
-      sortCaret: sortCaret,
-      formatter: columnFormatters.StatusColumnFormatter,
-    },
-    {
-      dataField: "action",
-      text: columnFormatters.translateByMessageId("MODULES.GENERAL.ACTION"),
-      // text: "Actions",
-      formatter: columnFormatters.ActionsColumnFormatter,
-      formatExtraData: {
-        // openEditObjectPage: objectsUIProps.openEditObjectPage,
-        // openDeleteObjectDialog: objectsUIProps.openDeleteObjectDialog,
-      },
-      classes: "text-right pr-0",
-      headerClasses: "text-right pr-3",
-      style: {
-        minWidth: "100px",
-      },
-    },
+    // {
+    //   dataField: "IsDeleted",
+    //   text: columnFormatters.translateByMessageId("MODULES.GENERAL.STATUS"),
+    //   // text: "وضعیت",
+    //   sort: true,
+    //   sortCaret: sortCaret,
+    //   formatter: columnFormatters.StatusColumnFormatter,
+    // },
+    // {
+   
   ];
   
   export const formFields = [
@@ -52,20 +36,10 @@ export {filterFields} from "../../customComponents/filterFields";
           name: "title",
           type: "text",
           component: Input,
-          placeholder: "نام گروه بندی",
-          label: "نام گروه بندی",
+          placeholder: "MODULES.BASEINFO.DEVICETYPE.FORM_TITLE_PH",
+          label: "MODULES.BASEINFO.DEVICETYPE.FORM_TITLE_PH",
           rowOrder: 1,
           rowIdx: 1,
-          class: "col-lg-4"
-        },
-        {
-          name: "isDeleted",
-          type: "option",
-          component: SelectStatus,
-          placeholder: "MODULES.GENERAL.STATUS",
-          label: "MODULES.GENERAL.STATUS",
-          rowIdx: 2,
-          rowOrder: 2,
           class: "col-lg-4"
         },
       ]
@@ -108,28 +82,7 @@ export {filterFields} from "../../customComponents/filterFields";
     isDeleted: "", // values => All=""/Selling=0/Sold=1
     searchText: "",
   }
-  export const filterFields11 = [
-    {
-      name: "isDeleted",
-      lable: "وضعیت",
-      type: "select",
-      list:[
-        {
-          value: "",
-          lable: "همه",
-        },
-        {
-          value: "0",
-          lable: "فعال",
-        },
-        {
-          value: "1",
-          lable: "حذف شده",
-        },
-      
-      ],
-      component:SelectStatus
-    },
+  export const filterFields = [
     {
       name: "searchText",
       lable: "جستجو",
@@ -144,8 +97,8 @@ export {filterFields} from "../../customComponents/filterFields";
     const { isDeleted, searchText } = values;
     const newQueryParams = { ...queryParams };
     const filter = {};
-    // Filter by isDeleted
-    filter.isDeleted = isDeleted !== "" ? +isDeleted : undefined;
+    // // Filter by isDeleted
+    // filter.isDeleted = isDeleted !== "" ? +isDeleted : undefined;
   
     // Filter by all fields
     filter.title = searchText;
@@ -158,10 +111,10 @@ export {filterFields} from "../../customComponents/filterFields";
     const whereClauseParameters = [];
     whereClauseParameters.push(searchText)
   
-  if(filter.isDeleted !== undefined){
-    whereClause = whereClause + " and isDeleted=@1"
-    whereClauseParameters.push(filter.isDeleted === 0 ? false : true)
-  }
+  // if(filter.isDeleted !== undefined){
+  //   whereClause = whereClause + " and isDeleted=@1"
+  //   whereClauseParameters.push(filter.isDeleted === 0 ? false : true)
+  // }
   
    newQueryParams.whereClause = whereClause;
    newQueryParams.whereClauseParameters = whereClauseParameters;

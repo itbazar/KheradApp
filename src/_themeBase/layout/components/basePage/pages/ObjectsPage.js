@@ -9,7 +9,7 @@ import { ObjectsCard } from "./ObjectsCard";
 import { ObjectsUIProvider } from "./ObjectsUIContext";
 
 
-const ObjectsPage = ({ basePath,api,currentState, columns,initialFilter,prepareFilter,filterFields,filterInitialValues,selectFilter }) => {
+const ObjectsPage = ({haveGeneralAction=true,isFullAccess,basePath,api,currentState, columns,initialFilter,prepareFilter,filterFields,filterInitialValues,selectFilter }) => {
   //console.log("basePath : " + basePath)
  
   const history = useHistory()
@@ -89,7 +89,7 @@ const ObjectsPage = ({ basePath,api,currentState, columns,initialFilter,prepareF
           />
         )}
       </Route>
-      <ObjectsCard api={api} basePath={basePath} currentState={currentState} columns={columns} prepareFilter={prepareFilter} filterFields={filterFields} filterInitialValues={filterInitialValues}/>
+      <ObjectsCard haveGeneralAction={haveGeneralAction} isFullAccess={isFullAccess}  api={api} basePath={basePath} currentState={currentState} columns={columns} prepareFilter={prepareFilter} filterFields={filterFields} filterInitialValues={filterInitialValues}/>
     </ObjectsUIProvider>
   );
 }
@@ -97,77 +97,3 @@ const ObjectsPage = ({ basePath,api,currentState, columns,initialFilter,prepareF
 export default ObjectsPage;
 
 
-
-
-// const ObjectsPage = ({ history,path , newPath,editPath,deletePath,fetchPath,deleteAllPath,updatePath }) => {
-//   const ObjectsUIEvents = {
-//     newObjectButtonClick: () => {
-//       history.push("/e-commerce/products/new");
-//     },
-//     openEditObjectPage: (id) => {
-//       history.push(`/e-commerce/products/${id}/edit`);
-//     },
-//     openDeleteObjectDialog: (id) => {
-//       history.push(`/e-commerce/products/${id}/delete`);
-//     },
-//     openDeleteObjectsDialog: () => {
-//       history.push(`/e-commerce/products/deleteObjects`);
-//     },
-//     openFetchObjectsDialog: () => {
-//       history.push(`/e-commerce/products/fetch`);
-//     },
-//     openUpdateObjectsStatusDialog: () => {
-//       history.push("/e-commerce/products/updateStatus");
-//     },
-//   };
-
-//   return (
-//     <ObjectsUIProvider ObjectsUIEvents={ObjectsUIEvents}>
-//       {/* <ObjectsLoadingDialog /> */}
-//       <Route path="/e-commerce/products/deleteObjects">
-//         {({ history, match }) => (
-//           <ObjectsDeleteDialog
-//             show={match != null}
-//             onHide={() => {
-//               history.push("/e-commerce/products");
-//             }}
-//           />
-//         )}
-//       </Route>
-//       <Route path="/e-commerce/products/:id/delete">
-//         {({ history, match }) => (
-//           <ObjectDeleteDialog
-//             show={match != null}
-//             id={match && match.params.id}
-//             onHide={() => {
-//               history.push("/e-commerce/products");
-//             }}
-//           />
-//         )}
-//       </Route>
-//       <Route path="/e-commerce/products/fetch">
-//         {({ history, match }) => (
-//           <ObjectsFetchDialog
-//             show={match != null}
-//             onHide={() => {
-//               history.push("/e-commerce/products");
-//             }}
-//           />
-//         )}
-//       </Route>
-//       <Route path="/e-commerce/products/updateStatus">
-//         {({ history, match }) => (
-//           <ObjectsUpdateStatusDialog
-//             show={match != null}
-//             onHide={() => {
-//               history.push("/e-commerce/products");
-//             }}
-//           />
-//         )}
-//       </Route>
-//       <ObjectsCard />
-//     </ObjectsUIProvider>
-//   );
-// }
-
-// export default ObjectsPage;

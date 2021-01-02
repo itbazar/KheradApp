@@ -32,7 +32,6 @@ export const columns = [
     text: columnFormatters.translateByMessageId(
       "MODULES.BASEINFO.UNIINFO.TITLE"
     ),
-
     sort: true,
     sortCaret: sortCaret,
   },
@@ -41,7 +40,6 @@ export const columns = [
     text: columnFormatters.translateByMessageId(
       "MODULES.BASEINFO.UNIINFO.CODE"
     ),
-
     sort: true,
     sortCaret: sortCaret,
   },
@@ -77,21 +75,21 @@ export const columns = [
     sortCaret: sortCaret,
     formatter: columnFormatters.StatusColumnFormatter,
   },
-  {
-    dataField: "action",
-    text: columnFormatters.translateByMessageId("MODULES.GENERAL.ACTION"),
-    // text: "Actions",
-    formatter: columnFormatters.ActionsColumnFormatter,
-    formatExtraData: {
-      // openEditObjectPage: objectsUIProps.openEditObjectPage,
-      // openDeleteObjectDialog: objectsUIProps.openDeleteObjectDialog,
-    },
-    classes: "text-right pr-0",
-    headerClasses: "text-right pr-3",
-    style: {
-      minWidth: "100px",
-    },
-  },
+  // {
+  //   dataField: "action",
+  //   text: columnFormatters.translateByMessageId("MODULES.GENERAL.ACTION"),
+  //   // text: "Actions",
+  //   formatter: columnFormatters.ActionsColumnFormatter,
+  //   formatExtraData: {
+  //     // openEditObjectPage: objectsUIProps.openEditObjectPage,
+  //     // openDeleteObjectDialog: objectsUIProps.openDeleteObjectDialog,
+  //   },
+  //   classes: "text-right pr-0",
+  //   headerClasses: "text-right pr-3",
+  //   style: {
+  //     minWidth: "100px",
+  //   },
+  // },
 ];
 
 export const formFields = [
@@ -104,7 +102,6 @@ export const formFields = [
         component: Input,
         label: "MODULES.BASEINFO.UNIINFO.TITLE",
         placeholder: "MODULES.BASEINFO.UNIINFO.TITLE_PH",
-        rowOrder: 1,
         rowIdx: 1,
         class: "col-lg-4",
       },
@@ -114,8 +111,7 @@ export const formFields = [
         component: Input,
         placeholder: "MODULES.BASEINFO.UNIINFO.CODE_PH",
         label: "MODULES.BASEINFO.UNIINFO.CODE",
-        rowOrder: 2,
-        rowIdx: 1,
+        rowIdx: 2,
         class: "col-lg-4",
       },
       {
@@ -124,8 +120,7 @@ export const formFields = [
         component: Input,
         placeholder: "MODULES.GENERAL.TELEPHONE_PH",
         label: "MODULES.GENERAL.TELEPHONE",
-        rowOrder: 1,
-        rowIdx: 2,
+        rowIdx: 3,
         class: "col-lg-4",
       },
     ],
@@ -139,8 +134,7 @@ export const formFields = [
         component: Input,
         placeholder: "MODULES.GENERAL.ADDRESS_PH",
         label: "MODULES.GENERAL.ADDRESS",
-        rowOrder: 1,
-        rowIdx: 1,
+        rowIdx: 4,
         class: "col-lg-12",
       },
     ],
@@ -154,8 +148,7 @@ export const formFields = [
         component: Input,
         placeholder: "MODULES.GENERAL.POSTALCODE_PH",
         label: "MODULES.GENERAL.POSTALCODE",
-        rowOrder: 2,
-        rowIdx: 1,
+        rowIdx: 5,
         class: "col-lg-4",
       },
       {
@@ -164,7 +157,7 @@ export const formFields = [
         component: Input,
         placeholder: "MODULES.BASEINFO.UNIINFO.MAXUSER_PH",
         label: "MODULES.BASEINFO.UNIINFO.MAXUSER",
-        rowOrder: 3,
+        rowIdx: 6,
         class: "col-lg-4",
       },
       {
@@ -173,8 +166,7 @@ export const formFields = [
         component: Input,
         placeholder: "MODULES.BASEINFO.UNIINFO.STUDENT_MANAGER_PH",
         label: "MODULES.BASEINFO.UNIINFO.STUDENT_MANAGER",
-        rowOrder: 2,
-        rowIdx: 1,
+        rowIdx: 7,
         class: "col-lg-4",
       },
     ],
@@ -188,7 +180,7 @@ export const formFields = [
         component: Input,
         placeholder: "MODULES.BASEINFO.UNIINFO.STUDENT_MANAGER_TEL_PH",
         label: "MODULES.BASEINFO.UNIINFO.STUDENT_MANAGER_TEL",
-        rowOrder: 3,
+        rowIdx: 8,
         class: "col-lg-4",
       },
       {
@@ -197,8 +189,7 @@ export const formFields = [
         component: Input,
         placeholder: "MODULES.BASEINFO.UNIINFO.NUTRITION_MANAGER_PH",
         label: "MODULES.BASEINFO.UNIINFO.NUTRITION_MANAGER",
-        rowOrder: 2,
-        rowIdx: 1,
+        rowIdx: 9,
         class: "col-lg-4",
       },
       {
@@ -207,7 +198,7 @@ export const formFields = [
         component: Input,
         placeholder: "MODULES.BASEINFO.UNIINFO.NUTRITION_MANAGER_TEL_PH",
         label: "MODULES.BASEINFO.UNIINFO.NUTRITION_MANAGER_TEL",
-        rowOrder: 3,
+        rowIdx: 10,
         class: "col-lg-4",
       },
     ],
@@ -221,8 +212,7 @@ export const formFields = [
         component: Input,
         placeholder: "MODULES.BASEINFO.UNIINFO.DORMITORY_MANAGER_PH",
         label: "MODULES.BASEINFO.UNIINFO.DORMITORY_MANAGER",
-        rowOrder: 2,
-        rowIdx: 1,
+        rowIdx: 11,
         class: "col-lg-4",
       },
       {
@@ -231,7 +221,7 @@ export const formFields = [
         component: Input,
         placeholder: "MODULES.BASEINFO.UNIINFO.DORMITORY_MANAGER_TEL_PH",
         label: "MODULES.BASEINFO.UNIINFO.DORMITORY_MANAGER_TEL",
-        rowOrder: 3,
+        rowIdx: 12,
         class: "col-lg-4",
       },
       {
@@ -240,8 +230,7 @@ export const formFields = [
         component: Input,
         placeholder: "MODULES.BASEINFO.UNIINFO.SPORT_MANAGER_PH",
         label: "MODULES.BASEINFO.UNIINFO.SPORT_MANAGER",
-        rowOrder: 2,
-        rowIdx: 1,
+        rowIdx: 13,
         class: "col-lg-4",
       },
     ],
@@ -255,7 +244,7 @@ export const formFields = [
         component: Input,
         placeholder: "MODULES.BASEINFO.UNIINFO.SPORT_MANAGER_TEL_PH",
         label: "MODULES.BASEINFO.UNIINFO.SPORT_MANAGER_TEL",
-        rowOrder: 3,
+        rowIdx: 14,
         class: "col-lg-4",
       },
       {
@@ -264,8 +253,7 @@ export const formFields = [
         component: Input,
         placeholder: "MODULES.BASEINFO.UNIINFO.ADMINISTRATIVE_MANAGER_PH",
         label: "MODULES.BASEINFO.UNIINFO.ADMINISTRATIVE_MANAGER",
-        rowOrder: 2,
-        rowIdx: 1,
+        rowIdx: 15,
         class: "col-lg-4",
       },
       {
@@ -274,7 +262,7 @@ export const formFields = [
         component: Input,
         placeholder: "MODULES.BASEINFO.UNIINFO.ADMINISTRATIVE_MANAGER_TEL_PH",
         label: "MODULES.BASEINFO.UNIINFO.ADMINISTRATIVE_MANAGER_TEL",
-        rowOrder: 3,
+        rowIdx: 16,
         class: "col-lg-4",
       },
     ],

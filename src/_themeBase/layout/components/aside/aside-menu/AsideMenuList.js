@@ -22,7 +22,7 @@ export const AsideMenuList = ({ layoutProps ,menuList }) => {
 
   const getTypeMenu = (item) => {
 
-    if (item.parentMenuId === 0) {
+    if (item.parentMenuId === 1) {
       if (item.hasSubMenu) {
         console.log(item)
         return <SubMenu key={item.id} menu={item} menuList={[...menuList]} />;

@@ -26,6 +26,17 @@ const CollagePage = () => {
     shallowEqual
   );
 
+  let isFullAccess = false;
+  const { menuList } = useSelector(
+    (state) => ({ menuList: state.auth.menu }),
+    shallowEqual
+  );
+
+  if (menuList.find(q => q.url == "/collages")) {
+    const temp = menuList.find(q => q.url == "/collages")
+    isFullAccess = temp.isFullAccess;
+  }
+
   return (
     <Suspense fallback={<LayoutSplashScreen />}>
       <Switch>
@@ -48,20 +59,20 @@ const CollagePage = () => {
        
         <ContentRoute path="/collages/collages/new"
           render={props =>
-            <ObjectEdit {...props} basePath="/collages/collages" api="api/collage" currentState={currentState} initObject={initObject}
+            <ObjectEdit {...props} isFullAccess={isFullAccess} basePath="/collages/collages" api="api/collage" currentState={currentState} initObject={initObject}
               formFields={formFields} otherFields={otherFields} ObjectEditSchema={ObjectEditSchema} />}
         />
 
         <ContentRoute
           path="/collages/collages/:id/edit"
           render={props =>
-            <ObjectEdit {...props} basePath="/collages/collages" api="api/collage" currentState={currentState} initObject={initObject}
+            <ObjectEdit {...props} isFullAccess={isFullAccess} basePath="/collages/collages" api="api/collage" currentState={currentState} initObject={initObject}
               formFields={formFields} otherFields={otherFields} ObjectEditSchema={ObjectEditSchema} />}
         />
 
         <ContentRoute
           path="/collages/collages"
-          render={props => <ObjectsPage basePath="/collages/collages" api="api/collage" initialFilter={initialFilter} currentState={currentState} 
+          render={props => <ObjectsPage isFullAccess={isFullAccess} basePath="/collages/collages" api="api/collage" initialFilter={initialFilter} currentState={currentState} 
           columns={columns} prepareFilter={prepareFilter} filterFields={filterFields} filterInitialValues={filterInitialValues}/>}
         />
 

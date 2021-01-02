@@ -209,7 +209,7 @@ export const formFields = [
         label: "MODULES.BASEINFO.ACCOUNT.DEPOSIT_ID",
         // placeholder: "شناسه واریز",
         // label: "شناسه واریز",
-        rowOrder: 10,
+        rowIdx: 10,
         class: "col-lg-4"
       },
 

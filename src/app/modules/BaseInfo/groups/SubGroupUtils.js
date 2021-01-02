@@ -4,33 +4,28 @@ import { sortCaret } from "../../../../_themeBase/_helpers";
 import * as columnFormatters from "../../../../_themeBase/layout/components/basePage/pages/objects-table/column-formatters";
 import { Input } from "../../../../_themeBase/_partials/controls";
 import { SelectStatus } from '../../customComponents/SelectStatus';
-export {filterFields} from "../../customComponents/filterFields";
+import { SelectObjects } from '../../../../_themeBase/layout/components/basePage/pages/SelectObjects';
  
   
   export const initObject = {
     id: undefined,
     title: "",
     groupId:0,
-    // group: "",
+    groupTitle: "",
     isDeleted: false
   };
   
   export const columns = [
     {
       dataField: "title",
-      text: "نام زیرگروه",
+      text:  columnFormatters.translateByMessageId("MODULES.BASEINFO.SubGroup.FORM_TITLE"),
       sort: true,
       sortCaret: sortCaret,
     },
-    // {
-    //   dataField: "groupId",
-    //   text: "کد گروه",
-    //   sort: true,
-    //   sortCaret: sortCaret,
-    // },
+   
     {
-      dataField: "group",
-      text: "نام گروه",
+      dataField: "groupTitle",
+      text:  columnFormatters.translateByMessageId("MODULES.BASEINFO.Group.FORM_TITLE"),
       sort: true,
       sortCaret: sortCaret,
     },
@@ -42,21 +37,21 @@ export {filterFields} from "../../customComponents/filterFields";
       sortCaret: sortCaret,
       formatter: columnFormatters.StatusColumnFormatter,
     },
-    {
-      dataField: "action",
-      text: columnFormatters.translateByMessageId("MODULES.GENERAL.ACTION"),
-      // text: "Actions",
-      formatter: columnFormatters.ActionsColumnFormatter,
-      formatExtraData: {
-        // openEditObjectPage: objectsUIProps.openEditObjectPage,
-        // openDeleteObjectDialog: objectsUIProps.openDeleteObjectDialog,
-      },
-      classes: "text-right pr-0",
-      headerClasses: "text-right pr-3",
-      style: {
-        minWidth: "100px",
-      },
-    },
+    // {
+    //   dataField: "action",
+    //   text: columnFormatters.translateByMessageId("MODULES.GENERAL.ACTION"),
+    //   // text: "Actions",
+    //   formatter: columnFormatters.ActionsColumnFormatter,
+    //   formatExtraData: {
+    //     // openEditObjectPage: objectsUIProps.openEditObjectPage,
+    //     // openDeleteObjectDialog: objectsUIProps.openDeleteObjectDialog,
+    //   },
+    //   classes: "text-right pr-0",
+    //   headerClasses: "text-right pr-3",
+    //   style: {
+    //     minWidth: "100px",
+    //   },
+    // },
   ];
   
   export const formFields = [
@@ -67,32 +62,25 @@ export {filterFields} from "../../customComponents/filterFields";
           name: "title",
           type: "text",
           component: Input,
-          placeholder: "نام زیرگروه",
-          label: "نام زیرگروه",
-          rowOrder: 1,
+          placeholder: "MODULES.BASEINFO.SubGroup.FORM_TITLE",
+          label: "MODULES.BASEINFO.SubGroup.FORM_TITLE",
           rowIdx: 1,
           class: "col-lg-4"
         },
         {
           name: "groupId",
           type: "text",
-          component: Input,
-          placeholder: "کد گروه",
-          label: "کد گروه",
-          rowOrder: 2,
-          rowIdx: 1,
-          class: "col-lg-4"
-        },
-        {
-          name: "isDeleted",
-          type: "option",
-          component: SelectStatus,
-          placeholder: "MODULES.GENERAL.STATUS",
-          label: "MODULES.GENERAL.STATUS",
+          component:(props) =>
+          <SelectObjects api="api/group"
+            reduxState="groups"
+            sname="groupId"
+            label={columnFormatters.translateByMessageId("MODULES.BASEINFO.Group.FORM_TITLE")} {...props} />,
+          placeholder:"MODULES.BASEINFO.Group.FORM_TITLE",
+          label: "MODULES.BASEINFO.Group.FORM_TITLE",
           rowIdx: 2,
-          rowOrder: 2,
           class: "col-lg-4"
         },
+       
       ]
     },
   
@@ -133,7 +121,7 @@ export {filterFields} from "../../customComponents/filterFields";
     isDeleted: "", // values => All=""/Selling=0/Sold=1
     searchText: "",
   }
-  export const filterFields111 = [
+  export const filterFields = [
     {
       name: "isDeleted",
       lable: "وضعیت",
@@ -156,6 +144,17 @@ export {filterFields} from "../../customComponents/filterFields";
       component:SelectStatus
     },
     {
+      name: "groupId",
+      lable: "MODULES.BASEINFO.DORM.TITLE",
+      type: "component",
+      list: [],
+      component: (props) =>
+        <SelectObjects api="api/group"
+          reduxState="groups"
+          sname="groupId"
+          {...props} />
+    },
+    {
       name: "searchText",
       lable: "جستجو",
       type: "text",
@@ -166,12 +165,15 @@ export {filterFields} from "../../customComponents/filterFields";
   
   
   export const prepareFilter = (queryParams, values) => {
-    const { isDeleted, searchText } = values;
+    const { isDeleted, searchText,groupId } = values;
     const newQueryParams = { ...queryParams };
     const filter = {};
     // Filter by isDeleted
     filter.isDeleted = isDeleted !== "" ? +isDeleted : undefined;
   
+// Filter by groupId
+filter.groupId = groupId !== "" ? +groupId : 0;
+
     // Filter by all fields
     filter.title = searchText;
     if (searchText) {
@@ -183,8 +185,17 @@ export {filterFields} from "../../customComponents/filterFields";
     const whereClauseParameters = [];
     whereClauseParameters.push(searchText)
   
+    if (filter.groupId > 0) {
+      whereClause = whereClause + " and groupId=@1"
+      whereClauseParameters.push(filter.groupId)
+    }
+    else {
+      whereClause = whereClause + " and groupId!=@1"
+      whereClauseParameters.push(0)
+    }
+
   if(filter.isDeleted != undefined){
-    whereClause = whereClause + " and isDeleted=@1"
+    whereClause = whereClause + " and isDeleted=@2"
     whereClauseParameters.push(filter.isDeleted == 0 ? false : true)
   }
   

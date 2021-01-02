@@ -17,8 +17,6 @@ import {
 } from './AccountUtils';
 
 
-
-
 const AccountPage = () => {
 
   const { currentState } = useSelector(
@@ -26,26 +24,37 @@ const AccountPage = () => {
     shallowEqual
   );
 
+  let isFullAccess = false;
+  const { menuList } = useSelector(
+    (state) => ({ menuList: state.auth.menu }),
+    shallowEqual
+  );
+
+  if (menuList.find(q => q.url == "/accounts")) {
+    const temp = menuList.find(q => q.url == "/accounts")
+    isFullAccess = temp.isFullAccess;
+  }
+
   return (
     <Suspense fallback={<LayoutSplashScreen />}>
       <Switch>
       
         <ContentRoute path="/accounts/new"
           render={props =>
-            <ObjectEdit {...props} basePath="/accounts" api="api/bankAccount" currentState={currentState} initObject={initObject}
+            <ObjectEdit {...props} isFullAccess={isFullAccess} basePath="/accounts" api="api/bankAccount" currentState={currentState} initObject={initObject}
               formFields={formFields} otherFields={otherFields} ObjectEditSchema={ObjectEditSchema} />}
         />
 
         <ContentRoute
           path="/accounts/:id/edit"
           render={props =>
-            <ObjectEdit {...props} basePath="/accounts" api="api/bankAccount" currentState={currentState} initObject={initObject}
+            <ObjectEdit {...props} isFullAccess={isFullAccess} basePath="/accounts" api="api/bankAccount" currentState={currentState} initObject={initObject}
               formFields={formFields} otherFields={otherFields} ObjectEditSchema={ObjectEditSchema} />}
         />
 
         <ContentRoute
           path="/accounts"
-          render={props => <ObjectsPage basePath="/accounts" api="api/bankAccount" initialFilter={initialFilter} currentState={currentState} 
+          render={props => <ObjectsPage isFullAccess={isFullAccess} basePath="/accounts" api="api/bankAccount" initialFilter={initialFilter} currentState={currentState} 
           columns={columns} prepareFilter={prepareFilter} filterFields={filterFields} filterInitialValues={filterInitialValues}/>}
         />
 

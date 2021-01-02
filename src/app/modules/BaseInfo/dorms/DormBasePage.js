@@ -14,6 +14,7 @@ const components = [
 
 
 export const DormBasePage = () => {
+  
   return (
   <BaseTabedPage components ={components} />
   );

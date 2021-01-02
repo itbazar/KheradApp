@@ -36,21 +36,21 @@ import { SelectObjects } from '../../../../_themeBase/layout/components/basePage
       sortCaret: sortCaret,
       formatter: columnFormatters.StatusColumnFormatter,
     },
-    {
-      dataField: "action",
-      text: columnFormatters.translateByMessageId("MODULES.GENERAL.ACTION"),
-      // text: "Actions",
-      formatter: columnFormatters.ActionsColumnFormatter,
-      formatExtraData: {
-        // openEditObjectPage: objectsUIProps.openEditObjectPage,
-        // openDeleteObjectDialog: objectsUIProps.openDeleteObjectDialog,
-      },
-      classes: "text-right pr-0",
-      headerClasses: "text-right pr-3",
-      style: {
-        minWidth: "100px",
-      },
-    },
+    // {
+    //   dataField: "action",
+    //   text: columnFormatters.translateByMessageId("MODULES.GENERAL.ACTION"),
+    //   // text: "Actions",
+    //   formatter: columnFormatters.ActionsColumnFormatter,
+    //   formatExtraData: {
+    //     // openEditObjectPage: objectsUIProps.openEditObjectPage,
+    //     // openDeleteObjectDialog: objectsUIProps.openDeleteObjectDialog,
+    //   },
+    //   classes: "text-right pr-0",
+    //   headerClasses: "text-right pr-3",
+    //   style: {
+    //     minWidth: "100px",
+    //   },
+    // },
   ];
   
   export const formFields = [
