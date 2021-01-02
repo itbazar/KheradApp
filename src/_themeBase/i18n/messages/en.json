@@ -16,6 +16,8 @@
   "ASID.TABS.BASEINFO.DEVICES" : "Devices",
   "ASID.TABS.BASEINFO.SHIFTS" : "Shifts",
   "ASID.TABS.BASEINFO.PERSONS" : "Persons",
+  "ASID.TABS.BASEINFO.PERMISSIONS":"Permissions",
+
 
   "ASID.TABS.CULLINAN" : "Cullinan",
   "ASID.TABS.DORMITORY" : "Dormitory",

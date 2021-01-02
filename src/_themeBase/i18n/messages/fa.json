@@ -13,6 +13,7 @@
   "ASID.TABS.BASEINFO.DEVICES": "دستگاه ها",
   "ASID.TABS.BASEINFO.SHIFTS": "شیفت های کاری",
   "ASID.TABS.BASEINFO.PERSONS": "مشخصات افراد",
+  "ASID.TABS.BASEINFO.PERMISSIONS":"سطوح دسترسی",
 
   "MODULES.GENERAL.INDEX": "ردیف",
   "MODULES.GENERAL.TITLE": "عنوان",
@@ -196,9 +197,15 @@
   "MODULES.BASEINFO.WORKTIME.FORM_TITLE_PH": "ساعت کاری",
 
 
-
   "MODULES.BASEINFO.ASSIGN.FORM_TITLE": "انتساب شیفت",
   "MODULES.BASEINFO.ASSIGN.FORM_TITLE_PH": "انتساب شیفت",
+
+  "MODULES.BASEINFO.ROLE.FORM_TITLE":"تعریف نقش",
+  "MODULES.BASEINFO.ROLE.TITLE":"عنوان نقش",
+
+  
+  "MODULES.BASEINFO.ROLE.PERMISSION_TITLE":"مدیریت دسترسی",
+
 
   "SELECT.ALL": "همه",
 

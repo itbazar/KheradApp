@@ -2,6 +2,7 @@ import React from "react";
 import {useField} from "formik";
 import {FieldFeedbackLabel} from "./FieldFeedbackLabel";
 
+
 const getFieldCSSClasses = (touched, errors) => {
   const classes = ["form-control", "form-control-solid"];
   if (touched && errors) {
@@ -26,8 +27,8 @@ export function Select({
   const [field, meta] = useField(props);
   const { touched, error } = meta;
 
-  console.log("props :")
-  console.log(props)
+  // console.log("props :")
+  // console.log(props)
 
   return (
     <>
