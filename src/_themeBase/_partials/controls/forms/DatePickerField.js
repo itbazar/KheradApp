@@ -26,26 +26,76 @@ const getFieldCSSClasses = (touched, errors) => {
   return classes.join(" ");
 };
 
+export const setDatepickerValue = ({
+  val,
+  field,
+  locale,
+  setFieldValue,
+  setSelectedDay,
+}) => {
+  let utcDate = null;
+  if (locale === "fa") {
+    utcDate = moment(`${val.year}/${val.month}/${val.day}`, "jYYYY/jM/jD");
+  } else {
+    utcDate = moment(`${val.year}-${val.month}-${val.day}`, "YYYY-MM-DD");
+  }
+  // console.log("utcDate 1980 " + JSON.stringify(utcDate));
+  let newValue = utcDate.format("YYYY-MM-DDTHH:mm:ss");
+  // console.log("newValue 1980 " + JSON.stringify(newValue));
+  setFieldValue(field.name, newValue);
+  // setdefaultDate(defaultValue);
+  setSelectedDay(val);
+};
+
 export function DatePickerField({ ...props }) {
   const { setFieldValue, errors, touched } = useFormikContext();
   const { field } = props;
   const locale = useLang();
   const [selectedDay, setSelectedDay] = useState();
+  const [defaultDate, setdefaultDate] = useState({
+    year: "1400",
+    month: "01",
+    day: "01",
+  });
 
-  useEffect(() => {
-    if (field.value !== "") {
-      //'2006-09-20T00:00:00'
-      const newValue = convertDateStringToLocal(field.value, locale);
-      const defaultValue = initDatePickerValue(newValue);
-      console.log("defaultValue" + JSON.stringify(defaultValue));
+  // useEffect(() => {
 
-      setSelectedDay(defaultValue);
-    }
-  }, [field.value, locale]);
+  //     setSelectedDay(defaultDate);
+
+  // }, [defaultDate]);
+
+  // useEffect(() => {
+  //   let newValue = null;
+  //   let defaultValue = null;
+  //   // if (defaultDate === selectedDay)
+  //   //   return;
+  //   if (field.value !== "") {
+  //     //'2006-09-20T00:00:00'
+  //      newValue = convertDateStringToLocal(field.value, locale);
+  //   }
+  //   else
+  //   {
+  //     let mNow = moment();// today
+  //     newValue = mNow.format("jYYYY/jMM/jDD");
+
+  //   }
+  //   defaultValue = initDatePickerValue(newValue);
+  //   console.log("defaultValue 1980  " + JSON.stringify(defaultValue));
+  //   // setdefaultDate(defaultValue);
+  // //  setSelectedDay(defaultValue);
+  // }, []);
+
+  // useEffect(() => {
+  //   setdefaultDate(field.value);
+  // }, [])
 
   return (
     <>
-      {}
+      {/* {field.value !== "" :  setSelectedDay({
+        year: "0001",
+        month: "01",
+        day: "01",
+        })} */}
       {props.label && <label>{props.label}</label>}
       <br />
       {
@@ -60,40 +110,13 @@ export function DatePickerField({ ...props }) {
           value={selectedDay}
           locale={locale}
           onChange={(val) => {
-            // debugger;
-            console.log("val :" + JSON.stringify(val));
-            // moment.locale('en');
-            //'1377-02-09T20:34:16.000Z'
-            let date = new Date(val.year, val.month, val.day).toISOString();
-            let newd = moment
-              .utc(date, "YYYY-MM-DDTHH:mm:ss.SSZ")
-              .toISOString()
-              .slice(0, 19);
-            console.log("date :" + JSON.stringify(date));
-            // console.log("enDate :" + JSON.stringify(enDate));
-            console.log("newd :" + JSON.stringify(newd));
-           
-            //1998-05-15T00:00:00
-
-
-            const newVal = new Date(date)
-            .toLocaleDateString("en")
-            .replace(/([۰-۹])/g, (token) =>
-              String.fromCharCode(token.charCodeAt(0) - 1728)
-            );
-
-            const newVal22 = formatDateString(newVal, "/");
-                initDatePickerValue(newVal22);
-
-
-           
-            let newd22 = moment
-              .utc(newVal22, "YYYY-MM-DDTHH:mm:ss.SSZ")
-              .toISOString()
-              .slice(0, 19);
-               console.log("newd22 :" + JSON.stringify(newd22));
-            setFieldValue(field.name, newVal22);
-            setSelectedDay(val);
+            setDatepickerValue({
+              val,
+              field,
+              locale,
+              setFieldValue,
+              setSelectedDay,
+            });
           }}
           shouldHighlightWeekends
         />
@@ -110,59 +133,3 @@ export function DatePickerField({ ...props }) {
     </>
   );
 }
-
-// import React from "react";
-// import {useField, useFormikContext} from "formik";
-// import DatePicker, { registerLocale } from "react-datepicker";
-// // import DatePicker from "react-modern-calendar-datepicker";
-// // import "react-modern-calendar-datepicker/lib/DatePicker.css";
-// import { useLang } from "../../../i18n/Basei18n";
-
-// const getFieldCSSClasses = (touched, errors) => {
-//   const classes = ["form-control"];
-//   if (touched && errors) {
-//     classes.push("is-invalid");
-//   }
-
-//   if (touched && !errors) {
-//     classes.push("is-valid");
-//   }
-
-//   return classes.join(" ");
-// };
-
-// export function DatePickerField({ ...props }) {
-//   const { setFieldValue, errors, touched } = useFormikContext();
-//   // const [field] = useField(props);
-//   const {field} = props;
-//   const locale = useLang()
-//   registerLocale(locale,locale) // register it with the name you want
-
-//   console.log("local :")
-//   console.log(locale)
-//   return (
-//     <>
-//       {props.label && <label>{props.label}</label>}
-//       <DatePicker
-//         className={getFieldCSSClasses(touched[field.name], errors[field.name])}
-//         style={{ width: "100%" }}
-//         {...field}
-//         {...props}
-//         selected={(field.value && new Date(field.value)) || null}
-//         onChange={val => {
-//           setFieldValue(field.name, val);
-//         }}
-//         locale={locale}
-//       />
-//       {errors[field.name] && touched[field.name] ? (
-//         <div className="invalid-datepicker-feedback">
-//           {errors[field.name].toString()}
-//         </div>
-//       ) : (
-//         <div className="feedback">
-//           Please enter <b>{props.label}</b> in 'mm/dd/yyyy' format
-//         </div>
-//       )}
-//     </>
-//   );
-// }
