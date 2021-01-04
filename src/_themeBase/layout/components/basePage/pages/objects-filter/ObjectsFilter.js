@@ -23,6 +23,7 @@ export function ObjectsFilter({ listLoading, prepareFilter, filterFields, filter
       newQueryParams.pageNumber = 1;
       objectsUIProps.setQueryParams(newQueryParams);
     }
+
   };
 
 
@@ -42,7 +43,7 @@ export function ObjectsFilter({ listLoading, prepareFilter, filterFields, filter
             }}
             value={values[item.name]}
           >
-            {item.list.map((opt, idx) => <option value={opt.value}>{intl.formatMessage({ id: opt.lable })}</option>)}
+            {item.list.map((opt, idx) => <option key={idx} value={opt.value}>{intl.formatMessage({ id: opt.lable })}</option>)}
 
           </select>
           <small className="form-text text-muted">

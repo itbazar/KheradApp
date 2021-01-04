@@ -26,6 +26,19 @@ const DeviceTypePage = () => {
     shallowEqual
   );
 
+  
+  let isFullAccess = false;
+  const { menuList } = useSelector(
+    (state) => ({ menuList: state.auth.menu }),
+    shallowEqual
+  );
+
+  if (menuList.find(q => q.url == "/devices")) {
+    const temp = menuList.find(q => q.url == "/devices")
+    isFullAccess = temp.isFullAccess;
+  }
+
+
   return (
     <Suspense fallback={<LayoutSplashScreen />}>
       <Switch>
@@ -47,20 +60,20 @@ const DeviceTypePage = () => {
        
         <ContentRoute path="/devices/types/new"
           render={props =>
-            <ObjectEdit {...props} basePath="/devices/types" api="api/types" currentState={currentState} initObject={initObject}
+            <ObjectEdit {...props} isFullAccess={isFullAccess} basePath="/devices/types" api="api/DeviceGroup" currentState={currentState} initObject={initObject}
               formFields={formFields} otherFields={otherFields} ObjectEditSchema={ObjectEditSchema} />}
         />
 
         <ContentRoute
           path="/devices/types/:id/edit"
           render={props =>
-            <ObjectEdit {...props} basePath="/devices/types" api="api/types" currentState={currentState} initObject={initObject}
+            <ObjectEdit {...props} isFullAccess={isFullAccess} basePath="/devices/types" api="api/DeviceGroup" currentState={currentState} initObject={initObject}
               formFields={formFields} otherFields={otherFields} ObjectEditSchema={ObjectEditSchema} />}
         />
 
         <ContentRoute
           path="/devices/types"
-          render={props => <ObjectsPage basePath="/devices/types" api="api/types" initialFilter={initialFilter} currentState={currentState} 
+          render={props => <ObjectsPage isFullAccess={isFullAccess} basePath="/devices/types" api="api/DeviceGroup" initialFilter={initialFilter} currentState={currentState} 
           columns={columns} prepareFilter={prepareFilter} filterFields={filterFields} filterInitialValues={filterInitialValues}/>}
         />
 

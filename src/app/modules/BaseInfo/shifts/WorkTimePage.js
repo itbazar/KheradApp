@@ -24,6 +24,17 @@ const WorkTimePage = () => {
     shallowEqual
   );
 
+  let isFullAccess = false;
+  const { menuList } = useSelector(
+    (state) => ({ menuList: state.auth.menu }),
+    shallowEqual
+  );
+
+  if (menuList.find(q => q.url == "/dorms")) {
+    const temp = menuList.find(q => q.url == "/dorms")
+    isFullAccess = temp.isFullAccess;
+  }
+
   return (
     <Suspense fallback={<LayoutSplashScreen />}>
       <Switch>
@@ -51,20 +62,20 @@ const WorkTimePage = () => {
         }
         <ContentRoute path="/shifts/worktimes/new"
           render={props =>
-            <ObjectEdit {...props} basePath="/shifts/worktimes" api="api/worktimes" currentState={currentState} initObject={initObject}
+            <ObjectEdit {...props} isFullAccess={isFullAccess} basePath="/shifts/worktimes" api="api/worktimes" currentState={currentState} initObject={initObject}
               formFields={formFields} otherFields={otherFields} ObjectEditSchema={ObjectEditSchema} />}
         />
 
         <ContentRoute
           path="/shifts/worktimes/:id/edit"
           render={props =>
-            <ObjectEdit {...props} basePath="/shifts/worktimes" api="api/worktimes" currentState={currentState} initObject={initObject}
+            <ObjectEdit {...props} isFullAccess={isFullAccess} basePath="/shifts/worktimes" api="api/worktimes" currentState={currentState} initObject={initObject}
               formFields={formFields} otherFields={otherFields} ObjectEditSchema={ObjectEditSchema} />}
         />
 
         <ContentRoute
           path="/shifts/worktimes"
-          render={props => <ObjectsPage basePath="/shifts/worktimes" api="api/worktimes" initialFilter={initialFilter} currentState={currentState} 
+          render={props => <ObjectsPage isFullAccess={isFullAccess} basePath="/shifts/worktimes" api="api/worktimes" initialFilter={initialFilter} currentState={currentState} 
           columns={columns} prepareFilter={prepareFilter} filterFields={filterFields} filterInitialValues={filterInitialValues}/>}
         />
 

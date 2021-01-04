@@ -7,9 +7,6 @@ import { objectsSlice } from "../app/reduxSlices/objectsSlice";
 
 export const rootReducer = combineReducers({
   auth: auth.reducer,
-  objects: objectsSlice({name :"objects"}).reducer,
-  customers: objectsSlice({name :"customers"}).reducer,
-  products: objectsSlice({name :"products"}).reducer,
   univercities: objectsSlice({name :"univercities"}).reducer,
   dorms: objectsSlice({name :"dorms"}).reducer,
   blocks: objectsSlice({name :"blocks"}).reducer,
@@ -25,9 +22,11 @@ export const rootReducer = combineReducers({
   semesters: objectsSlice({name :"semesters"}).reducer,
   grades: objectsSlice({name :"grades"}).reducer,
   accounts: objectsSlice({name :"accounts"}).reducer,
+  banks: objectsSlice({name :"banks"}).reducer,
   shifts: objectsSlice({name :"shifts"}).reducer,
   shiftAssigns: objectsSlice({name :"shiftAssigns"}).reducer,
   workTimes: objectsSlice({name :"workTimes"}).reducer,
+  calendars: objectsSlice({name :"calendars"}).reducer,
 
 });
 

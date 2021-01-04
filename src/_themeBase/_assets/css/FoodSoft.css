@@ -821,7 +821,7 @@ fieldset input[type=radio], fieldset input[type=checkbox] {
 }
 
 .news_Title {
-    font-size: 1.1em;
+    /* font-size: 1.1em; */
     color: Green;
 }
 
@@ -860,7 +860,7 @@ fieldset input[type=radio], fieldset input[type=checkbox] {
     width: 150px;
     padding: 4px 10px 0px;
     color: #343333;
-    font-size: 10.5pt;
+    /* font-size: 10.5pt; */
     float: right;
     text-align: left;
     margin-right: 3px;
@@ -899,7 +899,7 @@ fieldset input[type=radio], fieldset input[type=checkbox] {
     .box_CheckBoxList label {
         width: 125px;
         color: #343333;
-        font-size: 10.5pt;
+        /* font-size: 10.5pt; */
         float: right;
         text-align: right;
         padding: 0px;
@@ -910,7 +910,7 @@ fieldset input[type=radio], fieldset input[type=checkbox] {
         width: 20px;
         height: 25px;
         color: #343333;
-        font-size: 10.5pt;
+        /* font-size: 10.5pt; */
         float: right;
         text-align: left;
         padding-top: 0px;
@@ -973,7 +973,7 @@ fieldset.box.error {
     position: relative;
     top: 0em;
     margin-left: -4000px;
-    font-size: medium;
+    /* font-size: medium; */
     color: black;
 }
 
@@ -1316,7 +1316,7 @@ k7:hover {
     margin: 0 auto;
     border: 0px solid;
     padding: 0;
-    font-size: 9pt;
+    /* font-size: 9pt; */
     height: 40px;
 }
 
@@ -1396,7 +1396,7 @@ k7:hover {
 .crRight {
     float: right;
     color: #ad8635;
-    font-size: 10px;
+    /* font-size: 10px; */
     direction: rtl;
     width: 50%;
 }
@@ -1404,7 +1404,7 @@ k7:hover {
 .crLeft {
     float: left;
     color: #ad8635;
-    font-size: 10pt;
+    /* font-size: 10pt; */
     direction: ltr;
     width: 50%;
     font-family: arial;
@@ -1434,7 +1434,7 @@ k7:hover {
     position: relative;
     font-family: arial;
     color: #ad8635;
-    font-size: 10pt;
+    /* font-size: 10pt; */
 }
 
     .ftrNarvan:hover .oneNarvan {
@@ -1888,7 +1888,7 @@ k7:hover {
         width: auto;
         padding: 0px;
         color: #343333;
-        font-size: 10.5px;
+        /* font-size: 10.5px; */
         float: none;
         text-align: center;
         margin-right: 0px;

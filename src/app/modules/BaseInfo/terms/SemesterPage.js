@@ -24,6 +24,17 @@ const SemesterPage = () => {
     shallowEqual
   );
 
+  let isFullAccess = false;
+  const { menuList } = useSelector(
+    (state) => ({ menuList: state.auth.menu }),
+    shallowEqual
+  );
+
+  if (menuList.find(q => q.url == "/dorms")) {
+    const temp = menuList.find(q => q.url == "/dorms")
+    isFullAccess = temp.isFullAccess;
+  }
+
   return (
     <Suspense fallback={<LayoutSplashScreen />}>
       <Switch>
@@ -43,20 +54,20 @@ const SemesterPage = () => {
         }
         <ContentRoute path="/terms/semesters/new"
           render={props =>
-            <ObjectEdit {...props} basePath="/terms/semesters" api="api/semester" currentState={currentState} initObject={initObject}
+            <ObjectEdit {...props} isFullAccess={isFullAccess} basePath="/terms/semesters" api="api/semester" currentState={currentState} initObject={initObject}
               formFields={formFields} otherFields={otherFields} ObjectEditSchema={ObjectEditSchema} />}
         />
 
         <ContentRoute
           path="/terms/semesters/:id/edit"
           render={props =>
-            <ObjectEdit {...props} basePath="/terms/semesters" api="api/semester" currentState={currentState} initObject={initObject}
+            <ObjectEdit {...props} isFullAccess={isFullAccess} basePath="/terms/semesters" api="api/semester" currentState={currentState} initObject={initObject}
               formFields={formFields} otherFields={otherFields} ObjectEditSchema={ObjectEditSchema} />}
         />
 
         <ContentRoute
           path="/terms/semesters"
-          render={props => <ObjectsPage basePath="/terms/semesters" api="api/semester" initialFilter={initialFilter} currentState={currentState} 
+          render={props => <ObjectsPage isFullAccess={isFullAccess} basePath="/terms/semesters" api="api/semester" initialFilter={initialFilter} currentState={currentState} 
           columns={columns} prepareFilter={prepareFilter} filterFields={filterFields} filterInitialValues={filterInitialValues}/>}
         />
 

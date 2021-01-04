@@ -26,6 +26,17 @@ const ShiftPage = () => {
     shallowEqual
   );
 
+  let isFullAccess = false;
+  const { menuList } = useSelector(
+    (state) => ({ menuList: state.auth.menu }),
+    shallowEqual
+  );
+
+  if (menuList.find(q => q.url == "/dorms")) {
+    const temp = menuList.find(q => q.url == "/dorms")
+    isFullAccess = temp.isFullAccess;
+  }
+
   return (
     <Suspense fallback={<LayoutSplashScreen />}>
       <Switch>
@@ -47,20 +58,20 @@ const ShiftPage = () => {
         }
         {/* <ContentRoute path="/shifts/years/new"
           render={props =>
-            <ObjectEdit {...props} basePath="/shifts/years" api="api/years" currentState={currentState} initObject={initObject}
+            <ObjectEdit {...props} isFullAccess={isFullAccess} basePath="/shifts/years" api="api/years" currentState={currentState} initObject={initObject}
               formFields={formFields} otherFields={otherFields} ObjectEditSchema={ObjectEditSchema} />}
         />
 
         <ContentRoute
           path="/shifts/years/:id/edit"
           render={props =>
-            <ObjectEdit {...props} basePath="/shifts/years" api="api/years" currentState={currentState} initObject={initObject}
+            <ObjectEdit {...props} isFullAccess={isFullAccess} basePath="/shifts/years" api="api/years" currentState={currentState} initObject={initObject}
               formFields={formFields} otherFields={otherFields} ObjectEditSchema={ObjectEditSchema} />}
         />
 
         <ContentRoute
           path="/shifts/years"
-          render={props => <ObjectsPage basePath="/shifts/years" api="api/years" initialFilter={initialFilter} currentState={currentState} 
+          render={props => <ObjectsPage isFullAccess={isFullAccess} basePath="/shifts/years" api="api/years" initialFilter={initialFilter} currentState={currentState} 
           columns={columns} prepareFilter={prepareFilter} filterFields={filterFields} filterInitialValues={filterInitialValues}/>}
         /> */}
 

@@ -1,4 +1,4 @@
-import React, {useMemo} from "react";
+import React, { useMemo } from "react";
 import {
   Card,
   CardBody,
@@ -11,7 +11,7 @@ import { ObjectsGrouping } from "./objects-grouping/ObjectsGrouping";
 import { useObjectsUIContext } from "./ObjectsUIContext";
 import { useIntl } from 'react-intl';
 
-export function ObjectsCard({api,columns,currentState,prepareFilter,filterFields,filterInitialValues}) {
+export function ObjectsCard({ haveGeneralAction = true, isFullAccess, api, basePath, columns, currentState, prepareFilter, filterFields, filterInitialValues }) {
   const ObjectsUIContext = useObjectsUIContext();
 
   const intl = useIntl();
@@ -34,23 +34,25 @@ export function ObjectsCard({api,columns,currentState,prepareFilter,filterFields
     <Card>
       <CardHeader title="">
         <CardHeaderToolbar>
-          <button
+          {haveGeneralAction && <button
             type="button"
             className="btn btn-primary"
             onClick={ObjectsUIProps.newObjectButtonClick}
+            disabled={!isFullAccess}
           >
-         {intl.formatMessage({ id: 'MODULES.GENERAL.BUTTONNEW' })} 
+            {intl.formatMessage({ id: 'MODULES.GENERAL.BUTTONNEW' })}
           </button>
+          }
         </CardHeaderToolbar>
       </CardHeader>
       <CardBody>
-        <ObjectsFilter prepareFilter={prepareFilter} filterFields={filterFields} filterInitialValues={filterInitialValues}/>
+        <ObjectsFilter prepareFilter={prepareFilter} filterFields={filterFields} filterInitialValues={filterInitialValues} />
         {ObjectsUIProps.ids.length > 0 && (
           <>
             <ObjectsGrouping />
           </>
         )}
-        <ObjectsTable api={api} currentState={currentState} columns={columns}/>
+        <ObjectsTable haveGeneralAction={haveGeneralAction} isFullAccess={isFullAccess} api={api} basePath={basePath} currentState={currentState} columns={columns} />
       </CardBody>
     </Card>
   );

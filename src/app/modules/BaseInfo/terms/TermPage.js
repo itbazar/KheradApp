@@ -26,6 +26,17 @@ const TermPage = () => {
     shallowEqual
   );
 
+  let isFullAccess = false;
+  const { menuList } = useSelector(
+    (state) => ({ menuList: state.auth.menu }),
+    shallowEqual
+  );
+
+  if (menuList.find(q => q.url == "/dorms")) {
+    const temp = menuList.find(q => q.url == "/dorms")
+    isFullAccess = temp.isFullAccess;
+  }
+
   return (
     <Suspense fallback={<LayoutSplashScreen />}>
       <Switch>
@@ -53,20 +64,20 @@ const TermPage = () => {
         }
         <ContentRoute path="/terms/terms/new"
           render={props =>
-            <ObjectEdit {...props} basePath="/terms/terms" api="api/term" currentState={currentState} initObject={initObject}
+            <ObjectEdit {...props} isFullAccess={isFullAccess} basePath="/terms/terms" api="api/term" currentState={currentState} initObject={initObject}
               formFields={formFields} otherFields={otherFields} ObjectEditSchema={ObjectEditSchema} />}
         />
 
         <ContentRoute
           path="/terms/terms/:id/edit"
           render={props =>
-            <ObjectEdit {...props} basePath="/terms/terms" api="api/term" currentState={currentState} initObject={initObject}
+            <ObjectEdit {...props} isFullAccess={isFullAccess} basePath="/terms/terms" api="api/term" currentState={currentState} initObject={initObject}
               formFields={formFields} otherFields={otherFields} ObjectEditSchema={ObjectEditSchema} />}
         />
 
         <ContentRoute
           path="/terms/terms"
-          render={props => <ObjectsPage basePath="/terms/terms" api="api/term" initialFilter={initialFilter} currentState={currentState} 
+          render={props => <ObjectsPage isFullAccess={isFullAccess} basePath="/terms/terms" api="api/term" initialFilter={initialFilter} currentState={currentState} 
           columns={columns} prepareFilter={prepareFilter} filterFields={filterFields} filterInitialValues={filterInitialValues}/>}
         />
 

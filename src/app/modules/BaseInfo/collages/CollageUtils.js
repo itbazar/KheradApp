@@ -28,21 +28,21 @@ export {filterFields} from "../../customComponents/filterFields";
       sortCaret: sortCaret,
       formatter: columnFormatters.StatusColumnFormatter,
     },
-    {
-      dataField: "action",
-      text: columnFormatters.translateByMessageId("MODULES.GENERAL.ACTION"),
-      // text: "Actions",
-      formatter: columnFormatters.ActionsColumnFormatter,
-      formatExtraData: {
-        // openEditObjectPage: objectsUIProps.openEditObjectPage,
-        // openDeleteObjectDialog: objectsUIProps.openDeleteObjectDialog,
-      },
-      classes: "text-right pr-0",
-      headerClasses: "text-right pr-3",
-      style: {
-        minWidth: "100px",
-      },
-    },
+    // {
+    //   dataField: "action",
+    //   text: columnFormatters.translateByMessageId("MODULES.GENERAL.ACTION"),
+    //   // text: "Actions",
+    //   formatter: columnFormatters.ActionsColumnFormatter,
+    //   formatExtraData: {
+    //     // openEditObjectPage: objectsUIProps.openEditObjectPage,
+    //     // openDeleteObjectDialog: objectsUIProps.openDeleteObjectDialog,
+    //   },
+    //   classes: "text-right pr-0",
+    //   headerClasses: "text-right pr-3",
+    //   style: {
+    //     minWidth: "100px",
+    //   },
+    // },
   ];
   
   export const formFields = [
@@ -57,20 +57,7 @@ export {filterFields} from "../../customComponents/filterFields";
           label: "MODULES.BASEINFO.COLLAGE.TITLE_PH",
           // placeholder: "نام دانشکده",
           // label: "نام دانشکده",
-          rowOrder: 1,
           rowIdx: 1,
-          class: "col-lg-4"
-        },
-        {
-          name: "isDeleted",
-          type: "option",
-          component: SelectStatus,
-          placeholder: "MODULES.GENERAL.STATUS",
-          label: "MODULES.GENERAL.STATUS",
-          // placeholder: "وضعیت",
-          // label: "وضعیت",
-          rowOrder: 2,
-          rowIdx: 2,
           class: "col-lg-4"
         },
       ]

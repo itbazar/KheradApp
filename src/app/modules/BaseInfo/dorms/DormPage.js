@@ -15,9 +15,27 @@ import {
   filterFields,
   filterInitialValues,
 } from './DormUtils';
+import BaseObjectsPage from '../../customComponents/BaseObjectsPage';
 
 
 
+const redirects = [
+  {
+    exact: true,
+    from: "/dorms",
+    to: "/dorms/dorms",
+  },
+  {
+    exact: false,
+    from: "/dorms/blocks",
+    to: "/dorms/dorms",
+  },
+  {
+    exact: false,
+    from: "/dorms/rooms",
+    to: "/dorms/dorms",
+  },
+];
 
 const DormPage = () => {
 
@@ -26,53 +44,72 @@ const DormPage = () => {
     shallowEqual
   );
 
+  let isFullAccess = false;
+  const { menuList } = useSelector(
+    (state) => ({ menuList: state.auth.menu }),
+    shallowEqual
+  );
+
+  if (menuList.find(q => q.url == "/dorms")) {
+    const temp = menuList.find(q => q.url == "/dorms")
+    isFullAccess = temp.isFullAccess;
+  }
+
   return (
+
     <Suspense fallback={<LayoutSplashScreen />}>
-    <Switch>
-    {
-        <Redirect
-          exact={true}
-          from="/dorms"
-          to="/dorms/dorms"
-        />
-        
-      }
-       {
-        <Redirect
-          // exact={true}
-          from="/dorms/blocks"
-          to="/dorms/dorms"
-        />
-        
-      }
-      {
-        <Redirect
-          // exact={true}
-          from="/dorms/rooms"
-          to="/dorms/dorms"
-        />
-      }
-      <ContentRoute path="/dorms/dorms/new"
-        render={props =>
-          <ObjectEdit {...props} basePath="/dorms/dorms" api="api/dorm" currentState={currentState} initObject={initObject}
-            formFields={formFields} otherFields={otherFields} ObjectEditSchema={ObjectEditSchema} />}
-      />
+      <Switch>
 
-      <ContentRoute
-        path="/dorms/dorms/:id/edit"
-        render={props =>
-          <ObjectEdit {...props} basePath="/dorms/dorms" api="api/dorm" currentState={currentState} initObject={initObject}
-            formFields={formFields} otherFields={otherFields} ObjectEditSchema={ObjectEditSchema} />}
-      />
+        {
+          <Redirect
+            exact={true}
+            from="/dorms"
+            to="/dorms/dorms"
+          />
 
-      <ContentRoute
-        path="/dorms/dorms"
-        render={props => <ObjectsPage basePath="/dorms/dorms" api="api/dorm" initialFilter={initialFilter} currentState={currentState} 
-        columns={columns} prepareFilter={prepareFilter} filterFields={filterFields} filterInitialValues={filterInitialValues}/>}
-      />
+        }
+        {
+          <Redirect
+            // exact={true}
+            from="/dorms/blocks"
+            to="/dorms/dorms"
+          />
 
-    </Switch>
-  </Suspense>
+        }
+        {
+          <Redirect
+            // exact={true}
+            from="/dorms/rooms"
+            to="/dorms/dorms"
+          />
+        }
+
+        {/* <BaseObjectsPage manuUrl="/dorms" redirectList={redirects} stateName="dorms" basePath="/dorms/dorms" api="api/dorm" currentState={currentState} initObject={initObject}
+          formFields={formFields} otherFields={otherFields} ObjectEditSchema={ObjectEditSchema} initialFilter={initialFilter}
+          columns={columns} prepareFilter={prepareFilter} filterFields={filterFields} filterInitialValues={filterInitialValues} /> */}
+
+        <ContentRoute path="/dorms/dorms/new"
+          render={props =>
+            <ObjectEdit {...props} isFullAccess={isFullAccess} basePath="/dorms/dorms" api="api/dorm" currentState={currentState} initObject={initObject}
+              formFields={formFields} otherFields={otherFields} ObjectEditSchema={ObjectEditSchema} />}
+        />
+
+        <ContentRoute
+          path="/dorms/dorms/:id/edit"
+          render={props =>
+            <ObjectEdit {...props} isFullAccess={isFullAccess} basePath="/dorms/dorms" api="api/dorm" currentState={currentState} initObject={initObject}
+              formFields={formFields} otherFields={otherFields} ObjectEditSchema={ObjectEditSchema} />}
+        />
+
+        <ContentRoute
+          path="/dorms/dorms"
+          render={props => <ObjectsPage isFullAccess={isFullAccess} basePath="/dorms/dorms" api="api/dorm" initialFilter={initialFilter} currentState={currentState}
+            columns={columns} prepareFilter={prepareFilter} filterFields={filterFields} filterInitialValues={filterInitialValues} />}
+        />
+
+      </Switch>
+    </Suspense>
+
   )
 }
 

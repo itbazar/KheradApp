@@ -4,8 +4,8 @@ import DeviceTypePage from "./DeviceTypePage";
 import DevicePage from "./DevicePage";
 
 const components = [
-  { id: 1, title: "MODULES.BASEINFO.DEVICETYPE.FORM_TITLE", tab: 'deviceTypes', component: <DeviceTypePage />},
-  { id: 2, title: "MODULES.BASEINFO.DEVICE.FORM_TITLE", tab: 'devices', component: <DevicePage /> },
+  { id: 1, title: "MODULES.BASEINFO.DEVICETYPE.FORM_TITLE", tab: 'deviceTypes', component: <DeviceTypePage key={1}/>},
+  { id: 2, title: "MODULES.BASEINFO.DEVICE.FORM_TITLE", tab: 'devices', component: <DevicePage key={2}/> },
 ];
 
 export const DeviceBasePage = () => {

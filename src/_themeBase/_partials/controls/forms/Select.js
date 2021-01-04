@@ -31,7 +31,7 @@ export function Select({
 
   return (
     <>
-      {label && <label>Select {label}</label>}
+      {label && <label> {label}</label>}
       <select
         className={getFieldCSSClasses(touched, error)}
         {...field}

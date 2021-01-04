@@ -22,7 +22,7 @@ export const AsideMenuList = ({ layoutProps ,menuList }) => {
 
   const getTypeMenu = (item) => {
 
-    if (item.parentID === 0) {
+    if (item.parentMenuId === 1) {
       if (item.hasSubMenu) {
         console.log(item)
         return <SubMenu key={item.id} menu={item} menuList={[...menuList]} />;
@@ -124,7 +124,7 @@ export const SubMenu = ({ menu, menuList }) => {
 
   const getTypeMenu = (item) => {
     if (item.hasSubMenu) {
-      return <SubMenu key={item.id} menu={item} menuList={[...menuList.filter(q => q.parentID === item.id)]} />;
+      return <SubMenu key={item.id} menu={item} menuList={[...menuList.filter(q => q.parentMenuId === item.id)]} />;
     }
     else {
       return <SubMenuItem key={item.id} menu={item} />;
@@ -156,7 +156,7 @@ export const SubMenu = ({ menu, menuList }) => {
             </span>
           </li>
           {
-            menuList.filter(q => q.parentID === menu.id).map(child =>
+            menuList.filter(q => q.parentMenuId === menu.id).map(child =>
               getTypeMenu(child)
             )
           }
@@ -189,7 +189,7 @@ export const SubMenu = ({ menu, menuList }) => {
     //       </li>
 
     //       {
-    //         menuList.filter(q => q.parentID === menu.id).map(child =>
+    //         menuList.filter(q => q.parentMenuId === menu.id).map(child =>
     //           getTypeMenu(child)
     //         )
     //       }
@@ -213,7 +213,7 @@ export const SubMenuBullet = ({ menu, menuList }) => {
 
   const getTypeMenu = (item) => {
     if (item.hasSubMenu) {
-      return <SubMenu key={item.id} menu={item} menuList={[...menuList.filter(q => q.parentID === item.id)]} />;
+      return <SubMenu key={item.id} menu={item} menuList={[...menuList.filter(q => q.parentMenuId === item.id)]} />;
     }
     else {
       return <SubMenuItem key={item.id} menu={item} />;
@@ -239,7 +239,7 @@ export const SubMenuBullet = ({ menu, menuList }) => {
         <i className="menu-arrow" />
         <ul className="menu-subnav">
           {
-            menuList.filter(q => q.parentID === menu.id).map(child =>
+            menuList.filter(q => q.parentMenuId === menu.id).map(child =>
               getTypeMenu(child)
             )
           }

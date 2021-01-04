@@ -12,44 +12,53 @@ import { QuickUserToggler } from "../extras/QuickUserToggler";
 import { Brand } from "../brand/Brand";
 import { KTUtil } from "./../../../_assets/js/components/util";
 import { FormattedMessage } from "react-intl";
+import { shallowEqual, useSelector } from "react-redux";
 
+// description: "اطلاعات پایه"
+// hasSubMenu: false
+// iconUrl: "/media/svg/icons/Code/Settings4.svg"
+// id: 1
+// isFullAccess: true
+// isTabMenu: true
+// parentMenuId: 1
+// tabId: 0
+// title: "ASID.TABS.BASEINFO"
+// url: "/baseInfo"
 
+// const initialMenus = [
+//   { id: 1, isTabMenu: true, tabId: 0, title: "ASID.TABS.BASEINFO", url: '/baseInfo', hasSubMenu: false, parentMenuId: 0, iconUrl: '/media/svg/icons/Code/Settings4.svg' },
+//   { id: 2, isTabMenu: true, tabId: 0, title: "ASID.TABS.CULLINAN", url: '/cullinan', hasSubMenu: false, parentMenuId: 0, iconUrl: '/media/svg/icons/Cooking/Chef.svg' },
+//   { id: 3, isTabMenu: true, tabId: 0, title: "ASID.TABS.DORMITORY", url: '/dormitory', hasSubMenu: false, parentMenuId: 0, iconUrl: '/media/svg/icons/Home/Bed.svg' },
+//   { id: 4, isTabMenu: true, tabId: 0, title: "ASID.TABS.ATTENDANCE", url: '/attendance', hasSubMenu: false, parentMenuId: 0, iconUrl: '/media/svg/icons/Communication/Group.svg' },
+//   { id: 5, isTabMenu: true, tabId: 0, title: "ASID.TABS.SPORT", url: '/sport', hasSubMenu: false, parentMenuId: 0, iconUrl: '/media/svg/icons/Clothes/T-Shirt.svg' },
 
-const initialMenus = [
-  { id: 1, isTab: true, tabID: 0, title: "ASID.TABS.BASEINFO", url: '/baseInfo', hasSubMenu: false, parentID: 0, iconUrl: '/media/svg/icons/Code/Settings4.svg' },
-  { id: 2, isTab: true, tabID: 0, title: "ASID.TABS.CULLINAN", url: '/cullinan', hasSubMenu: false, parentID: 0, iconUrl: '/media/svg/icons/Cooking/Chef.svg' },
-  { id: 3, isTab: true, tabID: 0, title: "ASID.TABS.DORMITORY", url: '/dormitory', hasSubMenu: false, parentID: 0, iconUrl: '/media/svg/icons/Home/Bed.svg' },
-  { id: 4, isTab: true, tabID: 0, title: "ASID.TABS.ATTENDANCE", url: '/attendance', hasSubMenu: false, parentID: 0, iconUrl: '/media/svg/icons/Communication/Group.svg' },
-  { id: 5, isTab: true, tabID: 0, title: "ASID.TABS.SPORT", url: '/sport', hasSubMenu: false, parentID: 0, iconUrl: '/media/svg/icons/Clothes/T-Shirt.svg' },
-
-  { id: 6, isTab: false, tabID: 1, title: "ASID.TABS.BASEINFO.DASHBOARD", url: '/dashboard', hasSubMenu: false, parentID: 0, iconUrl: '/media/svg/icons/Design/Layers.svg' },
-  { id: 7, isTab: false, tabID: 1, title: "ASID.TABS.BASEINFO.SETTING", url: '', hasSubMenu: false, parentID: 0, iconUrl: '' },
-  // { id: 6, isTab: false, tabID: 1, title: "راهبری عمومی", url: '\UniInfo', hasSubMenu: false, parentID: 0, iconUrl: '/media/svg/icons/Code/Settings4.svg' },
-  { id: 8, isTab: false, tabID: 1, title: "ASID.TABS.BASEINFO.UNIINFO", url:'/uni', hasSubMenu: false, parentID: 0, iconUrl: '/media/svg/icons/Home/Towel.svg' },
-  { id: 9, isTab: false, tabID: 1, title: "ASID.TABS.BASEINFO.TERMS", url: '/terms', hasSubMenu: false, parentID: 0, iconUrl: '/media/svg/icons/Code/Time-schedule.svg' },
-  { id: 10, isTab: false, tabID: 1, title: "ASID.TABS.BASEINFO.GRADES", url: '/grades', hasSubMenu: false, parentID: 0, iconUrl: '/media/svg/icons/Code/Puzzle.svg' },
-  { id: 11, isTab: false, tabID: 1, title: "ASID.TABS.BASEINFO.COLLAGES", url: '/collages', hasSubMenu: false, parentID: 0, iconUrl: '/media/svg/icons/Home/Home.svg' },
-  { id: 12, isTab: false, tabID: 1, title: "ASID.TABS.BASEINFO.GROUPS", url: '/groups', hasSubMenu: false, parentID: 0, iconUrl: '/media/svg/icons/Communication/Group.svg' },
-  { id: 13, isTab: false, tabID: 1, title: "ASID.TABS.BASEINFO.DORMS", url: '/dorms', hasSubMenu: false, parentID: 0, iconUrl: '/media/svg/icons/Home/Home.svg' },
-  { id: 14, isTab: false, tabID: 1, title: "ASID.TABS.BASEINFO.ACCOUNTS", url: '/accounts', hasSubMenu: false, parentID: 0, iconUrl: '/media/svg/icons/Communication/Group.svg' },
-  { id: 15, isTab: false, tabID: 1, title: "ASID.TABS.BASEINFO.SHIFTS", url: '/shifts', hasSubMenu: false, parentID: 0, iconUrl: '/media/svg/icons/Communication/Group.svg' },
-  { id: 16, isTab: false, tabID: 1, title: "ASID.TABS.BASEINFO.YEARCALENDAR", url: '/calendar', hasSubMenu: false, parentID: 0, iconUrl: '/media/svg/icons/Communication/Group.svg' },
-  { id: 17, isTab: false, tabID: 1, title: "ASID.TABS.BASEINFO.DEVICES", url: '/devices', hasSubMenu: false, parentID: 0, iconUrl: '/media/svg/icons/Communication/Group.svg' },
-  { id: 18, isTab: false, tabID: 1, title: "ASID.TABS.BASEINFO.PERSONS", url: '/persons', hasSubMenu: false, parentID: 0, iconUrl: '/media/svg/icons/Communication/Group.svg' },
+//   { id: 6, isTabMenu: false,isFullAccess: true, tabId: 1, title: "ASID.TABS.BASEINFO.DASHBOARD", url: '/dashboard', hasSubMenu: false, parentMenuId: 0, iconUrl: '/media/svg/icons/Design/Layers.svg' },
+//   { id: 7, isTabMenu: false,isFullAccess: true, tabId: 1, title: "ASID.TABS.BASEINFO.SETTING", url: '', hasSubMenu: false, parentMenuId: 0, iconUrl: '' },
+//   // { id: 6, isTabMenu: false, tabId: 1, title: "راهبری عمومی", url: '\UniInfo', hasSubMenu: false, parentMenuId: 0, iconUrl: '/media/svg/icons/Code/Settings4.svg' },
+//   { id: 8, isTabMenu: false,isFullAccess: true, tabId: 1, title: "ASID.TABS.BASEINFO.UNIINFO", url:'/uni', hasSubMenu: false, parentMenuId: 0, iconUrl: '/media/svg/icons/Home/Towel.svg' },
+//   { id: 9, isTabMenu: false,isFullAccess: true, tabId: 1, title: "ASID.TABS.BASEINFO.TERMS", url: '/terms', hasSubMenu: false, parentMenuId: 0, iconUrl: '/media/svg/icons/Code/Time-schedule.svg' },
+//   { id: 10, isTabMenu: false,isFullAccess: true, tabId: 1, title: "ASID.TABS.BASEINFO.GRADES", url: '/grades', hasSubMenu: false, parentMenuId: 0, iconUrl: '/media/svg/icons/Code/Puzzle.svg' },
+//   { id: 11, isTabMenu: false,isFullAccess: true, tabId: 1, title: "ASID.TABS.BASEINFO.COLLAGES", url: '/collages', hasSubMenu: false, parentMenuId: 0, iconUrl: '/media/svg/icons/Home/Home.svg' },
+//   { id: 12, isTabMenu: false,isFullAccess: true, tabId: 1, title: "ASID.TABS.BASEINFO.GROUPS", url: '/groups', hasSubMenu: false, parentMenuId: 0, iconUrl: '/media/svg/icons/Communication/Group.svg' },
+//   { id: 13, isTabMenu: false,isFullAccess: true, tabId: 1, title: "ASID.TABS.BASEINFO.DORMS", url: '/dorms', hasSubMenu: false, parentMenuId: 0, iconUrl: '/media/svg/icons/Home/Home.svg' },
+//   { id: 14, isTabMenu: false,isFullAccess: false, tabId: 1, title: "ASID.TABS.BASEINFO.ACCOUNTS", url: '/accounts', hasSubMenu: false, parentMenuId: 0, iconUrl: '/media/svg/icons/Communication/Group.svg' },
+//   { id: 15, isTabMenu: false,isFullAccess: true, tabId: 1, title: "ASID.TABS.BASEINFO.SHIFTS", url: '/shifts', hasSubMenu: false, parentMenuId: 0, iconUrl: '/media/svg/icons/Communication/Group.svg' },
+//   { id: 16, isTabMenu: false,isFullAccess: true, tabId: 1, title: "ASID.TABS.BASEINFO.YEARCALENDAR", url: '/calendar', hasSubMenu: false, parentMenuId: 0, iconUrl: '/media/svg/icons/Communication/Group.svg' },
+//   { id: 17, isTabMenu: false,isFullAccess: true, tabId: 1, title: "ASID.TABS.BASEINFO.DEVICES", url: '/devices', hasSubMenu: false, parentMenuId: 0, iconUrl: '/media/svg/icons/Communication/Group.svg' },
+//   { id: 18, isTabMenu: false,isFullAccess: true, tabId: 1, title: "ASID.TABS.BASEINFO.PERSONS", url: '/persons', hasSubMenu: false, parentMenuId: 0, iconUrl: '/media/svg/icons/Communication/Group.svg' },
  
-];
+// ];
 
 // const initialMenus2 = [
-//   { id: 1, title: "پیشخوان", url: '\dashboard', hasSubMenu: false, parentID: 0, iconUrl: '/media/svg/icons/Design/Layers.svg' },
-//   { id: 2, title: "راهبری سیستم", url: '', hasSubMenu: false, parentID: 0, iconUrl: '' },
-//   { id: 3, title: "اطلاعات پایه", url: '', hasSubMenu: true, parentID: 0, iconUrl: '/media/svg/icons/Design/Cap-2.svg' },
-//   { id: 4, title: "گروه ها", url: '', hasSubMenu: true, parentID: 3, iconUrl: '/media/svg/icons/Design/Layers.svg' },
-//   { id: 5, title: "تعریف گروه ها", url: '/e-commerce/customers', hasSubMenu: false, parentID: 4, iconUrl: '/media/svg/icons/Design/Layers.svg' },
-//   { id: 6, title: "تنظیمات گروه ها", url: '/e-commerce/customers', hasSubMenu: false, parentID: 4, iconUrl: '/media/svg/icons/Design/Layers.svg' },
-//   { id: 7, title: "شیفت های کاری", url: '/react-bootstrap', hasSubMenu: true, parentID: 0, iconUrl: '/media/svg/icons/Shopping/Box2.svg' },
-//   { id: 8, title: "تعریف شیفت ها", url: '/react-bootstrap/badge', hasSubMenu: false, parentID: 7, iconUrl: '/media/svg/icons/Shopping/Box2.svg' },
-//   { id: 9, title: "تنظیمات شیفت ها", url: '/react-bootstrap/alert', hasSubMenu: false, parentID: 7, iconUrl: '/media/svg/icons/Shopping/Box2.svg' },
-
+//   { id: 1, title: "پیشخوان", url: '\dashboard', hasSubMenu: false, parentMenuId: 0, iconUrl: '/media/svg/icons/Design/Layers.svg' },
+//   { id: 2, title: "راهبری سیستم", url: '', hasSubMenu: false, parentMenuId: 0, iconUrl: '' },
+//   { id: 3, title: "اطلاعات پایه", url: '', hasSubMenu: true, parentMenuId: 0, iconUrl: '/media/svg/icons/Design/Cap-2.svg' },
+//   { id: 4, title: "گروه ها", url: '', hasSubMenu: true, parentMenuId: 3, iconUrl: '/media/svg/icons/Design/Layers.svg' },
+//   { id: 5, title: "تعریف گروه ها", url: '/e-commerce/customers', hasSubMenu: false, parentMenuId: 4, iconUrl: '/media/svg/icons/Design/Layers.svg' },
+//   { id: 6, title: "تنظیمات گروه ها", url: '/e-commerce/customers', hasSubMenu: false, parentMenuId: 4, iconUrl: '/media/svg/icons/Design/Layers.svg' },
+//   { id: 7, title: "شیفت های کاری", url: '/react-bootstrap', hasSubMenu: true, parentMenuId: 0, iconUrl: '/media/svg/icons/Shopping/Box2.svg' },
+//   { id: 8, title: "تعریف شیفت ها", url: '/react-bootstrap/badge', hasSubMenu: false, parentMenuId: 7, iconUrl: '/media/svg/icons/Shopping/Box2.svg' },
+//   { id: 9, title: "تنظیمات شیفت ها", url: '/react-bootstrap/alert', hasSubMenu: false, parentMenuId: 7, iconUrl: '/media/svg/icons/Shopping/Box2.svg' },
 // ];
 
 
@@ -95,6 +104,14 @@ export function Aside() {
     };
   }, [uiService]);
 
+ 
+ const { menuList } = useSelector(
+    (state) => ({ menuList: state.auth.menu }),
+    shallowEqual
+  );
+  // console.log("menuList :")
+  // console.log(menuList)
+ 
   const tabsTrget = [
     "kt_aside_tab_1",
     "kt_aside_tab_2",
@@ -116,7 +133,7 @@ export function Aside() {
   // console.log(tabs.tabId3)
   // console.log(tabs.tabId1)
 
-  const [menuList, setMenuList] = React.useState(initialMenus);
+  // const [menuList, setMenuList] = React.useState(initialMenus);
 
   const [activeTab, setActiveTab] = useState(tabs.tabId1);
   const handleTabChange = (id) => {
@@ -146,7 +163,7 @@ export function Aside() {
             <ul className="list-unstyled flex-column" role="tablist">
 
               {
-                menuList.filter(q => q.isTab).map((tab, index) =>
+                menuList.filter(q => q.isTabMenu).map((tab, index) =>
                   <li key={tab.id}
                     className="nav-item mb-3"
                     data-toggle="tooltip"
@@ -178,172 +195,6 @@ export function Aside() {
                   </li>
                 )
               }
-
-
-              {/* 
-              <li
-                className="nav-item mb-3"
-                data-toggle="tooltip"
-                data-placement="rigth"
-                data-container="body"
-                data-boundary="window"
-                title="Features"
-              >
-                <OverlayTrigger
-                  placement="top"
-                  overlay={
-                    <Tooltip id="features">اطلاعات پایه</Tooltip>
-                  }
-                >
-                  
-                  <a
-                    href="#"
-                    className={`nav-link btn btn-icon btn-clean btn-lg ${activeTab ===
-                      tabs.tabId1 && "active"}`}
-                    data-toggle="tab"
-                    data-target={`#${tabs.tabId1}`}
-                    onClick={() => handleTabChange(tabs.tabId1)}
-                    role="tab"
-                  >
-                    <span className="svg-icon svg-icon-lg">
-                      <SVG
-                        src={toAbsoluteUrl(
-                          "/media/svg/icons/Code/Settings4.svg"
-                        )}
-                      />
-                    </span>
-                  </a>
-                </OverlayTrigger>
-              </li>
-              <li
-                className="nav-item mb-3"
-                data-toggle="tooltip"
-                data-placement="rigth"
-                data-container="body"
-                data-boundary="window"
-                title="Latest Project"
-              >
-                <OverlayTrigger
-                  placement="top"
-                  overlay={
-                    <Tooltip id="latest-project"> تغذیه</Tooltip>
-                  }
-                >
-                  <a
-                    href="#"
-                    className={`nav-link btn btn-icon btn-clean btn-lg ${activeTab ===
-                      tabs.tabId2 && "active"}`}
-                    data-toggle="tab"
-                    data-target={`#${tabs.tabId2}`}
-                    role="tab"
-                    onClick={() => handleTabChange(tabs.tabId2)}
-                  >
-                    <span className="svg-icon svg-icon-lg">
-                      <SVG
-                        src={toAbsoluteUrl(
-                          "/media/svg/icons/Cooking/Chef.svg"
-                        )}
-                      />
-                    </span>
-                  </a>
-                </OverlayTrigger>
-              </li>
-              <li
-                className="nav-item mb-3"
-                data-toggle="tooltip"
-                data-placement="rigth"
-                data-container="body"
-                data-boundary="window"
-                title="Latest Reports"
-              >
-                <OverlayTrigger
-                  placement="top"
-                  overlay={
-                    <Tooltip id="latest-reports"> خوابگاهی</Tooltip>
-                  }
-                >
-                  <a
-                    href="#"
-                    className="nav-link btn btn-icon btn-clean btn-lg"
-                    data-toggle="tab"
-                    data-target={`#${tabs.tabId3}`}
-                    role="tab"
-                    onClick={() => handleTabChange(tabs.tabId3)}
-                  >
-                    <span className="svg-icon svg-icon-lg">
-                      <SVG
-                        src={toAbsoluteUrl(
-                          "/media/svg/icons/Home/Bed.svg"
-                        )}
-                      />
-                    </span>
-                  </a>
-                </OverlayTrigger>
-              </li>
-              <li
-                className="nav-item mb-3"
-                data-toggle="tooltip"
-                data-placement="rigth"
-                data-container="body"
-                data-boundary="window"
-                title="Project Management"
-              >
-                <OverlayTrigger
-                  placement="top"
-                  overlay={
-                    <Tooltip id="project-management">
-                      حضور و غیاب
-                    </Tooltip>
-                  }
-                >
-                  <a
-                    href="#"
-                    className="nav-link btn btn-icon btn-clean btn-lg"
-                    data-toggle="tab"
-                    data-target={`#${tabs.tabId4}`}
-                    role="tab"
-                    onClick={() => handleTabChange(tabs.tabId4)}
-                  >
-                    <span className="svg-icon svg-icon-lg">
-                      <SVG
-                        src={toAbsoluteUrl(
-                          "/media/svg/icons/Communication/Group.svg"
-                        )}
-                      />
-                    </span>
-                  </a>
-                </OverlayTrigger>
-              </li>
-              <li
-                className="nav-item mb-3"
-                data-toggle="tooltip"
-                data-placement="rigth"
-                data-container="body"
-                data-boundary="window"
-                title="User Management"
-              >
-                <OverlayTrigger
-                  placement="top"
-                  overlay={
-                    <Tooltip id="user-management">ورزشی</Tooltip>
-                  }
-                >
-                  <a
-                    href="#"
-                    className="nav-link btn btn-icon btn-clean btn-lg"
-                    data-toggle="tab"
-                    data-target={`#${tabs.tabId5}`}
-                    role="tab"
-                    onClick={() => handleTabChange(tabs.tabId5)}
-                  >
-                    <span className="svg-icon svg-icon-lg">
-                      <SVG
-                        src={toAbsoluteUrl("/media/svg/icons/Clothes/T-Shirt.svg")}
-                      />
-                    </span>
-                  </a>
-                </OverlayTrigger>
-              </li> */}
 
             </ul>
             {/* end::Nav */}
@@ -494,8 +345,8 @@ export function Aside() {
                 <div className="tab-content bg-transparent" >
 
                   {
-                    menuList.filter(q => q.isTab).map((tab, index) =>
-                      <AsideMenu key={tab.id} menuList={menuList.filter(q => q.tabID === tab.id)} isActive={activeTab === tabsTrget[index]} />
+                    menuList.filter(q => q.isTabMenu).map((tab, index) =>
+                      <AsideMenu key={tab.id} menuList={menuList.filter(q => q.tabId === tab.id)} isActive={activeTab === tabsTrget[index]} />
                     )
                   }
 

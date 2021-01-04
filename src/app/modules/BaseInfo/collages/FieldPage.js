@@ -26,6 +26,17 @@ const FieldPage = () => {
     shallowEqual
   );
 
+  let isFullAccess = false;
+  const { menuList } = useSelector(
+    (state) => ({ menuList: state.auth.menu }),
+    shallowEqual
+  );
+
+  if (menuList.find(q => q.url == "/collages")) {
+    const temp = menuList.find(q => q.url == "/collages")
+    isFullAccess = temp.isFullAccess;
+  }
+
   return (
     <Suspense fallback={<LayoutSplashScreen />}>
       <Switch>
@@ -39,20 +50,20 @@ const FieldPage = () => {
        
         <ContentRoute path="/collages/fields/new"
           render={props =>
-            <ObjectEdit {...props} basePath="/collages/fields" api="api/field" currentState={currentState} initObject={initObject}
+            <ObjectEdit {...props} isFullAccess={isFullAccess} basePath="/collages/fields" api="api/field" currentState={currentState} initObject={initObject}
               formFields={formFields} otherFields={otherFields} ObjectEditSchema={ObjectEditSchema} />}
         />
 
         <ContentRoute
           path="/collages/fields/:id/edit"
           render={props =>
-            <ObjectEdit {...props} basePath="/collages/fields" api="api/field" currentState={currentState} initObject={initObject}
+            <ObjectEdit {...props} isFullAccess={isFullAccess} basePath="/collages/fields" api="api/field" currentState={currentState} initObject={initObject}
               formFields={formFields} otherFields={otherFields} ObjectEditSchema={ObjectEditSchema} />}
         />
 
         <ContentRoute
           path="/collages/fields"
-          render={props => <ObjectsPage basePath="/collages/fields" api="api/field" initialFilter={initialFilter} currentState={currentState} 
+          render={props => <ObjectsPage isFullAccess={isFullAccess} basePath="/collages/fields" api="api/field" initialFilter={initialFilter} currentState={currentState} 
           columns={columns} prepareFilter={prepareFilter} filterFields={filterFields} filterInitialValues={filterInitialValues}/>}
         />
 

@@ -25,6 +25,17 @@ const GroupPage = () => {
     (state) => ({ currentState: state.groups }),
     shallowEqual
   );
+  let isFullAccess = false;
+  const { menuList } = useSelector(
+    (state) => ({ menuList: state.auth.menu }),
+    shallowEqual
+  );
+
+  if (menuList.find(q => q.url == "/groups")) {
+    const temp = menuList.find(q => q.url == "/groups")
+    isFullAccess = temp.isFullAccess;
+  }
+
 
   return (
     <Suspense fallback={<LayoutSplashScreen />}>
@@ -48,20 +59,20 @@ const GroupPage = () => {
        
         <ContentRoute path="/groups/groups/new"
           render={props =>
-            <ObjectEdit {...props} basePath="/groups/groups" api="api/group" currentState={currentState} initObject={initObject}
+            <ObjectEdit {...props} isFullAccess={isFullAccess} basePath="/groups/groups" api="api/group" currentState={currentState} initObject={initObject}
               formFields={formFields} otherFields={otherFields} ObjectEditSchema={ObjectEditSchema} />}
         />
 
         <ContentRoute
           path="/groups/groups/:id/edit"
           render={props =>
-            <ObjectEdit {...props} basePath="/groups/groups" api="api/group" currentState={currentState} initObject={initObject}
+            <ObjectEdit {...props} isFullAccess={isFullAccess} basePath="/groups/groups" api="api/group" currentState={currentState} initObject={initObject}
               formFields={formFields} otherFields={otherFields} ObjectEditSchema={ObjectEditSchema} />}
         />
 
         <ContentRoute
           path="/groups/groups"
-          render={props => <ObjectsPage basePath="/groups/groups" api="api/group" initialFilter={initialFilter} currentState={currentState} 
+          render={props => <ObjectsPage isFullAccess={isFullAccess} basePath="/groups/groups" api="api/group" initialFilter={initialFilter} currentState={currentState} 
           columns={columns} prepareFilter={prepareFilter} filterFields={filterFields} filterInitialValues={filterInitialValues}/>}
         />
 

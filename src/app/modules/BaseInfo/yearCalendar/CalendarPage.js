@@ -14,50 +14,36 @@ import {
   prepareFilter,
   filterFields,
   filterInitialValues,
-} from './GradeUtils';
+} from './CalendarUtils';
 
 
 
 
-const GradePage = () => {
+const CalendarPage = () => {
 
   const { currentState } = useSelector(
-    (state) => ({ currentState: state.grades }),
+    (state) => ({ currentState: state.calendars }),
     shallowEqual
   );
-  
+
   let isFullAccess = false;
   const { menuList } = useSelector(
     (state) => ({ menuList: state.auth.menu }),
     shallowEqual
   );
 
-  if (menuList.find(q => q.url == "/grades")) {
-    const temp = menuList.find(q => q.url == "/grades")
+  if (menuList.find(q => q.url == "/calendar")) {
+    const temp = menuList.find(q => q.url == "/calendar")
     isFullAccess = temp.isFullAccess;
   }
-
 
   return (
     <Suspense fallback={<LayoutSplashScreen />}>
       <Switch>
-      
-        <ContentRoute path="/grades/new"
-          render={props =>
-            <ObjectEdit {...props} isFullAccess={isFullAccess} basePath="/grades" api="api/grade" currentState={currentState} initObject={initObject}
-              formFields={formFields} otherFields={otherFields} ObjectEditSchema={ObjectEditSchema} />}
-        />
 
         <ContentRoute
-          path="/grades/:id/edit"
-          render={props =>
-            <ObjectEdit {...props} isFullAccess={isFullAccess} basePath="/grades" api="api/grade" currentState={currentState} initObject={initObject}
-              formFields={formFields} otherFields={otherFields} ObjectEditSchema={ObjectEditSchema} />}
-        />
-
-        <ContentRoute
-          path="/grades"
-          render={props => <ObjectsPage isFullAccess={isFullAccess} basePath="/grades" api="api/grade" initialFilter={initialFilter} currentState={currentState} 
+          path="/calendar"
+          render={props => <ObjectsPage haveGeneralAction={false} isFullAccess={isFullAccess} basePath="/calendar" api="api/calendar" initialFilter={initialFilter} currentState={currentState} 
           columns={columns} prepareFilter={prepareFilter} filterFields={filterFields} filterInitialValues={filterInitialValues}/>}
         />
 
@@ -66,7 +52,7 @@ const GradePage = () => {
   )
 }
 
-export default GradePage
+export default CalendarPage
 
 
 

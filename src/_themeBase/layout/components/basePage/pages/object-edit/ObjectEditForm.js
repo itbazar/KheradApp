@@ -14,6 +14,7 @@ export const ObjectEditForm = ({
   object,
   btnRef,
   saveObject,
+  isFullAccess,
 }) => {
 
   const intl = useIntl();
@@ -42,6 +43,7 @@ export const ObjectEditForm = ({
                         label={intl.formatMessage({ id: field.label })}
                         type={field.type}
                         as={field.as}
+                        disabled={!isFullAccess}
                       />
                     </div>
                   )}
@@ -55,6 +57,7 @@ export const ObjectEditForm = ({
                     name={ofield.name}
                     as={ofield.as}
                     className={ofield.class}
+                    disabled={!isFullAccess}
                   />
                 </div>
               )}

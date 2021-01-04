@@ -3,7 +3,6 @@ import * as Yup from "yup";
 import { sortCaret } from "../../../../_themeBase/_helpers";
 import * as columnFormatters from "../../../../_themeBase/layout/components/basePage/pages/objects-table/column-formatters";
 import { Input } from "../../../../_themeBase/_partials/controls";
-import { SelectStatus } from '../../customComponents/SelectStatus';
 export {filterFields} from "../../customComponents/filterFields";
 
 export const initObject = {
@@ -15,7 +14,7 @@ export const initObject = {
 export const columns = [
   {
     dataField: "title",
-    text: columnFormatters.translateByMessageId("MODULES.GENERAL.STATUS"),
+    text: columnFormatters.translateByMessageId("MODULES.BASEINFO.DORM.TITLE"),
     // text: "نام سرا",
     sort: true,
     sortCaret: sortCaret,
@@ -28,21 +27,21 @@ export const columns = [
     sortCaret: sortCaret,
     formatter: columnFormatters.StatusColumnFormatter,
   },
-  {
-    dataField: "action",
-    text: columnFormatters.translateByMessageId("MODULES.GENERAL.ACTION"),
-    // text: "Actions",
-    formatter: columnFormatters.ActionsColumnFormatter,
-    formatExtraData: {
-      // openEditObjectPage: objectsUIProps.openEditObjectPage,
-      // openDeleteObjectDialog: objectsUIProps.openDeleteObjectDialog,
-    },
-    classes: "text-right pr-0",
-    headerClasses: "text-right pr-3",
-    style: {
-      minWidth: "100px",
-    },
-  },
+  // {
+  //   dataField: "action",
+  //   text: columnFormatters.translateByMessageId("MODULES.GENERAL.ACTION"),
+  //   // text: "Actions",
+  //   formatter: columnFormatters.ActionsColumnFormatter,
+  //   formatExtraData: {
+  //     // openEditObjectPage: objectsUIProps.openEditObjectPage,
+  //     // openDeleteObjectDialog: objectsUIProps.openDeleteObjectDialog,
+  //   },
+  //   classes: "text-right pr-0",
+  //   headerClasses: "text-right pr-3",
+  //   style: {
+  //     minWidth: "100px",
+  //   },
+  // },
 ];
 
 export const formFields = [
@@ -55,19 +54,18 @@ export const formFields = [
         component: Input,
         placeholder: "نام سرا",
         label: "نام سرا",
-        rowOrder: 1,
         rowIdx: 1,
         class: "col-lg-4"
       },
-      {
-        name: "isDeleted",
-        type: "option",
-        component: SelectStatus,
-        placeholder: "وضعیت",
-        label: "وضعیت",
-        rowOrder: 2,
-        class: "col-lg-4"
-      },
+      // {
+      //   name: "isDeleted",
+      //   type: "option",
+      //   component: SelectStatus,
+      //   placeholder: "وضعیت",
+      //   label: "وضعیت",
+      //   rowIdx: 2,
+      //   class: "col-lg-4"
+      // },
     ]
   },
 
@@ -109,37 +107,6 @@ export const filterInitialValues = {
   isDeleted: "", // values => All=""/Selling=0/Sold=1
   searchText: "",
 }
-export const filterFields111 = [
-  {
-    name: "isDeleted",
-    lable: "وضعیت",
-    type: "select",
-    list: [
-      {
-        value: "",
-        lable: "همه",
-      },
-      {
-        value: "0",
-        lable: "فعال",
-      },
-      {
-        value: "1",
-        lable: "حذف شده",
-      },
-
-    ],
-    component: SelectStatus
-  },
-  {
-    name: "searchText",
-    lable: "جستجو",
-    type: "text",
-    list: [],
-  },
-
-];
-
 
 export const prepareFilter = (queryParams, values) => {
   const { isDeleted, searchText } = values;

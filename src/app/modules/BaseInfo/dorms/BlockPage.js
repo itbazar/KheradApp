@@ -26,6 +26,17 @@ export const BlockPage = () => {
     shallowEqual
   );
 
+  let isFullAccess = false;
+  const { menuList } = useSelector(
+    (state) => ({ menuList: state.auth.menu }),
+    shallowEqual
+  );
+
+  if (menuList.find(q => q.url == "/dorms")) {
+    const temp = menuList.find(q => q.url == "/dorms")
+    isFullAccess = temp.isFullAccess;
+  }
+
   return (
     <Suspense fallback={<LayoutSplashScreen />}>
       <Switch>
@@ -45,20 +56,20 @@ export const BlockPage = () => {
         }
         <ContentRoute path="/dorms/blocks/new"
           render={props =>
-            <ObjectEdit {...props} basePath="/dorms/blocks" api="api/block" currentState={currentState} initObject={initObject}
+            <ObjectEdit {...props}   isFullAccess={isFullAccess} basePath="/dorms/blocks" api="api/block" initialFilter={initialFilter} currentState={currentState} initObject={initObject}
               formFields={formFields} otherFields={otherFields} ObjectEditSchema={ObjectEditSchema} />}
         />
 
         <ContentRoute
           path="/dorms/blocks/:id/edit"
           render={props =>
-            <ObjectEdit {...props} basePath="/dorms/blocks" api="api/block" currentState={currentState} initObject={initObject}
+            <ObjectEdit {...props}  isFullAccess={isFullAccess} basePath="/dorms/blocks" api="api/block" initialFilter={initialFilter} currentState={currentState} initObject={initObject}
               formFields={formFields} otherFields={otherFields} ObjectEditSchema={ObjectEditSchema} />}
         />
 
         <ContentRoute
           path="/dorms/blocks"
-          render={props => <ObjectsPage basePath="/dorms/blocks" api="api/block" initialFilter={initialFilter} currentState={currentState} 
+          render={props => <ObjectsPage  isFullAccess={isFullAccess} basePath="/dorms/blocks" api="api/block" initialFilter={initialFilter} currentState={currentState} 
           columns={columns} prepareFilter={prepareFilter} filterFields={filterFields} filterInitialValues={filterInitialValues}/>}
         />
 
