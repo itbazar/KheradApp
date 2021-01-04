@@ -5,3 +5,4 @@ export {ColorColumnFormatter} from "./ColorColumnFormatter";
 export {PriceColumnFormatter} from "./PriceColumnFormatter";
 export {ActionsColumnFormatter} from "./ActionsColumnFormatter";
 export {translateByMessageId} from "./TranslateColumn";
+export {DateColumnFormatter} from "./DateColumnFormatter";

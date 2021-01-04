@@ -5,6 +5,7 @@ import * as columnFormatters from "../../../../_themeBase/layout/components/base
 import { Checkbox, DatePickerField, Input } from "../../../../_themeBase/_partials/controls";
 import { SelectStatus } from '../../customComponents/SelectStatus';
 import { SelectObjects } from '../../../../_themeBase/layout/components/basePage/pages/SelectObjects';
+
 // export {filterFields} from "../../customComponents/filterFields";
 
 
@@ -148,6 +149,7 @@ export const columns = [
     // text: "شروع ترم",
     sort: true,
     sortCaret: sortCaret,
+    formatter: columnFormatters.DateColumnFormatter,
   },
   {
     dataField: "endDate",
@@ -156,6 +158,7 @@ export const columns = [
     // text: "پایان ترم",
     sort: true,
     sortCaret: sortCaret,
+    formatter: columnFormatters.DateColumnFormatter,
   },
   {
     dataField: "IsDeleted",
