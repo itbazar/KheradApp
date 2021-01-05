@@ -10,11 +10,9 @@ import {
   initObject,
   ObjectEditSchema,
   columns,
-  
   prepareFilter,
   filterFields,
   filterInitialValues,
-  selectFilter,
 } from './RoomUtils';
 
 
@@ -57,20 +55,20 @@ export const RoomPage = () => {
         }
         <ContentRoute path="/dorms/rooms/new"
           render={props =>
-            <ObjectEdit {...props} isFullAccess={isFullAccess} basePath="/dorms/rooms" api="api/room"  selectFilter={selectFilter} currentState={currentState} initObject={initObject}
+            <ObjectEdit {...props} isFullAccess={isFullAccess} basePath="/dorms/rooms" api="api/room" currentState={currentState} initObject={initObject}
               formFields={formFields} otherFields={otherFields} ObjectEditSchema={ObjectEditSchema} prepareFilter={prepareFilter}/>}
         />
 
         <ContentRoute
           path="/dorms/rooms/:id/edit"
           render={props =>
-            <ObjectEdit {...props} isFullAccess={isFullAccess} basePath="/dorms/rooms" api="api/room"  selectFilter={selectFilter} currentState={currentState} initObject={initObject}
+            <ObjectEdit {...props} isFullAccess={isFullAccess} basePath="/dorms/rooms" api="api/room" currentState={currentState} initObject={initObject}
               formFields={formFields} otherFields={otherFields} ObjectEditSchema={ObjectEditSchema} prepareFilter={prepareFilter}/>}
         />
 
         <ContentRoute
           path="/dorms/rooms"
-          render={props => <ObjectsPage isFullAccess={isFullAccess} basePath="/dorms/rooms" api="api/room"  selectFilter={selectFilter} currentState={currentState} 
+          render={props => <ObjectsPage isFullAccess={isFullAccess} basePath="/dorms/rooms" api="api/room" currentState={currentState} 
           columns={columns} prepareFilter={prepareFilter}  filterFields={filterFields} filterInitialValues={filterInitialValues}/>}
         />
 

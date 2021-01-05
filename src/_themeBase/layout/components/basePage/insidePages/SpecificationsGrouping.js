@@ -2,7 +2,7 @@ import React, { useMemo } from "react";
 import { useIntl } from "react-intl";
 import { useSpecificationsUIContext } from "./SpecificationsUIContext";
 
-export function SpecificationsGrouping() {
+export function SpecificationsGrouping({ haveFullAccess }) {
   // Specs UI Context
   const specsUIContext = useSpecificationsUIContext();
   const specsUIProps = useMemo(() => {
@@ -14,7 +14,7 @@ export function SpecificationsGrouping() {
         specsUIContext.openFetchSpecificationsDialog,
     };
   }, [specsUIContext]);
- 
+
   const intl = useIntl();
   return (
     <div className="form">
@@ -35,13 +35,14 @@ export function SpecificationsGrouping() {
                 <i className="fa fa-stream"></i>تغییر دسترسی
               </button>
               &nbsp;
-              <button
+              {haveFullAccess && <button
                 type="button"
                 className="btn btn-light-primary font-weight-bolder font-size-sm"
                 onClick={specsUIProps.openFetchSpecificationsDialog}
               >
-                <i className="fa fa-stream"></i>تغییر نوع دسترسی 
+                <i className="fa fa-stream"></i>تغییر نوع دسترسی
               </button>
+              }
             </div>
           </div>
         </div>

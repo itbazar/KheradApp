@@ -6,6 +6,7 @@ import { ObjectEdit } from '../../../../_themeBase/layout/components/basePage/pa
 import ObjectsPage from '../../../../_themeBase/layout/components/basePage/pages/ObjectsPage';
 import { GroupAccessPage } from './GroupAccessPage';
 import { MenuAccessPage } from './MenuAccessPage';
+import { RoleAccessPage } from './RoleAccessPage';
 import {
   formFields,
   otherFields,
@@ -46,9 +47,9 @@ const RolePage = () => {
 
   const otherTabs = [
     { id: 2, title: "MODULES.BASEINFO.ROLE.PERMISSION_GROUP", tab: 'groupAccess',component:GroupAccessPage},
-    { id: 3, title: "MODULES.BASEINFO.ROLE.PERMISSION_SELF", tab: 'selfAccess',component:<></>},
-    { id: 4, title: "MODULES.BASEINFO.ROLE.PERMISSION_SELF_TYPE", tab: 'selfTypeAccess',component:<></>},
-    { id: 4, title: "MODULES.BASEINFO.ROLE.PERMISSION_ROLE", tab: 'roleAccess',component:<></>},
+    // { id: 3, title: "MODULES.BASEINFO.ROLE.PERMISSION_SELF", tab: 'selfAccess'},
+    // { id: 4, title: "MODULES.BASEINFO.ROLE.PERMISSION_SELF_TYPE", tab: 'selfTypeAccess'},
+    { id: 4, title: "MODULES.BASEINFO.ROLE.PERMISSION_ROLE", tab: 'roleAccess',component:RoleAccessPage},
     { id: 4, title: "MODULES.BASEINFO.ROLE.PERMISSION_MENU", tab: 'menuAccess',component:MenuAccessPage},
   ];
 

@@ -3,32 +3,69 @@ import { Specifications } from '../../../../_themeBase/layout/components/basePag
 import { SpecificationsUIProvider } from '../../../../_themeBase/layout/components/basePage/insidePages/SpecificationsUIContext';
 import { FilterObjectsUIProvider } from '../../../../_themeBase/layout/components/basePage/pages/FilterObjectsUIContext';
 import { SelectObjectsField } from '../../../../_themeBase/layout/components/basePage/selectObjects/SelectObjectsField';
+import { sortCaret } from '../../../../_themeBase/_helpers';
+import * as columnFormatters from "../../../../_themeBase/layout/components/basePage/insidePages/column-formatters";
+import { BaseAccessPage } from '../../customComponents/BaseAccessPage';
+
 
 const init = {
     id: undefined,
     roleId: 0,
-    groupId: 0,
     subGroupId: 0,
+    roleTitle: "",
+    subGroupTitle: "",
     allowed: true,
     isDeleted: false,
 };
 
+const columns = [
+    {
+      dataField: "roleTitle",
+      text: columnFormatters.translateByMessageId("MODULES.BASEINFO.ROLE.TITLE"),
+      sort: true,
+      sortCaret: sortCaret,
+    },
+    {
+      dataField: "subGroupTitle",
+      text: columnFormatters.translateByMessageId("MODULES.BASEINFO.SubGroup.FORM_TITLE"),
+      sort: true,
+      sortCaret: sortCaret,
+    },
+    {
+        dataField: "allowed",
+        text: columnFormatters.translateByMessageId("MODULES.GENERAL.STATUS"),
+        // text: "وضعیت",
+        sort: true,
+        sortCaret: sortCaret,
+        formatter: columnFormatters.AllowedColumnFormatter,
+      },
+    // {
+    //   dataField: "action",
+    //   text: "Actions",
+    //   formatter: ActionsColumnFormatter,
+    //   formatExtraData: {
+    //     openEditSpecificationDialog: specsUIProps.openEditSpecificationDialog,
+    //     openDeleteSpecificationDialog:
+    //       specsUIProps.openDeleteSpecificationDialog,
+    //   },
+    //   classes: "text-right pr-0",
+    //   headerClasses: "text-right pr-3",
+    //   style: {
+    //     minWidth: "100px",
+    //   },
+    // },
+  ];
+
 
 export const prepareFilter = (queryParams, values) => {
-    const { allowed, roleId, groupId,subGroupId } = values;
+    const { allowed, roleId, subGroupId } = values;
     const newQueryParams = { ...queryParams };
     const filter = {};
-    // Filter by allowed
+   
     filter.allowed = allowed !== "" ? +allowed : undefined;
-
-    // Filter by roleId
     filter.roleId = roleId !== "" ? +roleId : 0;
-
-    // Filter by roleId
-    filter.groupId = groupId !== "" ? +groupId : 0;
-
-    // Filter by subGroupId
     filter.subGroupId = subGroupId !== "" ? +subGroupId : 0;
+
 
     // // Filter by all fields
     // filter.title = searchText;
@@ -54,45 +91,17 @@ export const prepareFilter = (queryParams, values) => {
         whereClauseParameters.push(0)
     }
 
-    if (filter.groupId > 0) {
-        whereClause = whereClause + " and groupId=@1"
-        whereClauseParameters.push(filter.groupId)
-    }
-    else {
-        whereClause = whereClause + " and groupId!=@1"
-        whereClauseParameters.push(0)
-    }
-
     if (filter.subGroupId > 0) {
-        whereClause = whereClause + " and subGroupId=@2"
+        whereClause = whereClause + " and subGroupId=@1"
         whereClauseParameters.push(filter.subGroupId)
     }
     else {
-        whereClause = whereClause + " and subGroupId!=@2"
+        whereClause = whereClause + " and subGroupId!=@1"
         whereClauseParameters.push(0)
     }
 
-    // if (filter.isDeleted != undefined) {
-    //     whereClause = whereClause + " and isDeleted=@1"
-    //     whereClauseParameters.push(filter.isDeleted == 0 ? false : true)
-    // }
-
     newQueryParams.whereClause = whereClause;
     newQueryParams.whereClauseParameters = whereClauseParameters;
-
-
-    let wSelect = ""
-    const wParametersSelect = [];
-    if (groupId > 0) {
-      wSelect = wSelect + "groupId=@0"
-      wParametersSelect.push(groupId)
-    }
-    else {
-      wSelect = wSelect + "groupId!=@0"
-      wParametersSelect.push(0)
-    }
-    newQueryParams.whereClauseSelect = wSelect;
-    newQueryParams.whereClauseParametersSelect = wParametersSelect;
 
 
     return newQueryParams;
@@ -105,17 +114,6 @@ export const filterInitialValues = {
 }
 export const filterFields = [
     {
-        name: "groupId",
-        lable: "MODULES.BASEINFO.Group.FORM_TITLE",
-        type: "component",
-        list: [],
-        component: (props) =>
-            <SelectObjectsField api="api/group"
-                reduxState="groups"
-                sname="groupId"
-                {...props} />
-    },
-    {
         name: "subGroupId",
         lable: "MODULES.BASEINFO.SubGroup.FORM_TITLE",
         type: "component",
@@ -126,17 +124,27 @@ export const filterFields = [
                 sname="subGroupId"
                 {...props} />
     },
-
 ];
 
 export const GroupAccessPage = ({ id }) => {
     return (
+
+        // <BaseAccessPage 
+        // currentParentId={id} 
+        // initSpecification={init} 
+        // api="api/MenuAccess" 
+        // reduxName="menuPermissions" 
+        // columns={columns} 
+        // prepareFilter={prepareFilter}
+        // filterInitialValues={filterInitialValues} 
+        // filterFields={filterFields} 
+        // haveFullAccess={true} />
         <FilterObjectsUIProvider>
             <SpecificationsUIProvider currentParentId={id} initSpecification={init}>
-                <Specifications api="api/GroupAccess" reduxName="groupPermissions" prepareFilter={prepareFilter}
-                    filterInitialValues={filterInitialValues} filterFields={filterFields} />
+                <Specifications api="api/SubGroupAccess" reduxName="groupPermissions" columns={columns} prepareFilter={prepareFilter}
+                    filterInitialValues={filterInitialValues} filterFields={filterFields} haveFullAccess={false}/>
             </SpecificationsUIProvider>
-            </FilterObjectsUIProvider>
+        </FilterObjectsUIProvider>
     )
 }
 

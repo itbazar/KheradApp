@@ -9,7 +9,7 @@ import { SpecificationsGrouping } from "./SpecificationsGrouping";
 import { SpecificationEditDialog } from "./specification-edit-dialog/SpecificationEditDialog";
 import { useSpecificationsUIContext } from "./SpecificationsUIContext";
 
-export function Specifications({api,reduxName,columns,prepareFilter,filterInitialValues,filterFields}) {
+export function Specifications({api,reduxName,columns,prepareFilter,filterInitialValues,filterFields,haveFullAccess}) {
   // Specifications UI Context
   const specsUIContext = useSpecificationsUIContext();
   const specsUIProps = useMemo(() => {
@@ -28,7 +28,7 @@ export function Specifications({api,reduxName,columns,prepareFilter,filterInitia
         <SpecificationsFilter prepareFilter={prepareFilter} filterInitialValues={filterInitialValues} filterFields={filterFields}/>
         {specsUIProps.ids.length > 0 && (
           <>
-            <SpecificationsGrouping />
+            <SpecificationsGrouping haveFullAccess={haveFullAccess}/>
             <br />
           </>
         )}

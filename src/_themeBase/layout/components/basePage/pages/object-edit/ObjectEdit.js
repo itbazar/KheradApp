@@ -108,11 +108,11 @@ export function ObjectEdit({
               <i className="fa fa-arrow-left"></i>
               {intl.formatMessage({ id: "MODULES.GENERAL.BUTTONBACK" })}
             </button>
-            {`  `}
+            {/* {`  `}
             <button className="btn btn-light ml-2" disabled={!isFullAccess}>
               <i className="fa fa-redo"></i>
               {intl.formatMessage({ id: "MODULES.GENERAL.BUTTONRESET" })}
-            </button>
+            </button> */}
             {`  `}
             <button
               type="submit"

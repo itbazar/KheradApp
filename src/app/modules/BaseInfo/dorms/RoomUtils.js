@@ -249,15 +249,6 @@ export const prepareFilter = (queryParams, values) => {
 };
 
 
-export const selectFilter = {
-  whereClause: "",
-  whereClauseParameters: [
-
-  ],
-  orderCluase: "id asc ",
-  skipCount: 0,
-  takeCount: 100
-};
 
 // Validation schema
 export const ObjectEditSchema = Yup.object().shape({
