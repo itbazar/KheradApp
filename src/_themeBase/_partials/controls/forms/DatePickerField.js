@@ -60,37 +60,6 @@ export function DatePickerField({ ...props }) {
     day: "01",
   });
 
-  // useEffect(() => {
-
-  //     setSelectedDay(defaultDate);
-
-  // }, [defaultDate]);
-
-  // useEffect(() => {
-  //   let newValue = null;
-  //   let defaultValue = null;
-  //   // if (defaultDate === selectedDay)
-  //   //   return;
-  //   if (field.value !== "") {
-  //     //'2006-09-20T00:00:00'
-  //      newValue = convertDateStringToLocal(field.value, locale);
-  //   }
-  //   else
-  //   {
-  //     let mNow = moment();// today
-  //     newValue = mNow.format("jYYYY/jMM/jDD");
-
-  //   }
-  //   defaultValue = initDatePickerValue(newValue);
-  //   console.log("defaultValue 1980  " + JSON.stringify(defaultValue));
-  //   // setdefaultDate(defaultValue);
-  // //  setSelectedDay(defaultValue);
-  // }, []);
-
-  // useEffect(() => {
-  //   setdefaultDate(field.value);
-  // }, [])
-
 
   const dateValue = ( field ) => {
     const defaultDate1 = {
@@ -98,7 +67,7 @@ export function DatePickerField({ ...props }) {
       month: "01",
       day: "01",
     };
-    return defaultDate1;
+    // return defaultDate1;
     const defaultDate2 = {
       year: "1399",
       month: "11",
@@ -114,11 +83,6 @@ export function DatePickerField({ ...props }) {
 
   return (
     <>
-      {/* {field.value !== "" :  setSelectedDay({
-        year: "0001",
-        month: "01",
-        day: "01",
-        })} */}
       {props.label && <label>{props.label}</label>}
       <br />
       {
@@ -130,16 +94,16 @@ export function DatePickerField({ ...props }) {
           style={{ width: "100%" }}
           {...field}
           {...props}
-          value={null}
+          value={selectedDay}
           locale={locale}
           onChange={(val) => {
-            // setDatepickerValue({
-            //   val,
-            //   field,
-            //   locale,
-            //   setFieldValue,
-            //   setSelectedDay,
-            // });
+            setDatepickerValue({
+              val,
+              field,
+              locale,
+              setFieldValue,
+              setSelectedDay,
+            });
           }}
           shouldHighlightWeekends
         />
