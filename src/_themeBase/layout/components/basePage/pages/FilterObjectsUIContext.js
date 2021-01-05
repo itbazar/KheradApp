@@ -11,15 +11,15 @@ export const initialFilter = {
   filter: {
     title: "",
   },
-  sortOrder: "asc", // asc||desc
-  sortField: "title",
+  sortOrder: "desc", // asc||desc
+  sortField: "id",
   pageNumber: 1,
-  pageSize: 10,
+  pageSize: 5,
 
   whereClause: "",
   whereClauseParameters: [
   ],
-  orderCluase: "id asc ",
+  orderCluase: "id desc ",
   skipCount: 0,
   takeCount: 5,
 
