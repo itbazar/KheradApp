@@ -1,9 +1,7 @@
-import React from 'react';
 import * as Yup from "yup";
 import { sortCaret } from "../../../../_themeBase/_helpers";
 import * as columnFormatters from "../../../../_themeBase/layout/components/basePage/pages/objects-table/column-formatters";
 import { Input } from "../../../../_themeBase/_partials/controls";
-import { SelectStatus } from '../../customComponents/SelectStatus';
 export {filterFields} from "../../customComponents/filterFields";
  
   
@@ -16,7 +14,8 @@ export {filterFields} from "../../customComponents/filterFields";
   export const columns = [
     {
       dataField: "title",
-      text: "نام مقطع تحصیلی",
+      text: columnFormatters.translateByMessageId("MODULES.BASEINFO.GRADE.TITLE"),
+      // text: "نام مقطع تحصیلی",
       sort: true,
       sortCaret: sortCaret,
     },
@@ -28,21 +27,21 @@ export {filterFields} from "../../customComponents/filterFields";
       sortCaret: sortCaret,
       formatter: columnFormatters.StatusColumnFormatter,
     },
-    // {
-    //   dataField: "action",
-    //   text: columnFormatters.translateByMessageId("MODULES.GENERAL.ACTION"),
-    //   // text: "Actions",
-    //   formatter: columnFormatters.ActionsColumnFormatter,
-    //   formatExtraData: {
-    //     // openEditObjectPage: objectsUIProps.openEditObjectPage,
-    //     // openDeleteObjectDialog: objectsUIProps.openDeleteObjectDialog,
-    //   },
-    //   classes: "text-right pr-0",
-    //   headerClasses: "text-right pr-3",
-    //   style: {
-    //     minWidth: "100px",
-    //   },
-    // },
+    {
+      dataField: "action",
+      text: columnFormatters.translateByMessageId("MODULES.GENERAL.ACTION"),
+      // text: "Actions",
+      formatter: columnFormatters.ActionsColumnFormatter,
+      formatExtraData: {
+        // openEditObjectPage: objectsUIProps.openEditObjectPage,
+        // openDeleteObjectDialog: objectsUIProps.openDeleteObjectDialog,
+      },
+      classes: "text-right pr-0",
+      headerClasses: "text-right pr-3",
+      style: {
+        minWidth: "100px",
+      },
+    },
   ];
   
   export const formFields = [
@@ -53,8 +52,8 @@ export {filterFields} from "../../customComponents/filterFields";
           name: "title",
           type: "text",
           component: Input,
-          placeholder: "نام مقطع تحصیلی",
-          label: "نام مقطع تحصیلی",
+          placeholder: "MODULES.BASEINFO.GRADE.TITLE_PH",
+          label: "MODULES.BASEINFO.GRADE.TITLE",
           rowIdx: 1,
           class: "col-lg-4"
         },
@@ -101,9 +100,9 @@ export {filterFields} from "../../customComponents/filterFields";
   const whereClauseParameters = [];
   whereClauseParameters.push(searchText)
 
-if(filter.isDeleted != undefined){
+if(filter.isDeleted !== undefined){
   whereClause = whereClause + " and isDeleted=@1"
-  whereClauseParameters.push(filter.isDeleted == 0 ? false : true)
+  whereClauseParameters.push(filter.isDeleted === 0 ? false : true)
 }
 
  newQueryParams.whereClause = whereClause;

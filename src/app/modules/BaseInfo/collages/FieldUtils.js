@@ -5,8 +5,7 @@ import * as columnFormatters from "../../../../_themeBase/layout/components/base
 import { Input } from "../../../../_themeBase/_partials/controls";
 import { SelectStatus } from '../../customComponents/SelectStatus';
 import { SelectObjectsField } from '../../../../_themeBase/layout/components/basePage/selectObjects/SelectObjectsField';
-
-
+export {filterFields} from "../../customComponents/filterFields";
 export const initObject = {
   id: undefined,
   title: "",
@@ -97,49 +96,6 @@ export const filterInitialValues = {
   searchText: "",
 }
 
-
-export const filterFields = [
-  {
-    name: "isDeleted",
-    lable: "وضعیت",
-    type: "select",
-    list: [
-      {
-        value: "",
-        lable: "همه",
-      },
-      {
-        value: "0",
-        lable: "فعال",
-      },
-      {
-        value: "1",
-        lable: "حذف شده",
-      },
-
-    ],
-    component: SelectStatus
-  },
-  {
-    name: "collageId",
-    lable: "MODULES.BASEINFO.DORM.TITLE",
-    type: "component",
-    list: [],
-    component: (props) =>
-      <SelectObjectsField api="api/collage"
-        reduxState="collages"
-        sname="collageId"
-        {...props} />
-  },
-  {
-    name: "searchText",
-    lable: "جستجو",
-    type: "text",
-    list: [],
-  },
-
-];
-
 export const prepareFilter = (queryParams, values) => {
   const { isDeleted, searchText,collageId } = values;
   const newQueryParams = { ...queryParams };
@@ -170,9 +126,9 @@ export const prepareFilter = (queryParams, values) => {
     whereClauseParameters.push(0)
   }
 
-  if (filter.isDeleted != undefined) {
+  if (filter.isDeleted !== undefined) {
     whereClause = whereClause + " and isDeleted=@2"
-    whereClauseParameters.push(filter.isDeleted == 0 ? false : true)
+    whereClauseParameters.push(filter.isDeleted === 0 ? false : true)
   }
 
   newQueryParams.whereClause = whereClause;

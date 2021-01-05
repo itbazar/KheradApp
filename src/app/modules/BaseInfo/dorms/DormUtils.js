@@ -27,21 +27,21 @@ export const columns = [
     sortCaret: sortCaret,
     formatter: columnFormatters.StatusColumnFormatter,
   },
-  // {
-  //   dataField: "action",
-  //   text: columnFormatters.translateByMessageId("MODULES.GENERAL.ACTION"),
-  //   // text: "Actions",
-  //   formatter: columnFormatters.ActionsColumnFormatter,
-  //   formatExtraData: {
-  //     // openEditObjectPage: objectsUIProps.openEditObjectPage,
-  //     // openDeleteObjectDialog: objectsUIProps.openDeleteObjectDialog,
-  //   },
-  //   classes: "text-right pr-0",
-  //   headerClasses: "text-right pr-3",
-  //   style: {
-  //     minWidth: "100px",
-  //   },
-  // },
+  {
+    dataField: "action",
+    text: columnFormatters.translateByMessageId("MODULES.GENERAL.ACTION"),
+    // text: "Actions",
+    formatter: columnFormatters.ActionsColumnFormatter,
+    formatExtraData: {
+      // openEditObjectPage: objectsUIProps.openEditObjectPage,
+      // openDeleteObjectDialog: objectsUIProps.openDeleteObjectDialog,
+    },
+    classes: "text-right pr-0",
+    headerClasses: "text-right pr-3",
+    style: {
+      minWidth: "100px",
+    },
+  },
 ];
 
 export const formFields = [
@@ -52,8 +52,10 @@ export const formFields = [
         name: "title",
         type: "text",
         component: Input,
-        placeholder: "نام سرا",
-        label: "نام سرا",
+        placeholder: "MODULES.BASEINFO.DORM.TITLE_PH",
+        label: "MODULES.BASEINFO.DORM.TITLE",
+        // placeholder: "نام سرا",
+        // label: "نام سرا",
         rowIdx: 1,
         class: "col-lg-4"
       },

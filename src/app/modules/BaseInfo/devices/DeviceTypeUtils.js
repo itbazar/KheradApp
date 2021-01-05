@@ -68,7 +68,7 @@ import { Input } from "../../../../_themeBase/_partials/controls";
   export const filterFields = [
     {
       name: "searchText",
-      lable: "جستجو",
+      lable: "MODULES.GENERAL.SEARCH",
       type: "text",
       list:[],
     },

@@ -6,7 +6,7 @@ import { DatePickerField, Input, Select } from "../../../../_themeBase/_partials
 import {
   ObjectStatusTitles,
 } from '../../../../_themeBase/layout/components/basePage/pages/ObjectsUIHelpers';
-
+export {filterFields} from "../../customComponents/filterFields";
 
 
 
@@ -38,38 +38,44 @@ export const initObject = {
 export const columns = [
   {
     dataField: "title",
-    text: "نام ساعت کاری",
+    text: columnFormatters.translateByMessageId("MODULES.BASEINFO.WORKTIME.TITLE"),
+    // text: "نام ساعت کاری",
     sort: true,
     sortCaret: sortCaret,
   },
   {
     dataField: "yearId",
-    text: "طول ساعت کاری",
+    text: columnFormatters.translateByMessageId("MODULES.BASEINFO.WORKTIME.DURATION"),
+    // text: "طول ساعت کاری",
     sort: true,
     sortCaret: sortCaret,
   },
   {
     dataField: "year",
-    text: "ساعت ورود",
+    text: columnFormatters.translateByMessageId("MODULES.BASEINFO.WORKTIME.ENTRANCE"),
+    // text: "ساعت ورود",
     sort: true,
     sortCaret: sortCaret,
   },
   {
     dataField: "semesterId",
-    text: "ساعت خروج",
+    text: columnFormatters.translateByMessageId("MODULES.BASEINFO.WORKTIME.LEAVING"),
+    // text: "ساعت خروج",
     sort: true,
     sortCaret: sortCaret,
   },
   {
-    dataField: "isDeleted",
-    text: "وضعیت",
+    dataField: "IsDeleted",
+    text: columnFormatters.translateByMessageId("MODULES.GENERAL.STATUS"),
+    // text: "وضعیت",
     sort: true,
     sortCaret: sortCaret,
     formatter: columnFormatters.StatusColumnFormatter,
   },
   {
     dataField: "action",
-    text: "عملیات",
+    text: columnFormatters.translateByMessageId("MODULES.GENERAL.ACTION"),
+    // text: "Actions",
     formatter: columnFormatters.ActionsColumnFormatter,
     formatExtraData: {
       // openEditObjectPage: objectsUIProps.openEditObjectPage,
@@ -91,8 +97,10 @@ export const formFields = [
         name: "title",
         type: "text",
         component: Input,
-        placeholder: "نام ساعت کاری",
-        label: "نام ساعت کاری",
+        placeholder: "MODULES.BASEINFO.WORKTIME.TITLE_PH",
+        label: "MODULES.BASEINFO.WORKTIME.TITLE",
+        // placeholder: "نام ساعت کاری",
+        // label: "نام ساعت کاری",
         rowOrder: 1,
         rowIdx: 1,
         class: "col-lg-4"
@@ -101,8 +109,10 @@ export const formFields = [
         name: "yearId",
         type: "text",
         component: Input,
-        placeholder: "طول ساعت کاری",
-        label: "طول ساعت کاری",
+        placeholder: "MODULES.BASEINFO.WORKTIME.DURATION_PH",
+        label: "MODULES.BASEINFO.WORKTIME.DURATION_PH",
+        // placeholder: "طول ساعت کاری",
+        // label: "طول ساعت کاری",
         rowOrder: 2,
         rowIdx: 1,
         class: "col-lg-4"
@@ -111,8 +121,10 @@ export const formFields = [
         name: "semesterId",
         type: "text",
         component: Input,
-        placeholder: "ساعت خروج",
-        label: "ساعت خروج",
+        placeholder: "MODULES.BASEINFO.WORKTIME.LEAVING_PH",
+        label: "MODULES.BASEINFO.WORKTIME.LEAVING_PH",
+        // placeholder: "ساعت خروج",
+        // label: "ساعت خروج",
         rowOrder: 2,
         rowIdx: 1,
         class: "col-lg-4"
@@ -123,35 +135,39 @@ export const formFields = [
     row: 1,
     list: [
 
-      {
-        name: "termDateStart",
-        type: "text",
-        component: Input,
-        placeholder: "شروع ترم",
-        label: "شروع ترم",
-        rowOrder: 1,
-        rowIdx: 1,
-        class: "col-lg-4"
-      },
-      {
-        name: "termDateEnd",
-        type: "text",
-        component: Input,
-        placeholder: "پایان ترم",
-        label: "پایان ترم",
-        rowOrder: 2,
-        rowIdx: 1,
-        class: "col-lg-4"
-      },
-      {
-        name: "isDeleted",
-        type: "option",
-        component: SelectStatus,
-        placeholder: "وضعیت",
-        label: "وضعیت",
-        rowOrder: 2,
-        class: "col-lg-4"
-      },
+      // {
+      //   name: "termDateStart",
+      //   type: "text",
+      //   component: Input,
+      //   placeholder: "MODULES.BASEINFO.WORKTIME.TITLE_PH",
+      //   label: "MODULES.BASEINFO.WORKTIME.TITLE_PH",
+      //   // placeholder: "شروع ترم",
+      //   // label: "شروع ترم",
+      //   rowOrder: 1,
+      //   rowIdx: 1,
+      //   class: "col-lg-4"
+      // },
+      // {
+      //   name: "termDateEnd",
+      //   type: "text",
+      //   component: Input,
+      //   placeholder: "MODULES.BASEINFO.WORKTIME.TITLE_PH",
+      //   label: "MODULES.BASEINFO.WORKTIME.TITLE_PH",
+      //   // placeholder: "پایان ترم",
+      //   // label: "پایان ترم",
+      //   rowOrder: 2,
+      //   rowIdx: 1,
+      //   class: "col-lg-4"
+      // },
+      // {
+      //   name: "isDeleted",
+      //   type: "option",
+      //   component: SelectStatus,
+      //   // placeholder: "وضعیت",
+      //   // label: "وضعیت",
+      //   rowOrder: 2,
+      //   class: "col-lg-4"
+      // },
 
     ]
   },
@@ -176,36 +192,36 @@ export const filterInitialValues = {
   isDeleted: "", // values => All=""/Selling=0/Sold=1
   searchText: "",
 }
-export const filterFields = [
-  {
-    name: "isDeleted",
-    lable: "وضعیت",
-    type: "select",
-    list: [
-      {
-        value: "",
-        lable: "همه",
-      },
-      {
-        value: "0",
-        lable: "فعال",
-      },
-      {
-        value: "1",
-        lable: "حذف شده",
-      },
+// export const filterFields = [
+//   {
+//     name: "isDeleted",
+//     lable: "وضعیت",
+//     type: "select",
+//     list: [
+//       {
+//         value: "",
+//         lable: "همه",
+//       },
+//       {
+//         value: "0",
+//         lable: "فعال",
+//       },
+//       {
+//         value: "1",
+//         lable: "حذف شده",
+//       },
 
-    ],
-    component: SelectStatus
-  },
-  {
-    name: "searchText",
-    lable: "جستجو",
-    type: "text",
-    list: [],
-  },
+//     ],
+//     component: SelectStatus
+//   },
+//   {
+//     name: "searchText",
+//     lable: "جستجو",
+//     type: "text",
+//     list: [],
+//   },
 
-];
+// ];
 
 
 export const prepareFilter = (queryParams, values) => {
