@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useMemo } from "react";
 import DatePicker from "react-modern-calendar-datepicker";
 import "react-modern-calendar-datepicker/lib/DatePicker.css";
 // import { utils } from 'react-modern-calendar-datepicker';
@@ -25,6 +25,8 @@ const getFieldCSSClasses = (touched, errors) => {
 
   return classes.join(" ");
 };
+
+
 
 export const setDatepickerValue = ({
   val,
@@ -89,6 +91,27 @@ export function DatePickerField({ ...props }) {
   //   setdefaultDate(field.value);
   // }, [])
 
+
+  const dateValue = ( field ) => {
+    const defaultDate1 = {
+      year: "1400",
+      month: "01",
+      day: "01",
+    };
+    return defaultDate1;
+    const defaultDate2 = {
+      year: "1399",
+      month: "11",
+      day: "11",
+    };
+    if (field && field.value !== "") {
+      return defaultDate1;
+    } else {
+      return defaultDate2;
+    }
+  };
+
+
   return (
     <>
       {/* {field.value !== "" :  setSelectedDay({
@@ -107,16 +130,16 @@ export function DatePickerField({ ...props }) {
           style={{ width: "100%" }}
           {...field}
           {...props}
-          value={selectedDay}
+          value={null}
           locale={locale}
           onChange={(val) => {
-            setDatepickerValue({
-              val,
-              field,
-              locale,
-              setFieldValue,
-              setSelectedDay,
-            });
+            // setDatepickerValue({
+            //   val,
+            //   field,
+            //   locale,
+            //   setFieldValue,
+            //   setSelectedDay,
+            // });
           }}
           shouldHighlightWeekends
         />
