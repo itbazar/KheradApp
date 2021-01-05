@@ -57,16 +57,14 @@ export const ObjectEditForm = ({
         {({ handleSubmit }) => (
           <>
             <Form className="form form-label-right">
-              {formFields.map((formRow) => (
+              {formFields.map(formRow =>
                 <div key={formRow.row} className="form-group row">
-                  {formRow.list.map((field, index) => (
+                  {formRow.list.map((field, index) =>
                     <div key={index} className={field.class}>
                       <Field
                         name={field.name}
                         component={field.component}
-                        placeholder={intl.formatMessage({
-                          id: field.placeholder,
-                        })}
+                        placeholder={intl.formatMessage({ id: field.placeholder })}
                         label={intl.formatMessage({ id: field.label })}
                         type={field.type}
                         as={field.as}
@@ -74,11 +72,11 @@ export const ObjectEditForm = ({
                         // onChange={handleChange}
                       />
                     </div>
-                  ))}
+                  )}
                 </div>
-              ))}
+              )}
 
-              {otherFields.map((ofield, index) => (
+              {otherFields.map((ofield, index) =>
                 <div key={index} className="form-group">
                   <label>{intl.formatMessage({ id: ofield.lable })}</label>
                   <Field
@@ -102,4 +100,8 @@ export const ObjectEditForm = ({
       </Formik>
     </>
   );
-};
+}
+
+
+
+
