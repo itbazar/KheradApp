@@ -22,62 +22,61 @@ export const initObject = {
 export const columns = [
   {
     dataField: "title",
-    text:columnFormatters.translateByMessageId("MODULES.BASEINFO.DEVICE.FORM_TITLE"),
+    text:columnFormatters.translateByMessageId("MODULES.BASEINFO.DEVICE.TITLE"),
     sort: true,
     sortCaret: sortCaret,
   },
-  
-  // {
-  //   dataField: "deviceGroup",
-  //   text: "نام گروه ",
-  //   sort: true,
-  //   sortCaret: sortCaret,
-  // },
-  {
-    dataField: "serialCode",
-    text: "شماره سریال ",
+   {
+     dataField: "serialCode",
+    text: columnFormatters.translateByMessageId("MODULES.BASEINFO.DEVICE.SERIAL_CODE"),
+    // text: "شماره سریال ",
     sort: true,
     sortCaret: sortCaret,
   },
   {
     dataField: "relationCode",
-    text: "شماره کد ارتباط  ",
+    text: columnFormatters.translateByMessageId("MODULES.BASEINFO.DEVICE.RELATION_CODE"),
+    // text: "شماره کد ارتباط  ",
     sort: true,
     sortCaret: sortCaret,
   },
   {
     dataField: "ipAddress",
-    text: "آدرس IP",
+    text: columnFormatters.translateByMessageId("MODULES.BASEINFO.DEVICE.IP_ADDRESS"),
+    // text: "آدرس IP",
     sort: true,
     sortCaret: sortCaret,
   },
   {
     dataField: "portNumber",
-    text: " پورت ",
+    text: columnFormatters.translateByMessageId("MODULES.BASEINFO.DEVICE.PORT_NUMBER"),
+    // text: " پورت ",
     sort: true,
     sortCaret: sortCaret,
   },
   {
-    dataField: "isDeleted",
-    text: "وضعیت",
+    dataField: "IsDeleted",
+    text: columnFormatters.translateByMessageId("MODULES.GENERAL.STATUS"),
+    // text: "وضعیت",
     sort: true,
     sortCaret: sortCaret,
     formatter: columnFormatters.StatusColumnFormatter,
   },
-  // {
-  //   dataField: "action",
-  //   text: "عملیات",
-  //   formatter: columnFormatters.ActionsColumnFormatter,
-  //   formatExtraData: {
-  //     // openEditObjectPage: objectsUIProps.openEditObjectPage,
-  //     // openDeleteObjectDialog: objectsUIProps.openDeleteObjectDialog,
-  //   },
-  //   classes: "text-right pr-0",
-  //   headerClasses: "text-right pr-3",
-  //   style: {
-  //     minWidth: "100px",
-  //   },
-  // },
+  {
+    dataField: "action",
+    text: columnFormatters.translateByMessageId("MODULES.GENERAL.ACTION"),
+    // text: "Actions",
+    formatter: columnFormatters.ActionsColumnFormatter,
+    formatExtraData: {
+      // openEditObjectPage: objectsUIProps.openEditObjectPage,
+      // openDeleteObjectDialog: objectsUIProps.openDeleteObjectDialog,
+    },
+    classes: "text-right pr-0",
+    headerClasses: "text-right pr-3",
+    style: {
+      minWidth: "100px",
+    },
+  },
 ];
 
 export const formFields = [
@@ -88,7 +87,7 @@ export const formFields = [
         name: "title",
         type: "text",
         component: Input,
-        placeholder: "MODULES.BASEINFO.DEVICE.FORM_TITLE",
+        placeholder: "MODULES.BASEINFO.DEVICE.FORM_TITLE_PH",
         label: "MODULES.BASEINFO.DEVICE.FORM_TITLE",
         rowIdx: 1,
         class: "col-lg-4"
@@ -106,27 +105,27 @@ export const formFields = [
         rowIdx: 2,
         class: "col-lg-4"
       },
+      {
+        name: "serialCode",
+        type: "text",
+        component: Input,
+        placeholder: "MODULES.BASEINFO.DEVICE.SERIAL_CODE_PH",
+        label: "MODULES.BASEINFO.DEVICE.SERIAL_CODE",
+        rowIdx: 3,
+        class: "col-lg-4"
+      },
       
     ]
   },
   {
     row: 2,
     list: [
-      {
-        name: "serialCode",
-        type: "text",
-        component: Input,
-        placeholder: "شماره سریال",
-        label: "شماره سریال",
-        rowIdx: 3,
-        class: "col-lg-4"
-      },
-      {
+       {
         name: "relationCode",
         type: "text",
         component: Input,
-        placeholder: "کد گروه دستگاه",
-        label: "کد گروه دستگاه",
+        placeholder: "MODULES.BASEINFO.DEVICE.RELATION_CODE_PH",
+        label: "MODULES.BASEINFO.DEVICE.RELATION_CODE",
         rowIdx: 4,
         class: "col-lg-4"
       },
@@ -134,8 +133,8 @@ export const formFields = [
         name: "ipAddress",
         type: "option",
         component: Input,
-        placeholder: "آدرس IP",
-        label: "آدرس IP",
+        placeholder: "MODULES.BASEINFO.DEVICE.IP_ADDRESS_PH",
+        label: "MODULES.BASEINFO.DEVICE.IP_ADDRESS",
         rowIdx: 5,
         class: "col-lg-3"
       },
@@ -143,8 +142,8 @@ export const formFields = [
         name: "portNumber",
         type: "option",
         component: Input,
-        placeholder: "پورت",
-        label: "پورت",
+        placeholder: "MODULES.BASEINFO.DEVICE.PORT_NUMBER_PH",
+        label: "MODULES.BASEINFO.DEVICE.PORT_NUMBER",
         rowIdx: 6,
         class: "col-lg-1"
       },
@@ -206,7 +205,7 @@ export const filterFields = [
   },
   {
     name: "searchText",
-    lable: "جستجو",
+    lable: "MODULES.GENERAL.SEARCH",
     type: "text",
     list: [],
   },

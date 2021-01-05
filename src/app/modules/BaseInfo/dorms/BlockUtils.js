@@ -36,21 +36,21 @@ import { SelectObjectsField } from '../../../../_themeBase/layout/components/bas
       sortCaret: sortCaret,
       formatter: columnFormatters.StatusColumnFormatter,
     },
-    // {
-    //   dataField: "action",
-    //   text: columnFormatters.translateByMessageId("MODULES.GENERAL.ACTION"),
-    //   // text: "Actions",
-    //   formatter: columnFormatters.ActionsColumnFormatter,
-    //   formatExtraData: {
-    //     // openEditObjectPage: objectsUIProps.openEditObjectPage,
-    //     // openDeleteObjectDialog: objectsUIProps.openDeleteObjectDialog,
-    //   },
-    //   classes: "text-right pr-0",
-    //   headerClasses: "text-right pr-3",
-    //   style: {
-    //     minWidth: "100px",
-    //   },
-    // },
+    {
+      dataField: "action",
+      text: columnFormatters.translateByMessageId("MODULES.GENERAL.ACTION"),
+      // text: "Actions",
+      formatter: columnFormatters.ActionsColumnFormatter,
+      formatExtraData: {
+        // openEditObjectPage: objectsUIProps.openEditObjectPage,
+        // openDeleteObjectDialog: objectsUIProps.openDeleteObjectDialog,
+      },
+      classes: "text-right pr-0",
+      headerClasses: "text-right pr-3",
+      style: {
+        minWidth: "100px",
+      },
+    },
   ];
   
   export const formFields = [
@@ -107,20 +107,20 @@ import { SelectObjectsField } from '../../../../_themeBase/layout/components/bas
   export const filterFields = [
     {
       name: "isDeleted",
-      lable: "وضعیت",
+      lable: "MODULES.GENERAL.STATUS",
       type: "select",
       list:[
         {
           value: "",
-          lable: "همه",
+          lable: "MODULES.GENERAL.STATUSALL",
         },
         {
           value: "0",
-          lable: "فعال",
+          lable: "MODULES.GENERAL.STATUSENABLE",
         },
         {
           value: "1",
-          lable: "حذف شده",
+          lable: "MODULES.GENERAL.STATUSDELETED",
         },
       
       ],
@@ -139,7 +139,7 @@ import { SelectObjectsField } from '../../../../_themeBase/layout/components/bas
     },
     {
       name: "searchText",
-      lable: "جستجو",
+      lable: "MODULES.GENERAL.SEARCH",
       type: "text",
       list:[],
     },
@@ -178,9 +178,9 @@ import { SelectObjectsField } from '../../../../_themeBase/layout/components/bas
     whereClauseParameters.push(filter.dormId)
   }
 
-if(filter.isDeleted != undefined){
+if(filter.isDeleted !== undefined){
   whereClause = whereClause + " and isDeleted=@2"
-  whereClauseParameters.push(filter.isDeleted == 0 ? false : true)
+  whereClauseParameters.push(filter.isDeleted === 0 ? false : true)
 }
 
  newQueryParams.whereClause = whereClause;

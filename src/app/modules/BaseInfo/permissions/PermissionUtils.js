@@ -2,7 +2,7 @@ import React from 'react';
 import * as Yup from "yup";
 import { sortCaret } from "../../../../_themeBase/_helpers";
 import * as columnFormatters from "../../../../_themeBase/layout/components/basePage/pages/objects-table/column-formatters";
-import { Checkbox, DatePickerField, Input } from "../../../../_themeBase/_partials/controls";
+import { Input } from "../../../../_themeBase/_partials/controls";
 import { SelectStatus } from '../../customComponents/SelectStatus';
 import { SelectObjectsField } from '../../../../_themeBase/layout/components/basePage/selectObjects/SelectObjectsField';
 import { MultiSelectObjects } from '../../../../_themeBase/layout/components/basePage/pages/MultiSelectObjects';
@@ -166,7 +166,7 @@ export const columns = [
   // },
   {
     dataField: "isDeleted",
-    text: "وضعیت",
+    text: columnFormatters.translateByMessageId("MODULES.GENERAL.STATUS"),
     sort: true,
     sortCaret: sortCaret,
     formatter: columnFormatters.StatusColumnFormatter,

@@ -1,9 +1,7 @@
-import React from 'react';
 import * as Yup from "yup";
 import { sortCaret } from "../../../../_themeBase/_helpers";
 import * as columnFormatters from "../../../../_themeBase/layout/components/basePage/pages/objects-table/column-formatters";
 import { Input } from "../../../../_themeBase/_partials/controls";
-import { SelectStatus } from '../../customComponents/SelectStatus';
 export {filterFields} from "../../customComponents/filterFields";
  
   
@@ -90,9 +88,9 @@ export {filterFields} from "../../customComponents/filterFields";
     const whereClauseParameters = [];
     whereClauseParameters.push(searchText)
   
-  if(filter.isDeleted != undefined){
+  if(filter.isDeleted !== undefined){
     whereClause = whereClause + " and isDeleted=@1"
-    whereClauseParameters.push(filter.isDeleted == 0 ? false : true)
+    whereClauseParameters.push(filter.isDeleted === 0 ? false : true)
   }
   
    newQueryParams.whereClause = whereClause;

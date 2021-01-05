@@ -16,7 +16,8 @@ export {filterFields} from "../../customComponents/filterFields";
   export const columns = [
     {
       dataField: "title",
-      text: "نام نیم سال تحصیلی",
+      text: columnFormatters.translateByMessageId("MODULES.BASEINFO.ASSIGN.TITLE"),
+      // text: "نام نیم سال تحصیلی",
       sort: true,
       sortCaret: sortCaret,
     },
@@ -53,8 +54,8 @@ export {filterFields} from "../../customComponents/filterFields";
           name: "title",
           type: "text",
           component: Input,
-          placeholder: "نام نیم سال تحصیلی",
-          label: "نام نیم سال تحصیلی",
+          placeholder: "MODULES.BASEINFO.ASSIGN.TITLE_PH",
+          label: "MODULES.BASEINFO.ASSIGN.TITLE",
           rowOrder: 1,
           rowIdx: 1,
           class: "col-lg-4"
@@ -93,38 +94,6 @@ export {filterFields} from "../../customComponents/filterFields";
     isDeleted: "", // values => All=""/Selling=0/Sold=1
     searchText: "",
   }
-  export const filterFields111 = [
-    {
-      name: "isDeleted",
-      lable: "وضعیت",
-      type: "select",
-      list:[
-        {
-          value: "",
-          lable: "همه",
-        },
-        {
-          value: "0",
-          lable: "فعال",
-        },
-        {
-          value: "1",
-          lable: "حذف شده",
-        },
-      
-      ],
-      component:SelectStatus
-    },
-    {
-      name: "searchText",
-      lable: "جستجو",
-      type: "text",
-      list:[],
-    },
-  
-  ];
-  
-  
   export const prepareFilter = (queryParams, values) => {
     const { isDeleted, searchText } = values;
   const newQueryParams = { ...queryParams };
@@ -143,9 +112,9 @@ export {filterFields} from "../../customComponents/filterFields";
   const whereClauseParameters = [];
   whereClauseParameters.push(searchText)
 
-if(filter.isDeleted != undefined){
+if(filter.isDeleted !== undefined){
   whereClause = whereClause + " and isDeleted=@1"
-  whereClauseParameters.push(filter.isDeleted == 0 ? false : true)
+  whereClauseParameters.push(filter.isDeleted === 0 ? false : true)
 }
 
  newQueryParams.whereClause = whereClause;

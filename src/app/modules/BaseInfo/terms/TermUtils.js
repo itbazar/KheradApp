@@ -121,7 +121,7 @@ export const columns = [
   //   sortCaret: sortCaret,
   // },
   {
-    dataField: "year",
+    dataField: "yearTitle",
     text: columnFormatters.translateByMessageId("MODULES.BASEINFO.YEAR.TITLE"),
     // text: "نام سال تحصیلی",
     sort: true,
@@ -134,7 +134,7 @@ export const columns = [
   //   sortCaret: sortCaret,
   // },
   {
-    dataField: "semester",
+    dataField: "semesterTitle",
     text: columnFormatters.translateByMessageId("MODULES.BASEINFO.SEMESTER.TITLE"),
 
     // text: "نام نیمسال تحصیلی",
@@ -206,8 +206,8 @@ export const formFields = [
             reduxState="years"
             sname="yearId"
             label={columnFormatters.translateByMessageId("MODULES.BASEINFO.YEAR.TITLE")} {...props} />,
-        placeholder: "MODULES.BASEINFO.YEAR.CODE_PH",
-        label: "MODULES.BASEINFO.YEAR.CODE",
+        placeholder: "MODULES.BASEINFO.YEAR.TITLE_PH",
+        label: "MODULES.BASEINFO.YEAR.TITLE",
         rowOrder: 2,
         rowIdx: 2,
         class: "col-lg-4"
@@ -220,8 +220,8 @@ export const formFields = [
             reduxState="semesters"
             sname="semesterId"
             label={columnFormatters.translateByMessageId("MODULES.BASEINFO.SEMESTER.TITLE")} {...props} />,
-        placeholder: "MODULES.BASEINFO.SEMESTER.CODE_PH",
-        label: "MODULES.BASEINFO.SEMESTER.CODE",
+        placeholder: "MODULES.BASEINFO.SEMESTER.TITLE_PH",
+        label: "MODULES.BASEINFO.SEMESTER.TITLE",
         rowOrder: 2,
         rowIdx: 3,
         class: "col-lg-4"
