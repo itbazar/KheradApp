@@ -1,0 +1,29 @@
+
+
+@font-face {
+    font-family: 'SANS';
+    src: url('../fonts/IRANSans-Light-web-fa.woff') format('woff'), /* Pretty Modern Browsers */
+    url('../fonts/IRANSans-Light-web-fa.ttf') format('truetype'); /* Safari, Android, iOS */
+    font-weight: normal;
+  }
+  
+  @font-face {
+    font-family: 'SANS';
+    src: url('../fonts/IRANSansWeb_Bold.woff') format('woff'), /* Pretty Modern Browsers */
+    url('../fonts/IRANSansWeb_Bold.ttf') format('truetype'); /* Safari, Android, iOS */
+    font-weight: bold;
+  }
+
+
+html, body {
+    min-height: 100%;
+    -webkit-text-size-adjust: 100%;
+}
+
+body {
+    /* font-size: 8px; */
+    font-family: 'SANS', BYekan, Tahoma, Arial ;
+    margin: 0px;
+    padding: 0px;
+    background: url(../images/Style/mainBG.jpg) !important;
+}
