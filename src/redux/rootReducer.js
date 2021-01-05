@@ -7,6 +7,7 @@ import { objectsSlice } from "../app/reduxSlices/objectsSlice";
 
 export const rootReducer = combineReducers({
   auth: auth.reducer,
+  users: objectsSlice({name :"users"}).reducer,
   univercities: objectsSlice({name :"univercities"}).reducer,
   dorms: objectsSlice({name :"dorms"}).reducer,
   blocks: objectsSlice({name :"blocks"}).reducer,
