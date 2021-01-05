@@ -51,6 +51,13 @@
   "MODULES.GENERAL.STATUSENABLE": "فعال",
   "MODULES.GENERAL.STATUSDELETED": "حذف شده",
 
+  "MODULES.GENERAL.ALLOWED": "مجاز",
+  "MODULES.GENERAL.NOTALLOWED": "غیر مجاز",
+
+  "MODULES.GENERAL.FULLACCESS.STATUS": "وضعیت دسترسی",
+  "MODULES.GENERAL.FULLACCESS": "دسترسی کامل",
+  "MODULES.GENERAL.SHOWACCESS": "فقط مشاهده",
+
   "MODULES.BASEINFO.UNIINFO.FORM_TITLE": " اطلاعات پایه",
   "MODULES.BASEINFO.UNIINFO.TITLE": "نام سازمان",
   "MODULES.BASEINFO.UNIINFO.CODE": "کد سازمان",
@@ -205,6 +212,13 @@
 
   
   "MODULES.BASEINFO.ROLE.PERMISSION_TITLE":"مدیریت دسترسی",
+  "MODULES.BASEINFO.ROLE.PERMISSION_GROUP":"گروه های مجاز",
+  "MODULES.BASEINFO.ROLE.PERMISSION_SELF":"سلف های مجاز",
+  "MODULES.BASEINFO.ROLE.PERMISSION_SELF_TYPE":"انواع سلف مجاز",
+  "MODULES.BASEINFO.ROLE.PERMISSION_ROLE":"سطوح مجاز",
+  "MODULES.BASEINFO.ROLE.PERMISSION_MENU":"صفحات مجاز",
+  
+  "MODULES.BASEINFO.MENU.TITLE":"صفحات ",
 
 
   "SELECT.ALL": "همه",
@@ -226,6 +240,8 @@
   "BUTTON.SAVE": " ذخیره",
   "BUTTON.CANCEL": " انصراف",
   "BUTTON.RESET": " بازنشانی",
+  "BUTTON.DELETE": " حذف",
+  "BUTTON.DELETEACCESS": " حذف دسترسی",
 
   "WAIT.MESSAGE": "لطفا صبر کنید ...",
   "PAGINATION.NO.RECORD": "رکوردی یافت نشد",

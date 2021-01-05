@@ -5,6 +5,7 @@ import { ObjectStatusCssClasses, ObjectStatusTitles } from "../ObjectsUIHelpers"
 import * as actions from "../../../../../../app/actions/generalActions";
 import { useObjectsUIContext } from "../ObjectsUIContext";
 import { FormattedMessage, useIntl } from "react-intl";
+import { useFilterObjectsUIContext } from "../FilterObjectsUIContext";
 
 const selectedObjects = (entities, ids) => {
   const _objects = [];
@@ -20,13 +21,15 @@ const selectedObjects = (entities, ids) => {
 export const ObjectsUpdateStatusDialog = ({ show, onHide, currentState, api }) => {
   // Objects UI Context
   const objectsUIContext = useObjectsUIContext();
+  const filterUIContext = useFilterObjectsUIContext();
+
   const objectsUIProps = useMemo(() => {
     return {
       ids: objectsUIContext.ids,
       setIds: objectsUIContext.setIds,
-      queryParams: objectsUIContext.queryParams,
+      queryParams: filterUIContext.queryParams,
     };
-  }, [objectsUIContext]);
+  }, [objectsUIContext,filterUIContext]);
 
   // Objects Redux state
   const { objects, isLoading, name } = useSelector(

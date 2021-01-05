@@ -3,6 +3,7 @@ import { Modal } from "react-bootstrap";
 import { shallowEqual, useSelector } from "react-redux";
 import { ObjectStatusCssClasses } from "../ObjectsUIHelpers";
 import { useObjectsUIContext } from "../ObjectsUIContext";
+import { useFilterObjectsUIContext } from "../FilterObjectsUIContext";
 
 const selectedObjects = (entities, ids) => {
   const _objects = [];
@@ -18,12 +19,14 @@ const selectedObjects = (entities, ids) => {
 export const ObjectsFetchDialog = ({ show, onHide,currentState }) => {
   // Objects UI Context
   const objectsUIContext = useObjectsUIContext();
+  const filterUIContext = useFilterObjectsUIContext();
+
   const objectsUIProps = useMemo(() => {
     return {
       ids: objectsUIContext.ids,
-      queryParams: objectsUIContext.queryParams,
+      queryParams: filterUIContext.queryParams,
     };
-  }, [objectsUIContext]);
+  }, [objectsUIContext,filterUIContext]);
 
   // Objects Redux state
   const { objects } = useSelector(

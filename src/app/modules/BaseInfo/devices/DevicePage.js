@@ -10,7 +10,7 @@ import {
   initObject,
   ObjectEditSchema,
   columns,
-  initialFilter,
+  
   prepareFilter,
   filterFields,
   filterInitialValues,
@@ -52,19 +52,19 @@ const DevicePage = () => {
         <ContentRoute path="/devices/devices/new"
           render={props =>
             <ObjectEdit {...props} isFullAccess={isFullAccess} basePath="/devices/devices" api="api/device" currentState={currentState} initObject={initObject}
-              formFields={formFields} otherFields={otherFields} ObjectEditSchema={ObjectEditSchema} />}
+              formFields={formFields} otherFields={otherFields} ObjectEditSchema={ObjectEditSchema} prepareFilter={prepareFilter}/>}
         />
 
         <ContentRoute
           path="/devices/devices/:id/edit"
           render={props =>
             <ObjectEdit {...props} isFullAccess={isFullAccess} basePath="/devices/devices" api="api/device" currentState={currentState} initObject={initObject}
-              formFields={formFields} otherFields={otherFields} ObjectEditSchema={ObjectEditSchema} />}
+              formFields={formFields} otherFields={otherFields} ObjectEditSchema={ObjectEditSchema} prepareFilter={prepareFilter}/>}
         />
 
         <ContentRoute
           path="/devices/devices"
-          render={props => <ObjectsPage isFullAccess={isFullAccess} basePath="/devices/devices" api="api/device" initialFilter={initialFilter} currentState={currentState} 
+          render={props => <ObjectsPage isFullAccess={isFullAccess} basePath="/devices/devices" api="api/device"  currentState={currentState} 
           columns={columns} prepareFilter={prepareFilter} filterFields={filterFields} filterInitialValues={filterInitialValues}/>}
         />
 

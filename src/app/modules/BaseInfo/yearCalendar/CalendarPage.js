@@ -10,7 +10,7 @@ import {
   initObject,
   ObjectEditSchema,
   columns,
-  initialFilter,
+  
   prepareFilter,
   filterFields,
   filterInitialValues,
@@ -43,7 +43,7 @@ const CalendarPage = () => {
 
         <ContentRoute
           path="/calendar"
-          render={props => <ObjectsPage haveGeneralAction={false} isFullAccess={isFullAccess} basePath="/calendar" api="api/calendar" initialFilter={initialFilter} currentState={currentState} 
+          render={props => <ObjectsPage haveGeneralAction={false} isFullAccess={isFullAccess} basePath="/calendar" api="api/calendar"  currentState={currentState} 
           columns={columns} prepareFilter={prepareFilter} filterFields={filterFields} filterInitialValues={filterInitialValues}/>}
         />
 

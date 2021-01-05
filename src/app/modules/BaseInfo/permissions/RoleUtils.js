@@ -44,15 +44,7 @@ export {filterFields} from "../../customComponents/filterFields";
           rowIdx: 1,
           class: "col-lg-4"
         },
-        {
-          name: "isDeleted",
-          type: "option",
-          component: SelectStatus,
-          placeholder: "MODULES.GENERAL.STATUS",
-          label: "MODULES.GENERAL.STATUS",
-          rowIdx: 2,
-          class: "col-lg-4"
-        },
+        
       ]
     },
   
@@ -71,23 +63,7 @@ export {filterFields} from "../../customComponents/filterFields";
   
   ];
   
-  export const initialFilter = {
-    filter: {
-      title: "",
-    },
-    sortOrder: "asc", // asc||desc
-    sortField: "title",
-    pageNumber: 1,
-    pageSize: 10,
-
-    whereClause: "",
-    whereClauseParameters: [
-      
-    ],
-    orderCluase: "id asc ",
-    skipCount: 0,
-    takeCount: 5
-  };
+ 
   
   export const filterInitialValues ={
     isDeleted: "", // values => All=""/Selling=0/Sold=1

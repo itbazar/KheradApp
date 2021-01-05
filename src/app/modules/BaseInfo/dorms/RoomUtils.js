@@ -4,7 +4,7 @@ import { sortCaret } from "../../../../_themeBase/_helpers";
 import * as columnFormatters from "../../../../_themeBase/layout/components/basePage/pages/objects-table/column-formatters";
 import { Input } from "../../../../_themeBase/_partials/controls";
 import { SelectStatus } from '../../customComponents/SelectStatus';
-import { SelectObjects } from '../../../../_themeBase/layout/components/basePage/pages/SelectObjects';
+import { SelectObjectsField } from '../../../../_themeBase/layout/components/basePage/selectObjects/SelectObjectsField';
 
 
 export const initObject = {
@@ -79,7 +79,7 @@ export const formFields = [
         name: "dormId",
         type: "option",
         component: (props) =>
-          <SelectObjects api="api/dorm"
+          <SelectObjectsField api="api/dorm"
             reduxState="dorms"
             sname="dormId"
             label={columnFormatters.translateByMessageId("MODULES.BASEINFO.DORM.FORM_TITLE")} {...props} />,
@@ -92,7 +92,7 @@ export const formFields = [
         name: "blockId",
         type: "option",
         component: (props) =>
-          <SelectObjects api="api/block"
+          <SelectObjectsField api="api/block"
             reduxState="blocks"
             sname="blockId"
             label={columnFormatters.translateByMessageId("MODULES.BASEINFO.BLOCK.FORM_TITLE")} {...props} />,
@@ -120,26 +120,6 @@ export const otherFields = [
 
 ];
 
-export const initialFilter = {
-  filter: {
-    title: "",
-  },
-  sortOrder: "asc", // asc||desc
-  sortField: "title",
-  pageNumber: 1,
-  pageSize: 10,
-
-  whereClause: "",
-  whereClauseParameters: [
-  ],
-  orderCluase: "id asc ",
-  skipCount: 0,
-  takeCount: 5,
-
-  whereClauseSelect: "",
-  whereClauseParametersSelect: [
-  ],
-};
 
 export const filterInitialValues = {
   isDeleted: "", // values => All=""/Selling=0/Sold=1
@@ -174,7 +154,7 @@ export const filterFields = [
     type: "component",
     list: [],
     component: (props) =>
-      <SelectObjects api="api/dorm"
+      <SelectObjectsField api="api/dorm"
         reduxState="dorms"
         sname="dormId"
         {...props} />
@@ -185,7 +165,7 @@ export const filterFields = [
     type: "component",
     list: [],
     component: (props) =>
-      <SelectObjects api="api/block"
+      <SelectObjectsField api="api/block"
         reduxState="blocks"
         sname="blockId"
         {...props} />
@@ -201,6 +181,7 @@ export const filterFields = [
 
 
 export const prepareFilter = (queryParams, values) => {
+ 
   const { isDeleted, searchText,dormId,blockId } = values;
   const newQueryParams = { ...queryParams };
   const filter = {};

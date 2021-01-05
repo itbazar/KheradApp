@@ -7,11 +7,13 @@ import { useIntl } from 'react-intl';
 import { useObjectsUIContext } from './ObjectsUIContext';
 import { MultiSelectField } from '../../../../_partials/controls/forms/MultiSelectField';
 import Select from 'react-select'
+import { useFilterObjectsUIContext } from './FilterObjectsUIContext';
 
 
 
 export const MultiSelectObjects = ({ api, reduxState, sname, label, ...props }) => {
-  const objectsUIContext = useObjectsUIContext();
+  // const objectsUIContext = useObjectsUIContext();
+  const objectsUIContext = useFilterObjectsUIContext();
   const objectsUIProps = useMemo(() => {
     return {
       queryParams: objectsUIContext.queryParams,

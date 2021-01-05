@@ -1,10 +1,8 @@
-import React from "react";
+import React, { useMemo, useState } from "react";
 import { Formik, Form, Field } from "formik";
-import * as columnFormatters from "../../pages/objects-table/column-formatters";
-
-import DatePickerFieldJalali from "../../../../../_partials/controls/forms/DatePickerFieldJalali";
-import { useLang } from "../../../../../i18n/Basei18n";
 import { useIntl } from 'react-intl';
+import { useFilterObjectsUIContext } from "../FilterObjectsUIContext";
+import { isEqual } from "lodash";
 
 
 export const ObjectEditForm = ({
@@ -15,7 +13,34 @@ export const ObjectEditForm = ({
   btnRef,
   saveObject,
   isFullAccess,
+  prepareFilter,
 }) => {
+
+  const filterUIContext = useFilterObjectsUIContext();
+  const objectsUIProps = useMemo(() => {
+    return {
+      queryParams: filterUIContext.queryParams,
+      setQueryParams: filterUIContext.setQueryParams,
+    };
+  }, [filterUIContext]);
+
+
+
+  const applyFilter = (values) => {
+    const newQueryParams = prepareFilter(objectsUIProps.queryParams, values);
+    if (!isEqual(newQueryParams, objectsUIProps.queryParams)) {
+      newQueryParams.pageNumber = 1;
+      objectsUIProps.setQueryParams(newQueryParams);
+    }
+
+  };
+
+  const handleChange = ({ currentTarget: input }) => {
+    const temp = { ...object };
+    temp[input.name] = input.value;
+    applyFilter(temp);
+    // setData(temp)
+  };
 
   const intl = useIntl();
 
@@ -44,6 +69,7 @@ export const ObjectEditForm = ({
                         type={field.type}
                         as={field.as}
                         disabled={!isFullAccess}
+                        // onChange={handleChange}
                       />
                     </div>
                   )}
@@ -52,7 +78,7 @@ export const ObjectEditForm = ({
 
               {otherFields.map((ofield, index) =>
                 <div key={index} className="form-group">
-                  <label>{intl.formatMessage({ id: ofield.lable})}</label>
+                  <label>{intl.formatMessage({ id: ofield.lable })}</label>
                   <Field
                     name={ofield.name}
                     as={ofield.as}
@@ -61,7 +87,7 @@ export const ObjectEditForm = ({
                   />
                 </div>
               )}
- 
+
               <button
                 type="submit"
                 style={{ display: "none" }}

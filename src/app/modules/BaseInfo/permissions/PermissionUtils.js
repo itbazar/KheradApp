@@ -4,7 +4,7 @@ import { sortCaret } from "../../../../_themeBase/_helpers";
 import * as columnFormatters from "../../../../_themeBase/layout/components/basePage/pages/objects-table/column-formatters";
 import { Checkbox, DatePickerField, Input } from "../../../../_themeBase/_partials/controls";
 import { SelectStatus } from '../../customComponents/SelectStatus';
-import { SelectObjects } from '../../../../_themeBase/layout/components/basePage/pages/SelectObjects';
+import { SelectObjectsField } from '../../../../_themeBase/layout/components/basePage/selectObjects/SelectObjectsField';
 import { MultiSelectObjects } from '../../../../_themeBase/layout/components/basePage/pages/MultiSelectObjects';
 // export {filterFields} from "../../customComponents/filterFields";
 
@@ -77,7 +77,7 @@ export const filterFields = [
     type: "component",
     list: [],
     component: (props) =>
-      <SelectObjects api="api/role"
+      <SelectObjectsField api="api/role"
         reduxState="roles"
         sname="roleId"
         {...props} />
@@ -191,7 +191,7 @@ export const formFields = [
         name: "roleId",
         type: "select",
         component: (props) =>
-          <SelectObjects api="api/role"
+          <SelectObjectsField api="api/role"
             reduxState="roles"
             sname="roleId"
             label={columnFormatters.translateByMessageId("MODULES.BASEINFO.ROLE.TITLE")} {...props} />,
@@ -204,7 +204,7 @@ export const formFields = [
         name: "groupId",
         type: "select",
         component: (props) =>
-          <SelectObjects api="api/group"
+          <SelectObjectsField api="api/group"
             reduxState="groups"
             sname="groupId"
             label={columnFormatters.translateByMessageId("MODULES.BASEINFO.GROUP.TITLE")} {...props} />,
@@ -268,23 +268,6 @@ export const otherFields = [
 
 ];
 
-export const initialFilter = {
-  filter: {
-    title: "",
-  },
-  sortOrder: "asc", // asc||desc
-  sortField: "title",
-  pageNumber: 1,
-  pageSize: 10,
-
-  whereClause: "",
-  whereClauseParameters: [
-
-  ],
-  orderCluase: "id asc ",
-  skipCount: 0,
-  takeCount: 5
-};
 
 export const filterInitialValues = {
   isDeleted: "", // values => All=""/Selling=0/Sold=1

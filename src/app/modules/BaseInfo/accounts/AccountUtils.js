@@ -3,8 +3,9 @@ import * as Yup from "yup";
 import { sortCaret } from "../../../../_themeBase/_helpers";
 import * as columnFormatters from "../../../../_themeBase/layout/components/basePage/pages/objects-table/column-formatters";
 import { Input } from "../../../../_themeBase/_partials/controls";
-import { SelectObjects } from "../../../../_themeBase/layout/components/basePage/pages/SelectObjects";
+import { SelectObjectsField } from "../../../../_themeBase/layout/components/basePage/selectObjects/SelectObjectsField";
 import { SelectStatus } from "../../customComponents/SelectStatus";
+
 
 export const initObject = {
   id: undefined,
@@ -95,7 +96,7 @@ export const formFields = [
       {
         name: "bankId",
         type: "text",
-        component: (props) => <SelectObjects api="api/bank"
+        component: (props) => <SelectObjectsField api="api/bank"
           reduxState="banks"
           sname="bankId"
           label={columnFormatters.translateByMessageId("MODULES.BASEINFO.ACCOUNT.BANK")} {...props} />,
@@ -232,23 +233,6 @@ export const otherFields = [
 
 ];
 
-export const initialFilter = {
-  filter: {
-    title: "",
-  },
-  sortOrder: "asc", // asc||desc
-  sortField: "title",
-  pageNumber: 1,
-  pageSize: 10,
-
-  whereClause: "",
-  whereClauseParameters: [
-
-  ],
-  orderCluase: "id asc ",
-  skipCount: 0,
-  takeCount: 5
-};
 
 export const filterInitialValues = {
   isDeleted: "", // values => All=""/Selling=0/Sold=1
@@ -284,7 +268,7 @@ export const filterFields = [
     type: "component",
     list: [],
     component: (props) =>
-      <SelectObjects api="api/bank"
+      <SelectObjectsField api="api/bank"
         reduxState="banks"
         sname="bankId"
         {...props} />

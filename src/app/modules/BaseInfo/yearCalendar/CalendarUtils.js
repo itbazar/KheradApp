@@ -159,23 +159,6 @@ export const otherFields = [
 
 ];
 
-export const initialFilter = {
-  filter: {
-    weekday: "",
-  },
-  sortOrder: "asc", // asc||desc
-  sortField: "weekday",
-  pageNumber: 1,
-  pageSize: 10,
-
-  whereClause: "",
-  whereClauseParameters: [
-
-  ],
-  orderCluase: "id asc ",
-  skipCount: 0,
-  takeCount: 5
-};
 
 export const filterInitialValues = {
   holiday: "", // values => All=""/Selling=0/Sold=1

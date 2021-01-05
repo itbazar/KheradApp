@@ -87,23 +87,7 @@ export {filterFields} from "../../customComponents/filterFields";
   
   ];
   
-  export const initialFilter = {
-    filter: {
-      title: "",
-    },
-    sortOrder: "asc", // asc||desc
-    sortField: "title",
-    pageNumber: 1,
-    pageSize: 10,
-
-    whereClause: "",
-    whereClauseParameters: [
-      
-    ],
-    orderCluase: "id asc ",
-    skipCount: 0,
-    takeCount: 5
-  };
+ 
   
   export const filterInitialValues ={
     isDeleted: "", // values => All=""/Selling=0/Sold=1

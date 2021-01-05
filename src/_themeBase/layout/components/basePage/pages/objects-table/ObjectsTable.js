@@ -19,6 +19,7 @@ import {
 import * as columnFormatters from "./column-formatters";
 import { Pagination } from "../../../../../../_themeBase/_partials/controls";
 import { useObjectsUIContext } from "../ObjectsUIContext";
+import { useFilterObjectsUIContext } from "../FilterObjectsUIContext";
 
 
 export const ObjectsTable = ({ haveGeneralAction=true , isFullAccess, api, columns, currentState }) => {
@@ -31,16 +32,19 @@ export const ObjectsTable = ({ haveGeneralAction=true , isFullAccess, api, colum
 
 
   const objectsUIContext = useObjectsUIContext();
+  const filterUIContext = useFilterObjectsUIContext();
+
+
   const objectsUIProps = useMemo(() => {
     return {
       ids: objectsUIContext.ids,
       setIds: objectsUIContext.setIds,
-      queryParams: objectsUIContext.queryParams,
-      setQueryParams: objectsUIContext.setQueryParams,
+      queryParams: filterUIContext.queryParams,
+      setQueryParams: filterUIContext.setQueryParams,
       openEditObjectPage: objectsUIContext.openEditObjectPage,
       openDeleteObjectDialog: objectsUIContext.openDeleteObjectDialog,
     };
-  }, [objectsUIContext]);
+  }, [objectsUIContext,filterUIContext]);
 
 
   const { menuList } = useSelector(

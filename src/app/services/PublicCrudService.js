@@ -28,6 +28,13 @@ export function updateObject(API_URL,object) {
   return axios.put(`${baseApiUrl}/${API_URL}/update`, object);
 }
 
+// UPDATE => PUT: update the procuct on the server
+export function updateObjects(API_URL,ids,object) {
+  // return axios.put(`${baseApiUrl}/${API_URL}/update/${object.id}`, object);
+  return axios.put(`${baseApiUrl}/${API_URL}/updateRange`, { idList:ids ,updateValues:object});
+}
+
+
 // UPDATE Status
 export function updateStatusForObjects(API_URL,ids, isDeleted) {
   if(isDeleted)//status=isdeleted=true => deleteRange

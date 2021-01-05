@@ -5,6 +5,7 @@ import { useIntl } from 'react-intl';
 export function ObjectsGrouping() {
   // Objects UI Context
   const objectsUIContext = useObjectsUIContext();
+
   const objectsUIProps = useMemo(() => {
     return {
       ids: objectsUIContext.ids,

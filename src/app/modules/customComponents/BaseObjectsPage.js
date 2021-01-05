@@ -17,7 +17,7 @@ const BaseObjectsPage = ({
     otherFields,
     ObjectEditSchema,
     columns,
-    initialFilter,
+    
     prepareFilter,
     filterFields,
     filterInitialValues,
@@ -40,8 +40,8 @@ const BaseObjectsPage = ({
     }
 
     return (
-        // <Suspense fallback={<LayoutSplashScreen />}>
-            <>
+        <Suspense fallback={<LayoutSplashScreen />}>
+            <Switch>
 
                 {redirectList.map((redirect, idx) =>
                     <Redirect
@@ -55,25 +55,25 @@ const BaseObjectsPage = ({
                 <ContentRoute path={`${basePath}/new`}
                     render={props =>
                         <ObjectEdit {...props} isFullAccess={isFullAccess} basePath={basePath} api={api} currentState={currentState} initObject={initObject}
-                            formFields={formFields} otherFields={otherFields} ObjectEditSchema={ObjectEditSchema} />}
+                            formFields={formFields} otherFields={otherFields} ObjectEditSchema={ObjectEditSchema} prepareFilter={prepareFilter}/>}
                 />
 
                 <ContentRoute
                     path={`${basePath}/:id/edit`}
                     render={props =>
                         <ObjectEdit {...props} isFullAccess={isFullAccess} basePath={basePath} api={api} currentState={currentState} initObject={initObject}
-                            formFields={formFields} otherFields={otherFields} ObjectEditSchema={ObjectEditSchema} />}
+                            formFields={formFields} otherFields={otherFields} ObjectEditSchema={ObjectEditSchema} prepareFilter={prepareFilter}/>}
                 />
 
 
                 <ContentRoute
                     path={basePath}
-                    render={props => <ObjectsPage isFullAccess={isFullAccess} basePath={basePath} api={api} initialFilter={initialFilter} currentState={currentState}
+                    render={props => <ObjectsPage isFullAccess={isFullAccess} basePath={basePath} api={api}  currentState={currentState}
                         columns={columns} prepareFilter={prepareFilter} filterFields={filterFields} filterInitialValues={filterInitialValues} />}
                 />
 
-             </>
-        //  </Suspense>
+            </Switch>
+        </Suspense>
     )
 }
 

@@ -4,7 +4,7 @@ import { sortCaret } from "../../../../_themeBase/_helpers";
 import * as columnFormatters from "../../../../_themeBase/layout/components/basePage/pages/objects-table/column-formatters";
 import { Input } from "../../../../_themeBase/_partials/controls";
 import { SelectStatus } from '../../customComponents/SelectStatus';
-import { SelectObjects } from '../../../../_themeBase/layout/components/basePage/pages/SelectObjects';
+import { SelectObjectsField } from '../../../../_themeBase/layout/components/basePage/selectObjects/SelectObjectsField';
  
   
   export const initObject = {
@@ -70,7 +70,7 @@ import { SelectObjects } from '../../../../_themeBase/layout/components/basePage
           name: "dormId",
           type: "text",
           component: (props) =>
-          <SelectObjects api="api/dorm"
+          <SelectObjectsField api="api/dorm"
             reduxState="dorms"
             sname="dormId"
             label={columnFormatters.translateByMessageId("MODULES.BASEINFO.DORM.FORM_TITLE")} {...props} />,
@@ -98,23 +98,7 @@ import { SelectObjects } from '../../../../_themeBase/layout/components/basePage
   
   ];
   
-  export const initialFilter = {
-    filter: {
-      title: "",
-    },
-    sortOrder: "asc", // asc||desc
-    sortField: "title",
-    pageNumber: 1,
-    pageSize: 10,
-
-    whereClause: "",
-    whereClauseParameters: [
-      
-    ],
-    orderCluase: "id asc ",
-    skipCount: 0,
-    takeCount: 5
-  };
+  
   
   export const filterInitialValues ={
     isDeleted: "", // values => All=""/Selling=0/Sold=1
@@ -148,7 +132,7 @@ import { SelectObjects } from '../../../../_themeBase/layout/components/basePage
       type: "component",
       list: [],
       component: (props) =>
-        <SelectObjects api="api/dorm"
+        <SelectObjectsField api="api/dorm"
           reduxState="dorms"
           sname="dormId"
           {...props} />
