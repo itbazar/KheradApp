@@ -7,9 +7,10 @@ import { ObjectsFetchDialog } from "./objects-fetch-dialog/ObjectsFetchDialog";
 import { ObjectsUpdateStatusDialog } from "./objects-update-status-dialog/ObjectsUpdateStatusDialog";
 import { ObjectsCard } from "./ObjectsCard";
 import { ObjectsUIProvider } from "./ObjectsUIContext";
+import { FilterObjectsUIProvider } from "./FilterObjectsUIContext";
 
 
-const ObjectsPage = ({haveGeneralAction=true,isFullAccess,basePath,api,currentState, columns,initialFilter,prepareFilter,filterFields,filterInitialValues,selectFilter }) => {
+const ObjectsPage = ({haveGeneralAction=true,isFullAccess,basePath,api,currentState, columns,prepareFilter,filterFields,filterInitialValues,selectFilter }) => {
   //console.log("basePath : " + basePath)
  
   const history = useHistory()
@@ -36,7 +37,8 @@ const ObjectsPage = ({haveGeneralAction=true,isFullAccess,basePath,api,currentSt
   };
 
   return (
-    <ObjectsUIProvider ObjectsUIEvents={ObjectsUIEvents} initialFilter={initialFilter} selectFilter={selectFilter}>
+    <FilterObjectsUIProvider>
+    <ObjectsUIProvider ObjectsUIEvents={ObjectsUIEvents} >
       <ObjectsLoadingDialog listLoading={currentState.listLoading}/>
       <Route path={`${basePath}/deleteAll`}>
         {({ history, match }) => (
@@ -90,7 +92,8 @@ const ObjectsPage = ({haveGeneralAction=true,isFullAccess,basePath,api,currentSt
         )}
       </Route>
       <ObjectsCard haveGeneralAction={haveGeneralAction} isFullAccess={isFullAccess}  api={api} basePath={basePath} currentState={currentState} columns={columns} prepareFilter={prepareFilter} filterFields={filterFields} filterInitialValues={filterInitialValues}/>
-    </ObjectsUIProvider>
+      </ObjectsUIProvider>
+    </FilterObjectsUIProvider>
   );
 }
 

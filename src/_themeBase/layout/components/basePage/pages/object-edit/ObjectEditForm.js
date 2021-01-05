@@ -1,6 +1,9 @@
-import React from "react";
+import React, { useMemo, useState } from "react";
 import { Formik, Form, Field } from "formik";
-import { useIntl } from "react-intl";
+import { useIntl } from 'react-intl';
+import { useFilterObjectsUIContext } from "../FilterObjectsUIContext";
+import { isEqual } from "lodash";
+
 
 export const ObjectEditForm = ({
   formFields,
@@ -10,7 +13,35 @@ export const ObjectEditForm = ({
   btnRef,
   saveObject,
   isFullAccess,
+  prepareFilter,
 }) => {
+
+  const filterUIContext = useFilterObjectsUIContext();
+  const objectsUIProps = useMemo(() => {
+    return {
+      queryParams: filterUIContext.queryParams,
+      setQueryParams: filterUIContext.setQueryParams,
+    };
+  }, [filterUIContext]);
+
+
+
+  const applyFilter = (values) => {
+    const newQueryParams = prepareFilter(objectsUIProps.queryParams, values);
+    if (!isEqual(newQueryParams, objectsUIProps.queryParams)) {
+      newQueryParams.pageNumber = 1;
+      objectsUIProps.setQueryParams(newQueryParams);
+    }
+
+  };
+
+  const handleChange = ({ currentTarget: input }) => {
+    const temp = { ...object };
+    temp[input.name] = input.value;
+    applyFilter(temp);
+    // setData(temp)
+  };
+
   const intl = useIntl();
 
   return (
@@ -40,6 +71,7 @@ export const ObjectEditForm = ({
                         type={field.type}
                         as={field.as}
                         disabled={!isFullAccess}
+                        // onChange={handleChange}
                       />
                     </div>
                   ))}
@@ -56,7 +88,7 @@ export const ObjectEditForm = ({
                     disabled={!isFullAccess}
                   />
                 </div>
-              ))}
+              )}
 
               <button
                 type="submit"

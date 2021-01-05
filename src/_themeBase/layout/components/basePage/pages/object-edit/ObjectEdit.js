@@ -13,19 +13,22 @@ import { ObjectEditForm } from "./ObjectEditForm";
 import { useSubheader } from "../../../../../../_themeBase/layout";
 import { ModalProgressBar } from "../../../../../../_themeBase/_partials/controls";
 import { useIntl } from 'react-intl';
+import GradePage from "../../../../../../app/modules/BaseInfo/grades/GradePage";
+import { FilterObjectsUIProvider } from "../FilterObjectsUIContext";
+
 
 
 export function ObjectEdit({
   basePath,
   isFullAccess,
   api,
-  initialFilter,
-  selectFilter,
+  prepareFilter,
   currentState,
   initObject,
   formFields,
   otherFields,
   ObjectEditSchema,
+  otherTabs,
   history,
   match: {
     params: { id },
@@ -38,7 +41,7 @@ export function ObjectEdit({
   const intl = useIntl();
   // Tabs
   const [tab, setTab] = useState("basic");
-  const [title, setTitle] = useState("");
+  const [title, setTitle] = useState();
   const dispatch = useDispatch();
   // const layoutDispatch = useContext(LayoutContext.Dispatch);
   const { actionsLoading, objectForEdit } = useSelector(
@@ -85,8 +88,14 @@ export function ObjectEdit({
     history.push(basePath);
   };
 
+  const getTab = (item) => {
+     if ((tab === item.tab) && id) {
+      return <item.component id={+id} />;
+     }
+  };
+
   return (
-    <ObjectsUIProvider ObjectsUIEvents={{}} initialFilter={initialFilter} selectFilter={selectFilter}>
+    <FilterObjectsUIProvider>
       <Card>
         {actionsLoading && <ModalProgressBar />}
         <CardHeader title={title}>
@@ -117,7 +126,7 @@ export function ObjectEdit({
           </CardHeaderToolbar>
         </CardHeader>
         <CardBody>
-          <ul className="nav nav-tabs nav-tabs-line " role="tablist">
+          <ul className="nav nav-otherTabs nav-otherTabs-line " role="tablist">
             <li className="nav-item" onClick={() => setTab("basic")}>
               <a
                 className={`nav-link ${tab === "basic" && "active"}`}
@@ -125,37 +134,31 @@ export function ObjectEdit({
                 role="tab"
                 aria-selected={(tab === "basic").toString()}
               >
-                {intl.formatMessage({ id: "MODULES.BASEINFO.UNIINFO.FORM_TITLE" })}
+                {intl.formatMessage({ id: "ASID.TABS.BASEINFO" })}
 
               </a>
             </li>
-            {/* {id && (
-            <>
-              {" "}
-              <li className="nav-item" onClick={() => setTab("remarks")}>
-                <a
-                  className={`nav-link ${tab === "remarks" && "active"}`}
-                  data-toggle="tab"
-                  role="button"
-                  aria-selected={(tab === "remarks").toString()}
-                >
-                  Object remarks
-                </a>
-              </li>
-              <li className="nav-item" onClick={() => setTab("specs")}>
-                <a
-                  className={`nav-link ${tab === "specs" && "active"}`}
-                  data-toggle="tab"
-                  role="tab"
-                  aria-selected={(tab === "specs").toString()}
-                >
-                  Object specifications
-                </a>
-              </li>
-            </>
-          )} */}
+
+            {otherTabs && otherTabs.map(curTab =>
+              <>
+                {" "}
+                <li key={curTab.id} className="nav-item" onClick={() => setTab(curTab.tab)}>
+                  <a
+                    className={`nav-link ${tab === curTab.tab && "active"}`}
+                    data-toggle="tab"
+                    role="button"
+                    aria-selected={(tab === curTab.tab).toString()}
+                  >
+                    {intl.formatMessage({ id: curTab.title })}
+                  </a>
+                </li>
+              </>
+            )}
+
+
           </ul>
           <div className="mt-5">
+
             {tab === "basic" && (
               <ObjectEditForm
                 actionsLoading={actionsLoading}
@@ -166,22 +169,19 @@ export function ObjectEdit({
                 otherFields={otherFields}
                 ObjectEditSchema={ObjectEditSchema}
                 isFullAccess={isFullAccess}
+                prepareFilter={prepareFilter}
               />
 
             )}
-            {/* {tab === "remarks" && id && (
-            <RemarksUIProvider currentObjectId={id}>
-              <Remarks />
-            </RemarksUIProvider>
-          )}
-          {tab === "specs" && id && (
-            <SpecificationsUIProvider currentObjectId={id}>
-              <Specifications />
-            </SpecificationsUIProvider>
-          )} */}
+            
+
+            {otherTabs && tab !== "basic" && otherTabs.map(item =>
+              getTab(item)
+            )}
+
           </div>
         </CardBody>
       </Card>
-    </ObjectsUIProvider>
+    </FilterObjectsUIProvider>
   );
 }

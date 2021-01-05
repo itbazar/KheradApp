@@ -13,6 +13,7 @@ import GradePage from "./modules/BaseInfo/grades/GradePage";
 import AccountPage from "./modules/BaseInfo/accounts/AccountPage";
 import { ShiftBasePage } from "./modules/BaseInfo/shifts/ShiftBasePage";
 import CalendarPage from "./modules/BaseInfo/yearCalendar/CalendarPage";
+import { PermissionBasePage } from "./modules/BaseInfo/permissions/PermissionBasePage";
 
 // const GoogleMaterialPage = lazy(() =>
 //   import("./modules/GoogleMaterialExamples/GoogleMaterialPage")
@@ -49,6 +50,7 @@ export default function BasePage() {
                 <ContentRoute path="/accounts" component={AccountPage}/>
                 <ContentRoute path="/shifts" component={ShiftBasePage}/>
                 <ContentRoute path="/calendar" component={CalendarPage}/>
+                <ContentRoute path="/permissions" component={PermissionBasePage}/>
                 
                 <Redirect to="error/error-v1"/>
             </Switch>

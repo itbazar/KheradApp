@@ -3,13 +3,17 @@ import { useDispatch } from "react-redux";
 import { shallowEqual, useSelector } from "react-redux";
 import { FormattedMessage } from 'react-intl';
 import * as actions from "../../../../../app/actions/generalActions";
-import { Select } from '../../../../_partials/controls';
 import { useIntl } from 'react-intl';
 import { useObjectsUIContext } from './ObjectsUIContext';
+import { MultiSelectField } from '../../../../_partials/controls/forms/MultiSelectField';
+import Select from 'react-select'
+import { useFilterObjectsUIContext } from './FilterObjectsUIContext';
 
 
-export const SelectObjects = ({ api, reduxState, sname, label, ...props }) => {
-  const objectsUIContext = useObjectsUIContext();
+
+export const MultiSelectObjects = ({ api, reduxState, sname, label, ...props }) => {
+  // const objectsUIContext = useObjectsUIContext();
+  const objectsUIContext = useFilterObjectsUIContext();
   const objectsUIProps = useMemo(() => {
     return {
       queryParams: objectsUIContext.queryParams,
@@ -35,8 +39,8 @@ export const SelectObjects = ({ api, reduxState, sname, label, ...props }) => {
 
   const intl = useIntl();
   return (
-    <Select name={sname} label={label}  {...props}>
-      {!label && <option key={0} value={0}>
+    <Select options={entities}  {...props}>
+      {/* {!label && <option key={0} value={0}>
         {intl.formatMessage({ id: "SELECT.ALL" })}
       </option>
       }
@@ -44,7 +48,7 @@ export const SelectObjects = ({ api, reduxState, sname, label, ...props }) => {
         <option key={object.id} value={object.id}>
           {object.title}
         </option>
-      ))}
+      ))} */}
     </Select>
   )
 }

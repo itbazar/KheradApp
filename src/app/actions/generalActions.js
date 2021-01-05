@@ -139,6 +139,36 @@ export const updateObject = (API_URL,sliceName,object) => dispatch => {
     });
 };
 
+export const updateObjectsAllowed = (API_URL,sliceName,ids,allowed) => dispatch => {
+  const {actions} = objectsSlice({name:sliceName});
+  debugger;
+  dispatch(actions.startCall({ callType: callTypes.action }));
+  return requestFromServer
+    .updateObjects(API_URL,ids, {allowed})
+    .then(() => {
+      dispatch(actions.objectsAllowedUpdated({ ids, allowed }));
+    })
+    .catch(error => {
+      error.clientMessage = "Can't update objects allowed";
+      dispatch(actions.catchError({ error, callType: callTypes.action }));
+    });
+};
+
+export const updateObjectsFullAccess = (API_URL,sliceName,ids,isFullAccess) => dispatch => {
+  const {actions} = objectsSlice({name:sliceName});
+  debugger;
+  dispatch(actions.startCall({ callType: callTypes.action }));
+  return requestFromServer
+    .updateObjects(API_URL,ids, {isFullAccess})
+    .then(() => {
+      dispatch(actions.objectsFullAccessUpdated({ ids, isFullAccess }));
+    })
+    .catch(error => {
+      error.clientMessage = "Can't update objects isFullAccess";
+      dispatch(actions.catchError({ error, callType: callTypes.action }));
+    });
+};
+
 export const updateObjectsStatus = (API_URL,sliceName,ids,isDeleted) => dispatch => {
   const {actions} = objectsSlice({name:sliceName});
   debugger;
@@ -153,6 +183,8 @@ export const updateObjectsStatus = (API_URL,sliceName,ids,isDeleted) => dispatch
       dispatch(actions.catchError({ error, callType: callTypes.action }));
     });
 };
+
+
 
 export const deleteObjects = (API_URL,sliceName,ids) => dispatch => {
   const {actions} = objectsSlice({name:sliceName});

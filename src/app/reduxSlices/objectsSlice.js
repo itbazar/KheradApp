@@ -100,6 +100,31 @@ export const objectsSlice = ({ name = "" }) => {
             }
             return entity;
           });
+        },
+        // objectsUpdateAllowed
+        objectsAllowedUpdated: (state, action) => {
+          state.actionsLoading = false;
+          state.error = null;
+          debugger;
+          const { ids, allowed } = action.payload;
+          state.entities = state.entities.map(entity => {
+            if (ids.findIndex(id => id === entity.id) > -1) {
+              entity.allowed = allowed;
+            }
+            return entity;
+          });
+        },
+        // objectsUpdateAllowed
+        objectsFullAccessUpdated: (state, action) => {
+          state.actionsLoading = false;
+          state.error = null;
+          const { ids, isFullAccess } = action.payload;
+          state.entities = state.entities.map(entity => {
+            if (ids.findIndex(id => id === entity.id) > -1) {
+              entity.isFullAccess = isFullAccess;
+            }
+            return entity;
+          });
         }
       }
     });

@@ -10,17 +10,20 @@ import { ObjectsTable } from "./objects-table/ObjectsTable";
 import { ObjectsGrouping } from "./objects-grouping/ObjectsGrouping";
 import { useObjectsUIContext } from "./ObjectsUIContext";
 import { useIntl } from 'react-intl';
+import { useFilterObjectsUIContext } from "./FilterObjectsUIContext";
 
 export function ObjectsCard({ haveGeneralAction = true, isFullAccess, api, basePath, columns, currentState, prepareFilter, filterFields, filterInitialValues }) {
   const ObjectsUIContext = useObjectsUIContext();
+  const filterUIContext = useFilterObjectsUIContext();
+
 
   const intl = useIntl();
 
   const ObjectsUIProps = useMemo(() => {
     return {
       ids: ObjectsUIContext.ids,
-      queryParams: ObjectsUIContext.queryParams,
-      setQueryParams: ObjectsUIContext.setQueryParams,
+      queryParams: filterUIContext.queryParams,
+      setQueryParams: filterUIContext.setQueryParams,
       newObjectButtonClick: ObjectsUIContext.newObjectButtonClick,
       openDeleteObjectsDialog: ObjectsUIContext.openDeleteObjectsDialog,
       openEditObjectPage: ObjectsUIContext.openEditObjectPage,
@@ -28,7 +31,7 @@ export function ObjectsCard({ haveGeneralAction = true, isFullAccess, api, baseP
         ObjectsUIContext.openUpdateObjectsStatusDialog,
       openFetchObjectsDialog: ObjectsUIContext.openFetchObjectsDialog,
     };
-  }, [ObjectsUIContext]);
+  }, [ObjectsUIContext,filterUIContext]);
 
   return (
     <Card>

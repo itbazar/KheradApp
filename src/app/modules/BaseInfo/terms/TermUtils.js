@@ -2,10 +2,9 @@ import React from 'react';
 import * as Yup from "yup";
 import { sortCaret } from "../../../../_themeBase/_helpers";
 import * as columnFormatters from "../../../../_themeBase/layout/components/basePage/pages/objects-table/column-formatters";
-import { Checkbox, DatePickerField, Input } from "../../../../_themeBase/_partials/controls";
+import { DatePickerField, Input } from "../../../../_themeBase/_partials/controls";
 import { SelectStatus } from '../../customComponents/SelectStatus';
-import { SelectObjects } from '../../../../_themeBase/layout/components/basePage/pages/SelectObjects';
-
+import { SelectObjectsField } from '../../../../_themeBase/layout/components/basePage/selectObjects/SelectObjectsField';
 // export {filterFields} from "../../customComponents/filterFields";
 
 
@@ -81,7 +80,7 @@ export const filterFields = [
     type: "component",
     list: [],
     component: (props) =>
-      <SelectObjects api="api/year"
+      <SelectObjectsField api="api/year"
         reduxState="years"
         sname="yearId"
         {...props} />
@@ -92,7 +91,7 @@ export const filterFields = [
     type: "component",
     list: [],
     component: (props) =>
-      <SelectObjects api="api/semester"
+      <SelectObjectsField api="api/semester"
         reduxState="semesters"
         sname="semesterId"
         {...props} />
@@ -203,7 +202,7 @@ export const formFields = [
         name: "yearId",
         type: "select",
         component: (props) =>
-          <SelectObjects api="api/year"
+          <SelectObjectsField api="api/year"
             reduxState="years"
             sname="yearId"
             label={columnFormatters.translateByMessageId("MODULES.BASEINFO.YEAR.TITLE")} {...props} />,
@@ -217,7 +216,7 @@ export const formFields = [
         name: "semesterId",
         type: "select",
         component: (props) =>
-          <SelectObjects api="api/semester"
+          <SelectObjectsField api="api/semester"
             reduxState="semesters"
             sname="semesterId"
             label={columnFormatters.translateByMessageId("MODULES.BASEINFO.SEMESTER.TITLE")} {...props} />,
@@ -282,23 +281,6 @@ export const otherFields = [
 
 ];
 
-export const initialFilter = {
-  filter: {
-    title: "",
-  },
-  sortOrder: "asc", // asc||desc
-  sortField: "title",
-  pageNumber: 1,
-  pageSize: 10,
-
-  whereClause: "",
-  whereClauseParameters: [
-
-  ],
-  orderCluase: "id asc ",
-  skipCount: 0,
-  takeCount: 5
-};
 
 export const filterInitialValues = {
   isDeleted: "", // values => All=""/Selling=0/Sold=1

@@ -4,11 +4,15 @@ import { isEqual } from "lodash";
 import { useObjectsUIContext } from "../ObjectsUIContext";
 import { Input } from "@material-ui/core";
 import { useIntl } from 'react-intl';
+import { useFilterObjectsUIContext } from "../FilterObjectsUIContext";
 
 
-export function ObjectsFilter({ listLoading, prepareFilter, filterFields, filterInitialValues }) {
+export function ObjectsFilter({ prepareFilter, filterFields, filterInitialValues }) {
   // Objects UI Context
-  const objectsUIContext = useObjectsUIContext();
+  // const objectsUIContext = useObjectsUIContext();
+  const objectsUIContext = useFilterObjectsUIContext();
+  const filterUIContext = useFilterObjectsUIContext();
+
   const intl = useIntl();
   const objectsUIProps = useMemo(() => {
     return {
@@ -25,7 +29,6 @@ export function ObjectsFilter({ listLoading, prepareFilter, filterFields, filter
     }
 
   };
-
 
   const createFields = (item, index, values, handleSubmit, handleBlur, handleChange, setFieldValue) => {
 

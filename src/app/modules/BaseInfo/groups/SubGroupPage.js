@@ -10,7 +10,7 @@ import {
   initObject,
   ObjectEditSchema,
   columns,
-  initialFilter,
+  
   prepareFilter,
   filterFields,
   filterInitialValues,
@@ -49,19 +49,19 @@ const SubGroupPage = () => {
         <ContentRoute path="/groups/subgroups/new"
           render={props =>
             <ObjectEdit {...props} isFullAccess={isFullAccess} basePath="/groups/subgroups" api="api/subgroup" currentState={currentState} initObject={initObject}
-              formFields={formFields} otherFields={otherFields} ObjectEditSchema={ObjectEditSchema} />}
+              formFields={formFields} otherFields={otherFields} ObjectEditSchema={ObjectEditSchema} prepareFilter={prepareFilter}/>}
         />
 
         <ContentRoute
           path="/groups/subgroups/:id/edit"
           render={props =>
             <ObjectEdit {...props} isFullAccess={isFullAccess} basePath="/groups/subgroups" api="api/subgroup" currentState={currentState} initObject={initObject}
-              formFields={formFields} otherFields={otherFields} ObjectEditSchema={ObjectEditSchema} />}
+              formFields={formFields} otherFields={otherFields} ObjectEditSchema={ObjectEditSchema} prepareFilter={prepareFilter}/>}
         />
 
         <ContentRoute
           path="/groups/subgroups"
-          render={props => <ObjectsPage isFullAccess={isFullAccess} basePath="/groups/subgroups" api="api/subgroup" initialFilter={initialFilter} currentState={currentState} 
+          render={props => <ObjectsPage isFullAccess={isFullAccess} basePath="/groups/subgroups" api="api/subgroup"  currentState={currentState} 
           columns={columns} prepareFilter={prepareFilter} filterFields={filterFields} filterInitialValues={filterInitialValues}/>}
         />
 

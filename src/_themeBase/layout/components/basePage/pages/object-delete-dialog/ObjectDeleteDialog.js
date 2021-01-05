@@ -5,16 +5,18 @@ import { shallowEqual, useDispatch, useSelector } from "react-redux";
 import { ModalProgressBar } from "../../../../../../_themeBase/_partials/controls";
 import * as actions from "../../../../../../app/actions/generalActions";
 import { useObjectsUIContext } from "../ObjectsUIContext";
+import { useFilterObjectsUIContext } from "../FilterObjectsUIContext";
 
 export function ObjectDeleteDialog({api, id, show, onHide,currentState}) {
   // Objects UI Context
   const objectsUIContext = useObjectsUIContext();
+  const filterUIContext = useFilterObjectsUIContext();
   const objectsUIProps = useMemo(() => {
     return {
       setIds: objectsUIContext.setIds,
-      queryParams: objectsUIContext.queryParams,
+      queryParams: filterUIContext.queryParams,
     };
-  }, [objectsUIContext]);
+  }, [objectsUIContext,filterUIContext]);
 
   // Objects Redux state
   const dispatch = useDispatch();

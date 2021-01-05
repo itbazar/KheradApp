@@ -8,40 +8,37 @@ export function useObjectsUIContext() {
   return useContext(ObjectsUIContext);
 }
 
-export const ObjectsUIConsumer = ObjectsUIContext.Consumer;
 
-export function ObjectsUIProvider({ ObjectsUIEvents, children,initialFilter }) {
-  const [queryParams, setQueryParamsBase] = useState(initialFilter);
+export function ObjectsUIProvider({ ObjectsUIEvents, children }) {//,initialFilter
+  // const [queryParams, setQueryParamsBase] = useState(initialFilter);
   const [ids, setIds] = useState([]);
-  const setQueryParams = useCallback((nextQueryParams) => {
-    setQueryParamsBase((prevQueryParams) => {
-      if (isFunction(nextQueryParams)) {
-        nextQueryParams = nextQueryParams(prevQueryParams);
-      }
+  // const setQueryParams = useCallback((nextQueryParams) => {
+  //   setQueryParamsBase((prevQueryParams) => {
+  //     if (isFunction(nextQueryParams)) {
+  //       nextQueryParams = nextQueryParams(prevQueryParams);
+  //     }
 
-      if (isEqual(prevQueryParams, nextQueryParams)) {
-        return prevQueryParams;
-      }
+  //     if (isEqual(prevQueryParams, nextQueryParams)) {
+  //       return prevQueryParams;
+  //     }
 
-      return nextQueryParams;
-    });
-  }, []);
- 
-
+  //     return nextQueryParams;
+  //   });
+  // }, []);
 
   const value = {
-    queryParams,
-    setQueryParamsBase,
+    // queryParams,
+    // setQueryParamsBase,
     ids,
     setIds,
-    setQueryParams,
+    // setQueryParams,
     newObjectButtonClick: ObjectsUIEvents.newObjectButtonClick,
     openEditObjectPage: ObjectsUIEvents.openEditObjectPage,
     openDeleteObjectDialog: ObjectsUIEvents.openDeleteObjectDialog,
     openDeleteObjectsDialog: ObjectsUIEvents.openDeleteObjectsDialog,
     openFetchObjectsDialog: ObjectsUIEvents.openFetchObjectsDialog,
     openUpdateObjectsStatusDialog:
-      ObjectsUIEvents.openUpdateObjectsStatusDialog,
+    ObjectsUIEvents.openUpdateObjectsStatusDialog,
   };
 
   return (

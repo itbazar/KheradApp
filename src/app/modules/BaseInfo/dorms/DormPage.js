@@ -10,7 +10,7 @@ import {
   initObject,
   ObjectEditSchema,
   columns,
-  initialFilter,
+  
   prepareFilter,
   filterFields,
   filterInitialValues,
@@ -84,26 +84,26 @@ const DormPage = () => {
           />
         }
 
-        {/* <BaseObjectsPage manuUrl="/dorms" redirectList={redirects} stateName="dorms" basePath="/dorms/dorms" api="api/dorm" currentState={currentState} initObject={initObject}
-          formFields={formFields} otherFields={otherFields} ObjectEditSchema={ObjectEditSchema} initialFilter={initialFilter}
-          columns={columns} prepareFilter={prepareFilter} filterFields={filterFields} filterInitialValues={filterInitialValues} /> */}
+    {/* // <BaseObjectsPage manuUrl="/dorms" redirectList={redirects} stateName="dorms" basePath="/dorms/dorms" api="api/dorm" currentState={currentState} initObject={initObject}
+    //   formFields={formFields} otherFields={otherFields} ObjectEditSchema={ObjectEditSchema} 
+    //   columns={columns} prepareFilter={prepareFilter} filterFields={filterFields} filterInitialValues={filterInitialValues} /> */}
 
         <ContentRoute path="/dorms/dorms/new"
           render={props =>
             <ObjectEdit {...props} isFullAccess={isFullAccess} basePath="/dorms/dorms" api="api/dorm" currentState={currentState} initObject={initObject}
-              formFields={formFields} otherFields={otherFields} ObjectEditSchema={ObjectEditSchema} />}
+              formFields={formFields} otherFields={otherFields} ObjectEditSchema={ObjectEditSchema} prepareFilter={prepareFilter}/>}
         />
 
         <ContentRoute
           path="/dorms/dorms/:id/edit"
           render={props =>
             <ObjectEdit {...props} isFullAccess={isFullAccess} basePath="/dorms/dorms" api="api/dorm" currentState={currentState} initObject={initObject}
-              formFields={formFields} otherFields={otherFields} ObjectEditSchema={ObjectEditSchema} />}
+              formFields={formFields} otherFields={otherFields} ObjectEditSchema={ObjectEditSchema} prepareFilter={prepareFilter}/>}
         />
 
         <ContentRoute
           path="/dorms/dorms"
-          render={props => <ObjectsPage isFullAccess={isFullAccess} basePath="/dorms/dorms" api="api/dorm" initialFilter={initialFilter} currentState={currentState}
+          render={props => <ObjectsPage isFullAccess={isFullAccess} basePath="/dorms/dorms" api="api/dorm"  currentState={currentState}
             columns={columns} prepareFilter={prepareFilter} filterFields={filterFields} filterInitialValues={filterInitialValues} />}
         />
 

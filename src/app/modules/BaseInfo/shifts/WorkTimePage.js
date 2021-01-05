@@ -10,7 +10,7 @@ import {
   initObject,
   ObjectEditSchema,
   columns,
-  initialFilter,
+  
   prepareFilter,
   filterFields,
   filterInitialValues,
@@ -63,19 +63,19 @@ const WorkTimePage = () => {
         <ContentRoute path="/shifts/worktimes/new"
           render={props =>
             <ObjectEdit {...props} isFullAccess={isFullAccess} basePath="/shifts/worktimes" api="api/worktimes" currentState={currentState} initObject={initObject}
-              formFields={formFields} otherFields={otherFields} ObjectEditSchema={ObjectEditSchema} />}
+              formFields={formFields} otherFields={otherFields} ObjectEditSchema={ObjectEditSchema} prepareFilter={prepareFilter}/>}
         />
 
         <ContentRoute
           path="/shifts/worktimes/:id/edit"
           render={props =>
             <ObjectEdit {...props} isFullAccess={isFullAccess} basePath="/shifts/worktimes" api="api/worktimes" currentState={currentState} initObject={initObject}
-              formFields={formFields} otherFields={otherFields} ObjectEditSchema={ObjectEditSchema} />}
+              formFields={formFields} otherFields={otherFields} ObjectEditSchema={ObjectEditSchema} prepareFilter={prepareFilter}/>}
         />
 
         <ContentRoute
           path="/shifts/worktimes"
-          render={props => <ObjectsPage isFullAccess={isFullAccess} basePath="/shifts/worktimes" api="api/worktimes" initialFilter={initialFilter} currentState={currentState} 
+          render={props => <ObjectsPage isFullAccess={isFullAccess} basePath="/shifts/worktimes" api="api/worktimes"  currentState={currentState} 
           columns={columns} prepareFilter={prepareFilter} filterFields={filterFields} filterInitialValues={filterInitialValues}/>}
         />
 
