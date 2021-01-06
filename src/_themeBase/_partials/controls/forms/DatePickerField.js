@@ -26,8 +26,6 @@ const getFieldCSSClasses = (touched, errors) => {
   return classes.join(" ");
 };
 
-
-
 export const setDatepickerValue = ({
   val,
   field,
@@ -60,8 +58,7 @@ export function DatePickerField({ ...props }) {
     day: "01",
   });
 
-
-  const dateValue = ( field ) => {
+  const dateValue = (field) => {
     const defaultDate1 = {
       year: "1400",
       month: "01",
@@ -79,7 +76,6 @@ export function DatePickerField({ ...props }) {
       return defaultDate2;
     }
   };
-
 
   return (
     <>

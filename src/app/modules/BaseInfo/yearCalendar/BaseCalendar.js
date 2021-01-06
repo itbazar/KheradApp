@@ -8,8 +8,8 @@ import {
     CardHeader,
     CardHeaderToolbar,
 } from "../../../../_themeBase/_partials/controls";
-
-export const YearCalendar = () => {
+import { useIntl } from 'react-intl';
+export const BaseCalendar = () => {
 //   const suhbeader = useSubheader();
 //   suhbeader.setTitle("My Custom title");
    const locale = useLang();
@@ -24,13 +24,13 @@ export const YearCalendar = () => {
     return isGregorian ? inputValue.locale('es').format(inputFormat) :
       inputValue.locale('fa').format(inputFormat);
   }
-
+  const intl = useIntl();
 
   return (
 
     <Card >
          {/* {actionsLoading && <ModalProgressBar />} */}
-      <CardHeader title="{title}">
+      <CardHeader title="">
         <CardHeaderToolbar>
           <button
             type="button"
@@ -38,20 +38,20 @@ export const YearCalendar = () => {
             className="btn btn-light"
           >
             <i className="fa fa-arrow-left"></i>
-            Back
+            {intl.formatMessage({ id: "MODULES.GENERAL.BUTTONBACK" })}
           </button>
-          {`  `}
+          {/* {`  `}
           <button className="btn btn-light ml-2">
             <i className="fa fa-redo"></i>
             Reset
           </button>
-          {`  `}
+          {`  `} */}
           <button
             type="submit"
             className="btn btn-primary ml-2"
             // onClick={saveProductClick}
           >
-            Save
+             {intl.formatMessage({ id: "MODULES.GENERAL.BUTTONSAVE" })}
           </button>
         </CardHeaderToolbar>
       </CardHeader>
@@ -78,3 +78,5 @@ export const YearCalendar = () => {
   
     );
 };
+
+export default BaseCalendar;

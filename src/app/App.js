@@ -46,34 +46,6 @@ const App = ({ store, persistor, basename }) => {
    
   }, [lang])
 
-
-  // useEffect(() => {
-  //   const linkGlobalStyle = document.querySelector(".global_style");
-  //   console.log(linkGlobalStyle);
-
-  //   const divBody = document.querySelector("#kt_body");
-  //   console.log(divBody);
-
-    
-  //   if (lang === 'en') {
-  //     console.log("left to right layout");
-
-  //     linkGlobalStyle.setAttribute("href", toAbsoluteUrl("/css/style.react.css"));
-  //     divBody.setAttribute("direction", "");
-  //     divBody.setAttribute("dir", "");
-  //     divBody.setAttribute("style", "");
-  //     console.log(linkGlobalStyle);
-  //   }
-  //   else {
-  //     console.log("Right to left layout");
-  //     linkGlobalStyle.setAttribute("href", toAbsoluteUrl("/css/style.react.rtl.css"));
-  //     divBody.setAttribute("direction", "rtl");
-  //     divBody.setAttribute("dir", "rtl");
-  //     divBody.setAttribute("style", "direction: rtl");
-  //     console.log(linkGlobalStyle);
-  //   }
-  // })
-
   
   return (
     /* Provide Redux store */

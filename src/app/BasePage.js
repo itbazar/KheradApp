@@ -12,19 +12,9 @@ import { TermBasePage } from "./modules/BaseInfo/terms/TermBasePage";
 import GradePage from "./modules/BaseInfo/grades/GradePage";
 import AccountPage from "./modules/BaseInfo/accounts/AccountPage";
 import { ShiftBasePage } from "./modules/BaseInfo/shifts/ShiftBasePage";
-import CalendarPage from "./modules/BaseInfo/yearCalendar/CalendarPage";
+import CalenderBasePage from "./modules/BaseInfo/yearCalendar/CalenderBasePage";
 import { PermissionBasePage } from "./modules/BaseInfo/permissions/PermissionBasePage";
 import UsersPage from "./modules/BaseInfo/user/UsersPage";
-
-// const GoogleMaterialPage = lazy(() =>
-//   import("./modules/GoogleMaterialExamples/GoogleMaterialPage")
-// );
-// const ReactBootstrapPage = lazy(() =>
-//   import("./modules/ReactBootstrapExamples/ReactBootstrapPage")
-// );
-// const ECommercePage = lazy(() =>
-//   import("./modules/ECommerce/pages/eCommercePage")
-// );
 
 export default function BasePage() {
     // useEffect(() => {
@@ -50,7 +40,7 @@ export default function BasePage() {
                 <ContentRoute path="/grades" component={GradePage}/>
                 <ContentRoute path="/accounts" component={AccountPage}/>
                 <ContentRoute path="/shifts" component={ShiftBasePage}/>
-                <ContentRoute path="/calendar" component={CalendarPage}/>
+                <ContentRoute path="/calendar" component={CalenderBasePage}/>
                 <ContentRoute path="/permissions" component={PermissionBasePage}/>
                 <ContentRoute path="/persons" component={UsersPage}/>
                 

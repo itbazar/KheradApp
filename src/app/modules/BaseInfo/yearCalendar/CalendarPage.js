@@ -32,8 +32,8 @@ const CalendarPage = () => {
     shallowEqual
   );
 
-  if (menuList.find(q => q.url == "/calendar")) {
-    const temp = menuList.find(q => q.url == "/calendar")
+  if (menuList.find(q => q.url === "/calendar")) {
+    const temp = menuList.find(q => q.url === "/calendar")
     isFullAccess = temp.isFullAccess;
   }
 

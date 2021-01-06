@@ -263,6 +263,20 @@
   "MODULES.BASEINFO.ASSIGN.TITLE_PH": "عنوان شیفت",
 
 
+  "MODULES.BASEINFO.CALENDER.FORM_TITLE": " تقویم سالیانه",
+  "MODULES.BASEINFO.CALENDER.TITLE": " تقویم سالیانه",
+
+  "MODULES.BASEINFO.CALENDER.FORM_TITLE_PH": " تقویم سالیانه",
+  "MODULES.BASEINFO.CALENDER.TITLE_PH": " تقویم سالیانه",
+
+
+  "MODULES.BASEINFO.BaseCalendar.FORM_TITLE": " تقویم ",
+  "MODULES.BASEINFO.BaseCalendar.TITLE": " تقویم ",
+
+  "MODULES.BASEINFO.BaseCalendar.FORM_TITLE_PH": " تقویم ",
+  "MODULES.BASEINFO.BaseCalendar.TITLE_PH": " تقویم ",
+
+
   "MODULES.BASEINFO.ROLE.FORM_TITLE":"تعریف نقش",
   "MODULES.BASEINFO.ROLE.TITLE":"عنوان نقش",
   "MODULES.BASEINFO.ROLE.ON_TITLE":"نقش مجاز",
