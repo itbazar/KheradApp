@@ -6,6 +6,7 @@ import * as Yup from "yup";
 import { ModalProgressBar } from "../../../_themeBase/_partials/controls";
 import { toAbsoluteUrl } from "../../../_themeBase/_helpers";
 import * as auth from "../Auth";
+import { FormattedMessage } from "react-intl";
 
 function PersonaInformation(props) {
   // Fields
@@ -197,7 +198,7 @@ function PersonaInformation(props) {
           </div>
           <div className="form-group row">
             <label className="col-xl-3 col-lg-3 col-form-label">
-              First Name
+            <FormattedMessage id="MODULES.BASEINFO.USERS." />
             </label>
             <div className="col-lg-9 col-xl-6">
               <input
@@ -219,6 +220,7 @@ function PersonaInformation(props) {
           <div className="form-group row">
             <label className="col-xl-3 col-lg-3 col-form-label">
               Last Name
+              <FormattedMessage id="MODULES.BASEINFO.USERS." />
             </label>
             <div className="col-lg-9 col-xl-6">
               <input
@@ -238,6 +240,7 @@ function PersonaInformation(props) {
           <div className="form-group row">
             <label className="col-xl-3 col-lg-3 col-form-label">
               Company Name
+              <FormattedMessage id="MODULES.BASEINFO.USERS." />
             </label>
             <div className="col-lg-9 col-xl-6">
               <input
@@ -262,6 +265,7 @@ function PersonaInformation(props) {
           <div className="form-group row">
             <label className="col-xl-3 col-lg-3 col-form-label">
               Contact Phone
+              <FormattedMessage id="MODULES.BASEINFO.USERS." />
             </label>
             <div className="col-lg-9 col-xl-6">
               <div className="input-group input-group-lg input-group-solid">
@@ -284,6 +288,7 @@ function PersonaInformation(props) {
                 ) : null}
               </div>
               <span className="form-text text-muted">
+              <FormattedMessage id="MODULES.BASEINFO.USERS." />
                 We'll never share your phone with anyone else.
               </span>
             </div>
@@ -291,6 +296,7 @@ function PersonaInformation(props) {
           <div className="form-group row">
             <label className="col-xl-3 col-lg-3 col-form-label">
               Email Address
+              <FormattedMessage id="MODULES.BASEINFO.USERS." />
             </label>
             <div className="col-lg-9 col-xl-6">
               <div className="input-group input-group-lg input-group-solid">
@@ -317,6 +323,7 @@ function PersonaInformation(props) {
           <div className="form-group row">
             <label className="col-xl-3 col-lg-3 col-form-label">
               Company Site
+              <FormattedMessage id="MODULES.BASEINFO.USERS." />
             </label>
             <div className="col-lg-9 col-xl-6">
               <div className="input-group input-group-lg input-group-solid">
