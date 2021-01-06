@@ -17,30 +17,17 @@ export function useSpecificationsUIContext() {
 
 export const SpecificationsUIConsumer = SpecificationsUIContext.Consumer;
 
-export function SpecificationsUIProvider({ currentParentId,initSpecification, children }) {//,initialFilter
+export function SpecificationsUIProvider({ currentParentId,currentParentName,initSpecification, children }) {//,initialFilter
   const [parentId, setParentId] = useState(currentParentId);
-  // const [queryParams, setQueryParamsBase] = useState(initialFilter);
+  const [parentName, setParentName] = useState(currentParentName);
   const [ids, setIds] = useState([]);
-  // const setQueryParams = useCallback((nextQueryParams) => {
-  //   setQueryParamsBase((prevQueryParams) => {
-  //     if (isFunction(nextQueryParams)) {
-  //       nextQueryParams = nextQueryParams(prevQueryParams);
-  //     }
-
-  //     if (isEqual(prevQueryParams, nextQueryParams)) {
-  //       return prevQueryParams;
-  //     }
-
-  //     nextQueryParams.roleId = parentId
-  //     return nextQueryParams;
-  //   });
-  // }, []);
   const [selectedId, setSelectedId] = useState(null);
  
   useEffect(() => {
-    initSpecification.roleId = currentParentId;
+    initSpecification[currentParentName] = currentParentId;
     //initSpecification.groupId = currentParentId;
     setParentId(currentParentId);
+    setParentName(currentParentName);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [currentParentId]);
   const [
@@ -96,6 +83,8 @@ export function SpecificationsUIProvider({ currentParentId,initSpecification, ch
     setIds,
     parentId,
     setParentId,
+    parentName,
+    setParentName,
     // queryParams,
     // setQueryParams,
     initSpecification,

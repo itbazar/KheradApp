@@ -131,7 +131,7 @@ export const filterFields = [
 export const RoleAccessPage = ({ id }) => {
     return (
         <FilterObjectsUIProvider>
-            <SpecificationsUIProvider currentParentId={id} initSpecification={init}>
+            <SpecificationsUIProvider currentParentId={id} currentParentName="roleId" initSpecification={init}>
                 <Specifications api="api/RoleAccess" reduxName="rolePermissions" columns={columns} prepareFilter={prepareFilter}
                     filterInitialValues={filterInitialValues} filterFields={filterFields} haveFullAccess={false} />
             </SpecificationsUIProvider>

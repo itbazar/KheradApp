@@ -18,8 +18,9 @@ import {
 } from "../../../../../_themeBase/_helpers";
 import { useSpecificationsUIContext } from "./SpecificationsUIContext";
 import { useFilterObjectsUIContext } from "../pages/FilterObjectsUIContext";
+import { isEqual } from "lodash";
 
-export function SpecificationsTable({reduxName,api,columns}) {
+export function SpecificationsTable({ reduxName, api, columns }) {
   // Specs UI Context
   const specsUIContext = useSpecificationsUIContext();
   const filterUIContext = useFilterObjectsUIContext();
@@ -35,8 +36,11 @@ export function SpecificationsTable({reduxName,api,columns}) {
       ids: specsUIContext.ids,
       setIds: specsUIContext.setIds,
       parentId: specsUIContext.parentId,
+      parentName: specsUIContext.parentName,
     };
-  }, [specsUIContext,filterUIContext]);
+  }, [specsUIContext, filterUIContext]);
+
+
 
   // Specs Redux state
   // Getting curret state of products list from store (Redux)
@@ -44,17 +48,22 @@ export function SpecificationsTable({reduxName,api,columns}) {
     (state) => ({ currentState: state[reduxName] }),
     shallowEqual
   );
-  const { totalCount, entities, listLoading,name } = currentState;
+  const { totalCount, entities, listLoading, name } = currentState;
+
+ 
+
   const dispatch = useDispatch();
   useEffect(() => {
+   
+
     specsUIProps.setIds([]);
     dispatch(
-      actions.fetchObjects(api,name,specsUIProps.queryParams)//,specsUIProps.parentId
+      actions.fetchObjectsByParentId(api, name, specsUIProps.queryParams,specsUIProps.parentId,specsUIProps.parentName)
     );
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [specsUIProps.queryParams, dispatch, specsUIProps.parentId]);
 
- 
+
   // Table pagination properties
   const paginationOptions = {
     custom: true,

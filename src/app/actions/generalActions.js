@@ -22,6 +22,32 @@ export const fetchObjects = (API_URL,sliceName,queryParams) => dispatch => {
     });
 };
 
+export const fetchObjectsByParentId = (API_URL,sliceName,queryParams,parentId,parentName) => dispatch => {
+  
+  const query = {...queryParams}
+  if (queryParams.whereClause === "") {
+     query.whereClauseParameters=[]
+      query.whereClause = `${parentName}=@0`
+      query.whereClauseParameters.push(parentId)
+    }
+
+  const {actions} = objectsSlice({name:sliceName});
+  dispatch(actions.startCall({ callType: callTypes.list }));
+  return requestFromServer
+    .findObjects(API_URL,query)
+    .then(response => {
+      console.log("response.data :")
+      console.log(response.data.data)
+      const { totalCount, result:entities } = response.data.data;
+
+      dispatch(actions.objectsFetched({ totalCount, entities }));
+    })
+    .catch(error => {
+      error.clientMessage = "Can't find objects";
+      dispatch(actions.catchError({ error, callType: callTypes.list }));
+    });
+};
+
 export const fetchSelectObjects = (API_URL,sliceName,queryParams) => dispatch => {
  const temp = {...queryParams}
  const query ={

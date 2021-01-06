@@ -7,6 +7,7 @@ import { FilterObjectsUIProvider } from '../../../_themeBase/layout/components/b
 
 export const BaseAccessPage = ({ 
     id,
+    currentParentName,
     initSpecification,
     api,
     reduxName,
@@ -18,7 +19,7 @@ export const BaseAccessPage = ({
 
     return (
         <FilterObjectsUIProvider>
-            <SpecificationsUIProvider currentParentId={id} initSpecification={initSpecification}>
+            <SpecificationsUIProvider currentParentId={id} currentParentName={currentParentName} initSpecification={initSpecification}>
                 <Specifications api={api} reduxName={reduxName} columns={columns} prepareFilter={prepareFilter}
                     filterInitialValues={filterInitialValues} filterFields={filterFields} haveFullAccess={haveFullAccess}/>
             </SpecificationsUIProvider>

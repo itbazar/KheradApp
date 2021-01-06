@@ -149,8 +149,8 @@ export const MenuAccessPage = ({ id }) => {
         // filterFields={filterFields} 
         // haveFullAccess={true} />
         <FilterObjectsUIProvider>
-            <SpecificationsUIProvider currentParentId={id} initSpecification={init}>
-                <Specifications api="api/MenuAccess" reduxName="menuPermissions" columns={columns} prepareFilter={prepareFilter}
+            <SpecificationsUIProvider currentParentId={id} currentParentName="roleId" initSpecification={init}>
+                <Specifications currentParentId={id} api="api/MenuAccess" reduxName="menuPermissions" columns={columns} prepareFilter={prepareFilter}
                     filterInitialValues={filterInitialValues} filterFields={filterFields} haveFullAccess={true}/>
             </SpecificationsUIProvider>
         </FilterObjectsUIProvider>
