@@ -15,6 +15,7 @@ import { ShiftBasePage } from "./modules/BaseInfo/shifts/ShiftBasePage";
 import CalenderBasePage from "./modules/BaseInfo/yearCalendar/CalenderBasePage";
 import { PermissionBasePage } from "./modules/BaseInfo/permissions/PermissionBasePage";
 import UsersPage from "./modules/BaseInfo/user/UsersPage";
+import UserProfilePage from "./modules/UserProfile/UserProfilePage";
 
 export default function BasePage() {
     // useEffect(() => {
@@ -43,6 +44,7 @@ export default function BasePage() {
                 <ContentRoute path="/calendar" component={CalenderBasePage}/>
                 <ContentRoute path="/permissions" component={PermissionBasePage}/>
                 <ContentRoute path="/persons" component={UsersPage}/>
+                <ContentRoute path="/user-profile" component={UserProfilePage}/>
                 
                 <Redirect to="error/error-v1"/>
             </Switch>
