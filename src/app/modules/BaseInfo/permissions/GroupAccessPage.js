@@ -140,7 +140,7 @@ export const GroupAccessPage = ({ id }) => {
         // filterFields={filterFields} 
         // haveFullAccess={true} />
         <FilterObjectsUIProvider>
-            <SpecificationsUIProvider currentParentId={id} initSpecification={init}>
+            <SpecificationsUIProvider currentParentId={id} currentParentName="roleId" initSpecification={init}>
                 <Specifications api="api/SubGroupAccess" reduxName="groupPermissions" columns={columns} prepareFilter={prepareFilter}
                     filterInitialValues={filterInitialValues} filterFields={filterFields} haveFullAccess={false}/>
             </SpecificationsUIProvider>

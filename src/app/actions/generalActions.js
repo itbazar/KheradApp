@@ -1,7 +1,7 @@
 import * as requestFromServer from "../services/PublicCrudService";
 import {objectsSlice, callTypes} from "../reduxSlices/objectsSlice";
 
-//const {actions} = objectsSlice({name:"products"});
+//const {actions} = objectsSlice({name:""});
 
 export const fetchObjects = (API_URL,sliceName,queryParams) => dispatch => {
  
@@ -9,6 +9,32 @@ export const fetchObjects = (API_URL,sliceName,queryParams) => dispatch => {
   dispatch(actions.startCall({ callType: callTypes.list }));
   return requestFromServer
     .findObjects(API_URL,queryParams)
+    .then(response => {
+      console.log("response.data :")
+      console.log(response.data.data)
+      const { totalCount, result:entities } = response.data.data;
+
+      dispatch(actions.objectsFetched({ totalCount, entities }));
+    })
+    .catch(error => {
+      error.clientMessage = "Can't find objects";
+      dispatch(actions.catchError({ error, callType: callTypes.list }));
+    });
+};
+
+export const fetchObjectsByParentId = (API_URL,sliceName,queryParams,parentId,parentName) => dispatch => {
+  
+  const query = {...queryParams}
+  if (queryParams.whereClause === "") {
+     query.whereClauseParameters=[]
+      query.whereClause = `${parentName}=@0`
+      query.whereClauseParameters.push(parentId)
+    }
+
+  const {actions} = objectsSlice({name:sliceName});
+  dispatch(actions.startCall({ callType: callTypes.list }));
+  return requestFromServer
+    .findObjects(API_URL,query)
     .then(response => {
       console.log("response.data :")
       console.log(response.data.data)
@@ -71,7 +97,6 @@ export const fetchAllObjects = (API_URL,sliceName) => dispatch => {
       dispatch(actions.catchError({ error, callType: callTypes.list }));
     });
 };
-
 
 export const fetchObject = (API_URL,sliceName,id) => dispatch => {
   const {actions} = objectsSlice({name:sliceName});
@@ -183,8 +208,6 @@ export const updateObjectsStatus = (API_URL,sliceName,ids,isDeleted) => dispatch
       dispatch(actions.catchError({ error, callType: callTypes.action }));
     });
 };
-
-
 
 export const deleteObjects = (API_URL,sliceName,ids) => dispatch => {
   const {actions} = objectsSlice({name:sliceName});

@@ -13,10 +13,16 @@ export function Specifications({api,reduxName,columns,prepareFilter,filterInitia
   // Specifications UI Context
   const specsUIContext = useSpecificationsUIContext();
   const specsUIProps = useMemo(() => {
-    return { ids: specsUIContext.ids };
+    return { 
+      ids: specsUIContext.ids,
+      parentId: specsUIContext.parentId,
+      parentName: specsUIContext.parentName
+
+     };
   }, [specsUIContext]);
 
-  filterInitialValues.roleId = specsUIContext.parentId
+  // filterInitialValues.roleId = specsUIContext.parentId
+  filterInitialValues[specsUIProps.parentName] = specsUIProps.parentId
   return (
     <>
       <SpecificationsLoadingDialog reduxName={reduxName}/>
@@ -33,7 +39,7 @@ export function Specifications({api,reduxName,columns,prepareFilter,filterInitia
           </>
         )}
       </div>
-      <SpecificationsTable api={api} reduxName={reduxName} columns={columns}/>
+      <SpecificationsTable api={api} reduxName={reduxName} columns={columns} />
     </>
   );
 }
