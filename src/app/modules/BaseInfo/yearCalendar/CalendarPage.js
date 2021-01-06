@@ -10,7 +10,6 @@ import {
   initObject,
   ObjectEditSchema,
   columns,
-  
   prepareFilter,
   filterFields,
   filterInitialValues,

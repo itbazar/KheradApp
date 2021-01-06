@@ -1,7 +1,7 @@
 import * as requestFromServer from "../services/PublicCrudService";
 import {objectsSlice, callTypes} from "../reduxSlices/objectsSlice";
 
-//const {actions} = objectsSlice({name:"products"});
+//const {actions} = objectsSlice({name:""});
 
 export const fetchObjects = (API_URL,sliceName,queryParams) => dispatch => {
  
@@ -97,7 +97,6 @@ export const fetchAllObjects = (API_URL,sliceName) => dispatch => {
       dispatch(actions.catchError({ error, callType: callTypes.list }));
     });
 };
-
 
 export const fetchObject = (API_URL,sliceName,id) => dispatch => {
   const {actions} = objectsSlice({name:sliceName});
@@ -209,8 +208,6 @@ export const updateObjectsStatus = (API_URL,sliceName,ids,isDeleted) => dispatch
       dispatch(actions.catchError({ error, callType: callTypes.action }));
     });
 };
-
-
 
 export const deleteObjects = (API_URL,sliceName,ids) => dispatch => {
   const {actions} = objectsSlice({name:sliceName});
